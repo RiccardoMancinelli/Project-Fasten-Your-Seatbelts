@@ -1,0 +1,23 @@
+size(1000, 1000);
+
+int aantal_vert = 12, aantal_hor = 12;
+int c_width = width/aantal_hor;
+int c_height = height/aantal_vert;
+noStroke();
+
+for (int i=0; i<aantal_hor; i++)
+{
+  for (int j=0; j<aantal_vert; j++)
+  {
+    if (j<4) {
+      fill(i*(255/aantal_hor), 0, 0);
+    };
+    if (j>3 && j<7) {
+      fill(0, i*(255/aantal_hor), 0);
+    };
+    if (j>7) {
+      fill(0, 0, i*(255/aantal_hor));
+    };
+    ellipse((i*c_width)+(c_height/2), (j*c_height)+(c_height/2), c_width, c_height);
+  }
+}
