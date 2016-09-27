@@ -1,25 +1,52 @@
-size(1000, 1000);
-
-int aantal_vert = 12, aantal_hor = 12;
-int c_width = width/aantal_hor;
-int c_height = height/aantal_vert;
-noStroke();
-
-for (int i=0; i<aantal_hor; i++)
-{
-  for (int j=0; j<aantal_vert; j++)
-  {
-    if (j<4) {
-      fill(i*(255/aantal_hor), 0, 0);
-    };
-    if (j>3 && j<7) {
-      fill(0, i*(255/aantal_hor), 0);
-    };
-    if (j>7) {
-      fill(0, 0, i*(255/aantal_hor));
-    };
-    ellipse((i*c_width)+(c_height/2), (j*c_height)+(c_height/2), c_width, c_height);
-  }
-}
-
-//Chickens are life Chickens are love
+                                      ProjectFY                                         
+                                  SissuperleukProje                                     
+                              ctFYSissuperleukProjectF                                  
+                      YSissuperleukPr           ojectFYS                                
+                   issuperleukPr                  ojectFY                               
+                 SissuperleukPro                   jectFY                               
+                 SissuperleukProj                   ectFY                               
+                 Sissuperleu kProje    ctFYSissupe  rleuk                               
+                 ProjectFYSissuperle ukProjectFYSiss uper                               
+                 leukProjectFYSiss  uperleukProjectFYSiss                               
+                uperl  eukProjectF  YSissuperleukProjectF                               
+               YSissuperleukProject FYSissuperl eukProjec                               
+              tFYSissuperleukProj   ectFYSissuperleukProj                               
+             ectFYSissuperleukProjectFYSissuperle  ukPro                                
+            jectF          YSissuperleukProje     ctFYSi                                
+           ssupe                      rleukPr     ojectF                                
+          YSissu                                 perleu                                 
+         kProje                                 ctFYSi                                  
+        ssuper                                  leukPr                                  
+        oject                      FYSi        ssuper                                   
+        leuk                      Proje ctF   YSissu                                    
+        perl                      eukProject  FYSis                         superleuk   
+       Proje                      ctFYSissu  perle                        ukProjectFYS  
+       issup                     erleukProj ectFY                       Sissup    erle  
+       ukPro                     jectFYSis  super                     leukPro    jectF  
+       YSiss                    uperleukP  roject                   FYSissu     perle   
+       ukPro                    jectFYSi   ssuperleukProjectFYS   issuper     leukP     
+        roje                   ctFYSiss    uperleukProjectFYSissuperleu      kProj      
+        ectF                   YSissup     erleu   kProj   ectFYSissu      perleu       
+        kPro                  jectFYSi      ssu   perleukProjectFYS      issupe         
+        rleuk               Proje ctFYS         issuperleukProject     FYSissu          
+         perl             eukPr  ojectFY         SissuperleukProject   FYSissup         
+         erleu            kProjectFYSiss                     uperleuk    ProjectFY      
+          Sissu            perleukProje              ctFY       Sissup  erle ukPro      
+          jectFY              Siss                   uper        leukPr  ojectFYS       
+           issupe                                rle              ukPro    ject         
+            FYSissup                            erle              ukPro     ject        
+               FYSissu                          perl              eukProjectFYSi        
+     ssu        perleukPro                       ject           FYSissuperleukP         
+    rojectF    YSissuperleukProj                  ect         FYSissu    p              
+    erleukProjectF YSissuperleukProjectF           YSis    superle                      
+    ukPr ojectFYSissupe    rleukProjectFYS issuperleukProjectFYS                        
+     issu  perleukPro         jectFYSissu perleukProjectFYSis                           
+      supe   rleukP         rojectFYSiss uperl eukProjectF                              
+       YSissuperl           eukProjectF  YSis                                           
+        superle              ukProjec   tFYS                                            
+          iss                uperle    ukPr                                             
+                              ojectF  YSis                                              
+                               superleukP                                               
+                                 rojectF                                                
+                                   YSi                                                  
+                                                                                  
