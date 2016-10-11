@@ -9,6 +9,9 @@ void init() {
 
 }
 
+void update() {
+}
+
 void draw() {
   img.resize(80, 30);
   image(img, x, y);
