@@ -22,9 +22,15 @@ class Player{
     }
     
     if (x < 0){
-       x = width - 1; 
+       x = width; 
     }   
-    x += vx;
+    
+  
+    if (rightDown){x += vx;}
+       
+    
+   
+    
     // 2DO: Update the paddle here.
     //   How does it move? According to mouse? According to keys?
     //   How does it "bounce" against walls?
