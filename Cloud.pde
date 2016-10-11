@@ -1,7 +1,6 @@
 class Cloud{
 PImage img;
-
- int x = int(random(width-80));
+int x = int(random(width-80));
  int y = int(random(height-50));
 void init() {
   
@@ -16,5 +15,6 @@ void draw() {
   loop();
   if(keyCode == LEFT){
   noLoop();}
+}
 }
 }
