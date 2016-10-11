@@ -10,7 +10,8 @@ class World {
   //player.draw();
   }
  //Update the game 
-  void update(){
+  void update()
+  {
    player.update();
    cloud.update();
   }
@@ -18,7 +19,7 @@ class World {
   void draw(){
     player.draw();
     cloud.draw();
-    if (jumpDown){fill(0); rect(30,30,64,64);}
+    
     noStroke();
     fill(0,180,0); rect(0,464,640,480);
   }
