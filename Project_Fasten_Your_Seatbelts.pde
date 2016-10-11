@@ -5,7 +5,7 @@
 
 World world = new World();
 
-  boolean leftDown, rightDown; //houd de speler de linker pijltjes toets in of de rechter?
+  boolean leftDown, rightDown, jumpDown; //houd de speler de linker pijltjes toets in of de rechter?
   
   
 void setup() {
@@ -39,8 +39,10 @@ void draw() {
     void keyPressed(){
     if(keyCode == LEFT){leftDown = true;}
     if(keyCode == RIGHT){rightDown = true;}
+    if(key == 'w'){jumpDown = true;}
     }
     void keyReleased(){
     if(keyCode == LEFT){leftDown = false;}
     if(keyCode == RIGHT){rightDown = false;}
+    if(key == 'w'){jumpDown = false;}
     }
