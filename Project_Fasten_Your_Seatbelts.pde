@@ -2,29 +2,29 @@
 
 // This main tab will set up and run the game
 
-Player player = new player();
-World world = new world();
 
-  boolean leftDown, rightDown;
+World world = new World();
+
+  boolean leftDown, rightDown; //houd de speler de linker pijltjes toets in of de rechter?
   
   
 void setup() {
   size(640, 480);
 
   // Initialize the ball and the paddle
-  player.init();
+
   world.init();  
 }
 
 // All the code that alters the Game World goes here
 void updateGame(){
-  player.update();
+  //player.update();
   world.update();
 }
 
 // All the code that draws the Game World goes here
 void drawGame(){
-  player.draw();
+  //player.draw();
   world.draw();
 }
 
