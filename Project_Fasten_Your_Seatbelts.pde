@@ -29,7 +29,7 @@ void drawGame(){
 }
 
 void draw() {
-  background(0);
+  background(255);
   
   updateGame(); // Update your game first
   drawGame();   // Draw your game after everything is updated
