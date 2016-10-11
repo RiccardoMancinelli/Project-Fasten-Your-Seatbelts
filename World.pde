@@ -1,23 +1,20 @@
 class World {
 
-  float x, y; // Position
-  float w, h; // Size
-  double speed;    //how fast the player makes it move
-  int maxspeed = 6;    //what is the max speed the player can reach? 
-  color fillVal = color(128,255,255);
+  Player player = new Player();
  
+ //Initialize the game world
   void init(){
+    player.init();
   }
-
+ //Update the game 
   void update(){
-   
+   player.update();
   }
-  
+  //Draw the game
   void draw(){
-    
-    fill(fillVal);
-    rect(x,y,w,h);
+    player.draw();
+    if (jumpDown){fill(255); rect(30,30,64,64);}
   }
-  
+ 
 
 };
