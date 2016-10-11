@@ -4,6 +4,7 @@ class Player{
   float clr;
   float vx;
   float vy;
+  
  // 2DO: Add other fields here. What are properties of a paddle?
   
   void init(){
