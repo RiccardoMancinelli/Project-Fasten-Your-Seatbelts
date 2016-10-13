@@ -18,7 +18,7 @@ class Player{
     clr = color(255,255,255);
     vx = 5;
     vy = 0;
-    jumpspeed =50;
+    jumpspeed =10;
     diameter = 20;
     center = diameter/2;
     
