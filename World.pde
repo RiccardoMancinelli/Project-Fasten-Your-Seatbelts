@@ -46,7 +46,7 @@ class World {
     fill(0,180,0); rect(0,464,640,480);
      
     fill(0,0,0); rect(16,16,64,16);    //tekend de achtergrond van de mana bar op x=16, y=16, x2=64, y2=16
-    fill(255,0,0); rect(15,15,mana,15);    //tekend de hoeveelheid mana die je hebt
+    fill(255,0,0); rect(15,15,mana,15);    //tekend de hoeveelheid mana die je hebt lol
   }
  
 
