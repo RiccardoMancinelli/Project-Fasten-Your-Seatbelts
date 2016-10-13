@@ -1,8 +1,7 @@
 class Cloud {
   PImage img;
 
-  int x = int(random(width-80));
-  int y = int(random(height-50));
+  int x, y;
   void init() {
 
     img = loadImage("cloud.png");
