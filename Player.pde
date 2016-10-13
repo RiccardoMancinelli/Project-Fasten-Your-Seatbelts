@@ -37,7 +37,7 @@ class Player{
     y += vy; 
     
     if (y>height-16 && landed == false) {vy = 0;y=height-26; landed = true;}
-    if (landed == true && mana<maxmana) {mana+=1;}
+    if (landed == true && mana<maxmana) {mana+=4;}
    
     
   }
