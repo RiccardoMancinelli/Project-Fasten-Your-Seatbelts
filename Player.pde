@@ -44,7 +44,10 @@ class Player{
    
     if (y > 464 - center) ; 
     
-    //   How does it "bounce" against walls?
+       for (int 1=0; i<nCloud; i++)
+    {
+     if (cloud[i].y=y && vy >=0) {collisionWithBlocks(cloud[i].y);}
+    }
   }
   
   void draw(){
