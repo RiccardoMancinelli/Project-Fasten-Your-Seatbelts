@@ -1,5 +1,5 @@
 class Player{  
-  float x, y; // Position
+  int x, y; // Position
   float w, h; // Size
   float clr;
   float vx;
@@ -36,18 +36,14 @@ class Player{
     // player movement
     if (rightDown){x += vx;}
     if (leftDown){x -= vx;}   
-    if (jumpDown && landed == true){vy = -jumpspeed; landed = false;}
+    if (mana > 0 && jumpDown) {mana -= 1; vy = -jumpspeed; landed = false;} 
+    //if (jumpDown && landed == true){vy = -jumpspeed; landed = false;}
      if (landed == false){vy += 0.5;}
     y += vy; 
     
     if (y>height-16 && landed == false) {vy = 0;y=height-26; landed = true;}
    
-    if (y > 464 - center) ; 
     
-       for (int 1=0; i<nCloud; i++)
-    {
-     if (cloud[i].y=y && vy >=0) {collisionWithBlocks(cloud[i].y);}
-    }
   }
   
   void draw(){
