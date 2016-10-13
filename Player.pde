@@ -1,12 +1,6 @@
 class Player{  
   int x, y; // Position
-  float w, h; // Size
-  float clr;
-  float vx;
-  float vy;
-  float jumpspeed;
-  float center;
-  float diameter;
+  float w, h, clr, vx, vy, jumpspeed, center, diameter, jetpackspeed; // Size
   boolean landed; 
   
  // 2DO: Add other fields here. What are properties of a paddle?
@@ -19,6 +13,7 @@ class Player{
     vx = 5;
     vy = 0;
     jumpspeed =10;
+    jetpackspeed = 2;
     diameter = 20;
     center = diameter/2;
     
@@ -36,12 +31,13 @@ class Player{
     // player movement
     if (rightDown){x += vx;}
     if (leftDown){x -= vx;}   
-    if (mana > 0 && jumpDown) {mana -= 1; vy = -jumpspeed; landed = false;} 
-    //if (jumpDown && landed == true){vy = -jumpspeed; landed = false;}
+    if (mana > 0 && jumpDown && landed == false && vy >-2) {mana -= 1; vy = -jetpackspeed;} 
+    if (jumpDown && landed == true){vy = -jumpspeed; landed = false;}
      if (landed == false){vy += 0.5;}
     y += vy; 
     
     if (y>height-16 && landed == false) {vy = 0;y=height-26; landed = true;}
+    if (landed == true && mana<maxmana) {mana+=1;}
    
     
   }

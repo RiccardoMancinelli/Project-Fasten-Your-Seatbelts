@@ -6,12 +6,11 @@
 World world = new World();
 
   boolean leftDown, rightDown, jumpDown; //houd de speler de linker pijltjes toets in of de rechter?
-  int score, distance, mana; //Hoe hoog de speler score is, de afstand die hij omhoog heeft gereisd en hoeveel mana hij nog kan gebruiken.
-  
+  int score, distance, mana, maxmana; //Hoe hoog de speler score is, de afstand die hij omhoog heeft gereisd en hoeveel mana hij nog kan gebruiken.
   
 void setup() {
   size(640, 480);
-
+  mana = maxmana = 64;
   // Initialize the ball and the paddle
 
   world.init();  
