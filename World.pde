@@ -27,9 +27,10 @@ class World {
    cloud[i].update();
     }
           
+          
     for (int i=0; i<nCloud; i++)
     {
-     if (cloud[i].y = player.y && player.vy >=0) {}
+     if (cloud[i].y == player.y && player.vy >=0) {}
     }    
     
   }
