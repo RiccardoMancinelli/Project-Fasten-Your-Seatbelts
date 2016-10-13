@@ -1,6 +1,6 @@
 class Player{  
   int x, y; // Position
-  float w, h, clr, vx, vy, jumpspeed, center, diameter, jetpackspeed; // Size
+  float w, h, clr, vx, vy, jumpspeed, center, diameter, jetpackspeed, maxSpeed; // Size
   boolean landed; 
   
  // 2DO: Add other fields here. What are properties of a paddle?
@@ -16,6 +16,7 @@ class Player{
     jetpackspeed = 2;
     diameter = 20;
     center = diameter/2;
+    maxSpeed = 8;
     
   }
   
@@ -31,12 +32,19 @@ class Player{
     // player movement
     if (rightDown){x += vx;}
     if (leftDown){x -= vx;}   
+    //springen
     if (mana > 0 && jumpDown && landed == false && vy >-2) {mana -= 1; vy = -jetpackspeed;} 
     if (jumpDown && landed == true){vy = -jumpspeed; landed = false;}
-     if (landed == false){vy += 0.5;}
-    y += vy; 
+    //zwaartekracht als je niet geland bent.
+    if (landed == false){vy += 0.5;}
+     y += vy;
+     //als speler met een snelheid hoger dan maxspeed valt, dan is zijn snelheid gelijk aan de max snelheid.
+    if (vy > maxSpeed) {vy = maxSpeed;}
     
-    if (y>height-16 && landed == false) {vy = 0;y=height-26; landed = true;}
+    //collision met ondergrond
+    if (y>height-16 && landed == false) {vy = 0; y=height-26; landed = true;}
+    
+    //zodra je geland bent krijg je je mana terug
     if (landed == true && mana<maxmana) {mana+=4;}
    
     
