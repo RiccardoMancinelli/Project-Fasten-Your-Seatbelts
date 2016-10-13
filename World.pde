@@ -30,7 +30,8 @@ class World {
           
     for (int i=0; i<nCloud; i++)
     {
-     if (cloud[i].y == player.y && player.vy >=0) {}
+     if (cloud[i].y == player.y && cloud[i].x == player.x && player.vy >=0 && player.landed == false) 
+       {player.landed = true; player.y = cloud[i].y; player.x = cloud[i].x;player.vy = 0;}
     }    
     
   }
