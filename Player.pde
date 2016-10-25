@@ -3,12 +3,12 @@ class Player{
   float w, h, clr, vx, vy, jumpspeed, center, diameter, jetpackspeed, maxSpeed; // Size
   boolean landed; 
   
- // 2DO: Add other fields here. What are properties of a paddle?
+ // 2DO: LANGZAMER BEWEGEN IN DE LUCHT
   
   void init(){
     landed = false;
     x = width/2;
-    y = height/24;
+    y = height-12;
     clr = color(255,255,255);
     vx = 5;
     vy = 0;
@@ -29,6 +29,7 @@ class Player{
        x = width; 
     }   
     
+    
     // player movement
     if (rightDown){x += vx;}
     if (leftDown){x -= vx;}   
@@ -37,12 +38,13 @@ class Player{
     if (jumpDown && landed == true){vy = -jumpspeed; landed = false;}
     //zwaartekracht als je niet geland bent.
     if (landed == false){vy += 0.5;}
-     y += vy;
+    
+     hoogte -= vy;
      //als speler met een snelheid hoger dan maxspeed valt, dan is zijn snelheid gelijk aan de max snelheid.
     if (vy > maxSpeed) {vy = maxSpeed;}
     
     //collision met ondergrond
-    if (y>height-16 && landed == false) {vy = 0; y=height-26; landed = true;}
+    if (y>height-16+hoogte && landed == false) {vy = 0; y=height-26+hoogte; landed = true;}
     
     //zodra je geland bent krijg je je mana terug
     if (landed == true && mana<maxmana) {mana+=4;}
