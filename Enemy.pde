@@ -8,6 +8,7 @@ class Enemy {
     h = 30;
     img = loadImage("flyingsquirrel.png");
     img2 = loadImage("flyingsquirrel2.png");
+    d = int(random(2));
   }
   void update() {
     
@@ -19,6 +20,13 @@ class Enemy {
        x = width; 
     }   
     
+    if (d==1){
+      x=x-15;
+    }
+    if (d==0){
+      x=x+15;
+    }
+    
     
    y = origny + hoogte;
    if (y>height+64){
@@ -27,15 +35,15 @@ class Enemy {
    }
   }
   void draw() {
-    d = int(random(2));
+
     
     if (d==0){
       img.resize(w, h);
-      image(img, x++, y);      
+      image(img, x, y);      
     }
     if (d==1){
       img2.resize(w, h);
-      image(img2, x--, y);
+      image(img2, x, y);
     }
     
 
