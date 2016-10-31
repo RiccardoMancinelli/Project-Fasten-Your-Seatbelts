@@ -4,6 +4,8 @@ class Bird_Pick_Up{
   int y = 10;
   int w = 40;
   int h = 50;
+  int originy = 10;
+  int movey = 0;
   
   
   void init(){
@@ -11,8 +13,8 @@ class Bird_Pick_Up{
   }
   
   void update(){
-    y ++;
-    
+    movey ++;
+    y = originy + hoogte + movey;
   }
   
   void draw(){

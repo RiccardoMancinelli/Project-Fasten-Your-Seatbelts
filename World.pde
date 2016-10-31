@@ -76,6 +76,23 @@ class World {
       cameraSwitch = true;
     }
   
+      for (int j=0; j<nBird; j++)                              //pickup bird
+    {
+     if (player.y < bird[j].y+bird[j].h && player.y > bird[j].y && player.x>bird[j].x && player.x< bird[j].x+ bird[j].w) 
+       {
+       score += 50;
+       bird[j].originy = int(random(-64))-hoogte;        //verbergt de item uit het scherm
+       bird[j].x = int(random(width-80));
+       bird[j].movey=0;
+       }
+    }
+    
+    if (player.y < height/2 && cameraSwitch == false ){        //activeert de camera
+      cameraSwitch = true;
+    }
+  
+  
+  
    /*  NOG NIET AFGEMAAKT
     if (player.y < height/2 && cameraSwitch == true ){        //Zorgt dat de camera mee beweegt met de speler.  && player.vy<0
       camera.difference = 1;
