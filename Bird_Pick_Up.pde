@@ -1,18 +1,27 @@
-
 class Bird_Pick_Up{
   PImage img;
-  int x = 200;
-  int y = 200;
+  int x = int(random(width-80));
+  int y = 10;
+  int w = 40;
+  int h = 50;
+  
+  
   void init(){
-   //img = loadImage("bird.png"); 
+   img = loadImage("bird.png"); 
   }
   
   void update(){
+    y ++;
     
   }
   
   void draw(){
-  // image(img,x,y); 
+    
+
+          img.resize(w, h);
+          image(img,x,y); 
+      
+      }
+      
+
   }
-  
-}
