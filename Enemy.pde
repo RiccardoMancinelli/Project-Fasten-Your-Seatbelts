@@ -32,6 +32,8 @@ class Enemy {
    if (y>height+64){
         x = 0;
         origny = int(random(-12))-hoogte;
+        d = int(random(2));
+        
    }
   }
   void draw() {
@@ -43,5 +45,6 @@ class Enemy {
       img2.resize(w, h);
       image(img2, x, y); 
     }
+
   }  
 }
