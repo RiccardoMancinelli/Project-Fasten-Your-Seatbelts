@@ -16,6 +16,7 @@ class World {
     player.init();
     camera.init();
     
+    
     for (int i=0; i<nCloud; i++)
     {
     cloud[i] = new Cloud();
@@ -25,6 +26,13 @@ class World {
     cloud[i].origny = int(random(height-50));
     }
     {
+    for (int k=0; k<nBird; k++)
+    {
+    bird[k] = new Bird_Pick_Up();
+    bird[k].init();
+    
+    }
+    
     for (int j=0; j<nEnemy; j++)
     {
     enemy[j] = new Enemy();
@@ -49,6 +57,10 @@ class World {
     {
    enemy[j].update();
     }
+    for (int k=0; k<nBird; k++)
+    {
+     bird[k].update();
+    }
           
           
     for (int i=0; i<nCloud; i++)
@@ -60,8 +72,11 @@ class World {
      {player.landed = false;}
     }
     
-    if (player.y == height/2 && cameraSwitch == false ){
+    if (player.y < height/2 && cameraSwitch == false ){        //activeert de camera
       cameraSwitch = true;
+    }
+    if (player.y < height/2 && cameraSwitch == true ){        //Zorgt dat de camera mee beweegt met de speler.
+      camera.y = (height/2) - player.y;
     }
     
     
@@ -77,6 +92,10 @@ class World {
     for (int j=0; j<nEnemy; j++)
     {
     enemy[j].draw();
+    }
+    for (int k=0; k<nEnemy; k++)
+    {
+    bird[k].draw();
     }
     noStroke();
     fill(0,180,0); rect(0,464+hoogte,640,480-hoogte);  //tekent de grond

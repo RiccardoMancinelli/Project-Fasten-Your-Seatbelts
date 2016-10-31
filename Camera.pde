@@ -9,7 +9,9 @@ class Camera{
   void update() {
     
     if (cameraSwitch==true){
-    hoogte += scrollsnelheid;}
+    y -= scrollsnelheid;}
+    
+    hoogte = -y;
    
  }
   
