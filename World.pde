@@ -1,9 +1,11 @@
 class World {
   int nCloud = 10;
   int wolkid = 0;
+  int nEnemy = 2;
 
   Player player = new Player();
   Cloud [] cloud = new Cloud[nCloud];
+  Enemy [] enemy = new Enemy[nEnemy];
 
  //Initialize the game world
   void init(){
@@ -18,7 +20,16 @@ class World {
     cloud[i].x = int(random(width-80));
     cloud[i].origny = int(random(height-50));
     }
+    {
+    for (int j=0; j<nEnemy; j++)
+    {
+    enemy[j] = new Enemy();
+    enemy[j].init();
     
+    enemy[j].x = int(random(width-80));
+    enemy[j].origny = int(random(height-50));
+    }
+    }
 
   }
  //Update the game 
@@ -28,6 +39,10 @@ class World {
    for (int i=0; i<nCloud; i++)
     {
    cloud[i].update();
+    }
+   for (int j=0; j<nEnemy; j++)
+    {
+   enemy[j].update();
     }
           
           
@@ -48,6 +63,10 @@ class World {
     for (int i=0; i<nCloud; i++)
     {
     cloud[i].draw();
+    }
+    for (int j=0; j<nEnemy; j++)
+    {
+    enemy[j].draw();
     }
     noStroke();
     fill(0,180,0); rect(0,464+hoogte,640,480-hoogte);  //tekent de grond
