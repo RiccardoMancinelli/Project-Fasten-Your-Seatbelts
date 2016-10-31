@@ -1,6 +1,6 @@
 class Camera{
 
-  int y, difference;
+  int y, difference, starty;
   
   void init() {
 
@@ -9,9 +9,10 @@ class Camera{
   void update() {
     
     if (cameraSwitch==true){
-    y -= scrollsnelheid;}
-    
-    hoogte = -y + difference;
+    y -= scrollsnelheid;
+  }
+
+    hoogte = -y ;
    
  }
   

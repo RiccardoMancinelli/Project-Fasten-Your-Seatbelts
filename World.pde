@@ -75,9 +75,16 @@ class World {
     if (player.y < height/2 && cameraSwitch == false ){        //activeert de camera
       cameraSwitch = true;
     }
-    if (player.y < height/2 && cameraSwitch == true && player.vy<0){        //Zorgt dat de camera mee beweegt met de speler.
-      camera.difference = (height/2 - player.y);
-    }
+  
+   /*  NOG NIET AFGEMAAKT
+    if (player.y < height/2 && cameraSwitch == true ){        //Zorgt dat de camera mee beweegt met de speler.  && player.vy<0
+      camera.difference = 1;
+      //camera.y += player.vy;
+      //camera.starty = (height/2-player.y);
+    } else
+    {
+     camera.difference = 0; 
+    } */
     
     
   }
@@ -106,6 +113,9 @@ class World {
     textSize(16);
     text("Hoogte:" +hoogte, 10, 64); 
     text("Score:" + score, 10, 128); 
+    
+    text("Speler:" +player.y, 10, 256); 
+    text("Camera:" + camera.y, 10, 280); 
     //hoogte+=1;
   }
  
