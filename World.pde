@@ -114,9 +114,6 @@ class World {
     text("Hoogte:" +hoogte, 10, 64); 
     text("Score:" + score, 10, 128); 
     
-    text("Speler:" +player.y, 10, 256); 
-    text("Camera:" + camera.y, 10, 280); 
-    //hoogte+=1;
   }
  
 

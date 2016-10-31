@@ -1,6 +1,6 @@
 //Hier komt alle code om de objecten uit ons spel te laden.
 
-// This main tab will set up and run the game
+// Er zijn meerdere objecten waar we op dit moment druk mee bezig zijn, zoals de enemy en de Bird_Pick_Up
 
 
 World world = new World();
