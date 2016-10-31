@@ -2,13 +2,14 @@ class Enemy {
   PImage img;
   PImage img2;
   
-  int x, y, w, h, origny, d;
+  int x, y, w, h, origny, d, speed;
   void init() {
     w = 80;
     h = 30;
     img = loadImage("flyingsquirrel.png");
     img2 = loadImage("flyingsquirrel2.png");
     d = int(random(2));
+    speed = 7;
   }
   void update() {
     
@@ -21,10 +22,10 @@ class Enemy {
     }   
     
     if (d==1){
-      x=x-15;
+      x=x-speed;
     }
     if (d==0){
-      x=x+15;
+      x=x+speed;
     }
     
     
