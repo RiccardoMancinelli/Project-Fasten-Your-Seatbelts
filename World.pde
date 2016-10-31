@@ -56,7 +56,8 @@ class World {
     fill(255,0,0); rect(15,15,mana,15);    //tekent de hoeveelheid mana die je hebt lol
     fill(0,0,0);
     textSize(16);
-    text(hoogte, 10, 64); 
+    text("Hoogte:" +hoogte, 10, 64); 
+    text("Score:" + score, 10, 128); 
     //hoogte+=1;
   }
  
