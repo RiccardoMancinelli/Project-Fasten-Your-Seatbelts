@@ -39,7 +39,7 @@ class World {
     enemy[j].init();
     
     enemy[j].x = int(random(width-80));
-    enemy[j].origny = int(random(height-50));
+    enemy[j].origny = int(random(height-50))-64;
     }
     }
 
