@@ -2,10 +2,12 @@ class World {
   int nCloud = 10;
   int wolkid = 0;
   int nEnemy = 2;
+  int nBird = 1;
 
   Player player = new Player();
   Cloud [] cloud = new Cloud[nCloud];
   Enemy [] enemy = new Enemy[nEnemy];
+  Bird_Pick_Up [] bird = new Bird_Pick_Up[nBird];
 
  //Initialize the game world
   void init(){
