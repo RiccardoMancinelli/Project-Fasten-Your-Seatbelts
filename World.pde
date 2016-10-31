@@ -75,8 +75,8 @@ class World {
     if (player.y < height/2 && cameraSwitch == false ){        //activeert de camera
       cameraSwitch = true;
     }
-    if (player.y < height/2 && cameraSwitch == true ){        //Zorgt dat de camera mee beweegt met de speler.
-      camera.y = (height/2) - player.y;
+    if (player.y < height/2 && cameraSwitch == true && player.vy<0){        //Zorgt dat de camera mee beweegt met de speler.
+      camera.difference = (height/2 - player.y);
     }
     
     
