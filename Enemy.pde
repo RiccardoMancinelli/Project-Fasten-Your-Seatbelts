@@ -1,5 +1,6 @@
 class Enemy {
   PImage img;
+  PImage img2;
   
   int x, y, w, h, origny, d;
   void init() {
@@ -33,7 +34,7 @@ class Enemy {
       image(img, x++, y);      
     }
     if (d==1){
-      img.resize(w, h);
+      img2.resize(w, h);
       image(img2, x--, y);
     }
     
