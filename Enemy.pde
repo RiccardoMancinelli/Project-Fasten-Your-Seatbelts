@@ -1,9 +1,11 @@
 class Enemy {
+  PImage img;
   
   int x, y, w, h, origny;
   void init() {
     w = 80;
     h = 30;
+    img = loadImage("flyingsquirrel.png");
   }
   void update() {
     
@@ -23,6 +25,7 @@ class Enemy {
    }
   }
   void draw() {
-    rect(x++,y,30,30);
+    img.resize(w, h);
+    image(img, x++, y);
   }  
 }
