@@ -93,7 +93,7 @@ class World {
     {
     enemy[j].draw();
     }
-    for (int k=0; k<nEnemy; k++)
+    for (int k=0; k<nBird; k++)
     {
     bird[k].draw();
     }
