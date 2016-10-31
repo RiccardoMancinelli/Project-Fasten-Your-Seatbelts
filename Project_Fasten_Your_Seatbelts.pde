@@ -7,7 +7,7 @@ World world = new World();
 
   boolean leftDown, rightDown, jumpDown; //houd de speler de linker pijltjes toets in of de rechter?
   int score, mana, maxmana, hoogte; //Hoe hoog de speler score is, de afstand die hij omhoog heeft gereisd en hoeveel mana hij nog kan gebruiken.
-  int scrollsnelheid = 1;
+  float scrollsnelheid = 1;
   boolean cameraSwitch = false;      //kijkt of het scherm moet gaan scrollen
   
 void setup() {

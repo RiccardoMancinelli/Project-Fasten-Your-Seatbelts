@@ -39,7 +39,7 @@ class Player{
     //zwaartekracht als je niet geland bent.
     if (landed == false){vy += 0.5;}
     if (landed == true && cameraSwitch == true) {y += scrollsnelheid;}
-     y += vy;
+    y += vy;
      //als speler met een snelheid hoger dan maxspeed valt, dan is zijn snelheid gelijk aan de max snelheid.
     if (vy > maxSpeed) {vy = maxSpeed;}
     
