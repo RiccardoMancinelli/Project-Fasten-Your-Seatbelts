@@ -4,7 +4,9 @@ class World {
   int nEnemy = 2;
   int nBird = 1;
 
+
   Player player = new Player();
+  Camera camera = new Camera();
   Cloud [] cloud = new Cloud[nCloud];
   Enemy [] enemy = new Enemy[nEnemy];
   Bird_Pick_Up [] bird = new Bird_Pick_Up[nBird];
@@ -12,7 +14,7 @@ class World {
  //Initialize the game world
   void init(){
     player.init();
-
+    camera.init();
     
     for (int i=0; i<nCloud; i++)
     {
@@ -37,6 +39,7 @@ class World {
  //Update the game 
   void update()
   {
+   camera.update();
    player.update();
    for (int i=0; i<nCloud; i++)
     {
@@ -57,11 +60,16 @@ class World {
      {player.landed = false;}
     }
     
+    if (player.y == height/2 && cameraSwitch == false ){
+      cameraSwitch = true;
+    }
+    
     
   }
   //Draw the game
   void draw(){
     player.draw();
+    camera.draw();
     for (int i=0; i<nCloud; i++)
     {
     cloud[i].draw();
