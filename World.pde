@@ -1,15 +1,18 @@
 class World {
-  int nCloud = 10;
+  int nCloud = 0;        //het aantal gemaakte clouds
+  int cloudMax = 20;    //het max aantal clouds dat je mag gebruiken
   int wolkid = 0;
   int nEnemy = 2;
   int nBird = 1;
   boolean alive = true;
+   int waves = 100;
   
-  int[][] spawn = new int[8][100];    //maakt 8 locaties aan waarop we dingen kunnen spawnen (hokjes van 80 pixels) en maakt in totaal 100 waves 
+  int[][] spawn = new int[8][waves];    //maakt 8 locaties aan waarop we dingen kunnen spawnen (hokjes van 80 pixels) en maakt in totaal ... waves 
+  boolean[][] created = new boolean[8][waves];  //variable om te kijken of het object dat gemaakt moetst worden ook echt gemaakt is.
 
   Player player = new Player();
   Camera camera = new Camera();
-  Cloud [] cloud = new Cloud[nCloud];
+  Cloud [] cloud = new Cloud[cloudMax];
   Enemy [] enemy = new Enemy[nEnemy];
   Bird_Pick_Up [] bird = new Bird_Pick_Up[nBird];
 
@@ -19,14 +22,15 @@ class World {
     camera.init();
     
     
-    for (int i=0; i<nCloud; i++)
+    ///////////////////RANDOM GENERATION/////////////////////
+   for (int y = 0; y<waves; y++)
     {
-    cloud[i] = new Cloud();
-    cloud[i].init();
-    cloud[i].x = int(random(width-80));
-    cloud[i].origny = int(random(height-50));
+        for (int x = 0; x<8; x++)
+        {
+         spawn[x][y]=int(random(4));    //spawn 1 = wolk, spawn 0 = niets, spawn 2 = enemy etc etc
+         
+        }
     }
-    
     for (int k=0; k<nBird; k++)
     {
     bird[k] = new Bird_Pick_Up();
@@ -48,7 +52,27 @@ class World {
   {
    camera.update();
    player.update();
-   for (int i=0; i<nCloud; i++)
+   ///////////////RANDOM SPAWNING CODE///////////////
+   if (hoogte == hoogte % 80 || hoogte == 0)
+   {
+    for (int y = 0; y<(hoogte+480)%80; y++)
+    {
+        for (int x = 0; x<8; x++)
+        {
+          //Spawning clouds.
+          if (nCloud<cloudMax && spawn[x][y] == 1 && created[x][y]==false)
+          {
+              cloud[nCloud] = new Cloud();
+              cloud[nCloud].init();
+              cloud[nCloud].x = x*80;
+              cloud[nCloud].origny = height-50-(128*y);
+              nCloud+=1;  
+              created[x][y]=true;
+          }
+        }
+     }
+   }
+    for (int i=0; i<nCloud; i++)
     {
    cloud[i].update();
     }
@@ -86,32 +110,17 @@ class World {
        }
     }
     
-    if (player.y < height/2 && cameraSwitch == false ){        //activeert de camera
+    if (player.y < height/2 && cameraSwitch == false && alive == true ){        //activeert de camera
       cameraSwitch = true;
     }
   
     /* Collision met enemy , enemy raakt, alive false player valt naar beneden */
    for (int j = 0; j < nEnemy; j++) {
-   if (player.y < enemy[j].y+20 && player.y > enemy[j].y && player.x>enemy[j].x && player.x<enemy[j].x+enemy[j].w+80 && alive == true) 
+   if (player.y < enemy[j].y+20 && player.y > enemy[j].y && player.x>enemy[j].x && player.x<enemy[j].x+enemy[j].w && alive == true) 
        {alive = false; 
         cameraSwitch = false;}
    }
-   /*for (int j = 0; j < nEnemy; j++) {
-   if (player.y < enemy[j].y+30 && player.x>enemy[j].x && alive == true) 
-       {alive = false; 
-       player.vy = 50; }
-   }*/
-   
-   /*  NOG NIET AFGEMAAKT
-    if (player.y < height/2 && cameraSwitch == true ){        //Zorgt dat de camera mee beweegt met de speler.  && player.vy<0
-      camera.difference = 1;
-      //camera.y += player.vy;
-      //camera.starty = (height/2-player.y);
-    } else
-    {
-     camera.difference = 0; 
-    } */
-    
+
     
   }
   //Draw the game
