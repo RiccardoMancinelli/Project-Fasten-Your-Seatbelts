@@ -15,12 +15,18 @@ class World {
   Cloud [] cloud = new Cloud[cloudMax];
   Enemy [] enemy = new Enemy[nEnemy];
   Bird_Pick_Up [] bird = new Bird_Pick_Up[nBird];
+  
+
+  
 
  //Initialize the game world
   void init(){
     player.init();
     camera.init();
-    
+    for (int i=0; i<cloudMax; i++){
+     cloud[i] = new Cloud(); 
+    }
+  
     
     ///////////////////RANDOM GENERATION/////////////////////
    for (int y = 0; y<waves; y++)
@@ -31,6 +37,10 @@ class World {
          
         }
     }
+    
+      generate();
+    
+    
     for (int k=0; k<nBird; k++)
     {
     bird[k] = new Bird_Pick_Up();
@@ -52,29 +62,19 @@ class World {
   {
    camera.update();
    player.update();
-   ///////////////RANDOM SPAWNING CODE///////////////
-   if (hoogte == hoogte % 80 || hoogte == 0)
-   {
-    for (int y = 0; y<(hoogte+480)%80; y++)
-    {
-        for (int x = 0; x<8; x++)
-        {
-          //Spawning clouds.
-          if (nCloud<cloudMax && spawn[x][y] == 1 && created[x][y]==false)
-          {
-              cloud[nCloud] = new Cloud();
-              cloud[nCloud].init();
-              cloud[nCloud].x = x*80;
-              cloud[nCloud].origny = height-50-(128*y);
-              nCloud+=1;  
-              created[x][y]=true;
-          }
-        }
-     }
+       if (hoogte == hoogte % 80 || hoogte == 0)
+   {generate();
    }
     for (int i=0; i<nCloud; i++)
     {
    cloud[i].update();
+   
+        if (cloud[i].y>height+64){
+       spawn[cloud[i].oldx][cloud[i].oldy] = 0;
+       created[cloud[i].oldx][cloud[i].oldy]=false;
+
+     }
+    
     }
    for (int j=0; j<nEnemy; j++)
     {
@@ -95,7 +95,7 @@ class World {
      {player.landed = false;}
     }
     
-    if (player.y < height/2 && cameraSwitch == false ){        //activeert de camera
+    if (player.y < height/2 && cameraSwitch == false && alive == true){        //activeert de camera
       cameraSwitch = true;
     }
   
@@ -121,7 +121,8 @@ class World {
         cameraSwitch = false;}
    }
 
-    
+
+
   }
   //Draw the game
   void draw(){
@@ -150,6 +151,31 @@ class World {
     text("Score:" + score, 10, 128); 
     
   }
- 
+  
+  void generate(){
+      ///////////////RANDOM SPAWNING CODE///////////////
+  if (hoogte % 80 == 0 || hoogte == 0){
+    for (int y = 0; y<=(hoogte+480)/80; y++)
+    {
+        for (int x = 0; x<8; x++)
+        {
+          //Spawning clouds.
+          if (nCloud<=cloudMax && spawn[x][y] == 1 && created[x][y]==false)
+          {
+              if (nCloud==cloudMax){nCloud=0;}
+              cloud[nCloud].init();
+              cloud[nCloud].x = x*80;
+              cloud[nCloud].origny = height-50-(128*y);
+              cloud[nCloud].oldy = y;
+              cloud[nCloud].oldx = x;
+              nCloud+=1; 
+              created[x][y]=true;
+          }
+          
+        }
+     }
+  }
+  }
+
 
 };

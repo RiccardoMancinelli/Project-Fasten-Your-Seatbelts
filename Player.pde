@@ -47,14 +47,21 @@ class Player{
     //collision met ondergrond
     if (y>height-16+hoogte && landed == false) {vy = 0; y=height-26+hoogte; landed = true;}
     
+
+    
     //zodra je geland bent krijg je je mana terug
-    if (landed == true && mana<maxmana) {mana+=4;}
+      if (landed == true && mana<maxmana) {mana+=4;}
     }
     else {
-      y = y + 3;
+      y = y + 8;
     }
-    
+      //speler uit het scherm moet naar gameover scherm
+    if (y>height+64 && room == 0)
+    {
+      room = 1;
+    }  
   }
+  
   
   void draw(){
     fill(clr);
