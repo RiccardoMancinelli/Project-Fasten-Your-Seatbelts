@@ -31,6 +31,7 @@ class Player{
     
     
     // player movement
+    if (world.alive == true) {
     if (rightDown){x += vx;}
     if (leftDown){x -= vx;}   
     //springen
@@ -48,7 +49,10 @@ class Player{
     
     //zodra je geland bent krijg je je mana terug
     if (landed == true && mana<maxmana) {mana+=4;}
-   
+    }
+    else {
+      y = y + 3;
+    }
     
   }
   

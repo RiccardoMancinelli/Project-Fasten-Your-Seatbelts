@@ -90,8 +90,18 @@ class World {
       cameraSwitch = true;
     }
   
-  
-  
+    /* Collision met enemy , enemy raakt, alive false player valt naar beneden */
+   for (int j = 0; j < nEnemy; j++) {
+   if (player.y < enemy[j].y+20 && player.y > enemy[j].y && player.x>enemy[j].x && player.x<enemy[j].x+enemy[j].w+80 && alive == true) 
+       {alive = false; 
+        cameraSwitch = false;}
+   }
+   /*for (int j = 0; j < nEnemy; j++) {
+   if (player.y < enemy[j].y+30 && player.x>enemy[j].x && alive == true) 
+       {alive = false; 
+       player.vy = 50; }
+   }*/
+   
    /*  NOG NIET AFGEMAAKT
     if (player.y < height/2 && cameraSwitch == true ){        //Zorgt dat de camera mee beweegt met de speler.  && player.vy<0
       camera.difference = 1;
