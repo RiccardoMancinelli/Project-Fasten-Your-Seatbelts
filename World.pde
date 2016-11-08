@@ -3,7 +3,9 @@ class World {
   int wolkid = 0;
   int nEnemy = 2;
   int nBird = 1;
-
+  boolean alive = true;
+  
+  int[][] spawn = new int[8][100];    //maakt 8 locaties aan waarop we dingen kunnen spawnen (hokjes van 80 pixels) en maakt in totaal 100 waves 
 
   Player player = new Player();
   Camera camera = new Camera();
@@ -21,27 +23,24 @@ class World {
     {
     cloud[i] = new Cloud();
     cloud[i].init();
-    
     cloud[i].x = int(random(width-80));
     cloud[i].origny = int(random(height-50));
     }
-    {
+    
     for (int k=0; k<nBird; k++)
     {
     bird[k] = new Bird_Pick_Up();
     bird[k].init();
-    
     }
     
     for (int j=0; j<nEnemy; j++)
     {
     enemy[j] = new Enemy();
     enemy[j].init();
-    
     enemy[j].x = int(random(width-80));
     enemy[j].origny = int(random(height-50))-64;
     }
-    }
+    
 
   }
  //Update the game 
