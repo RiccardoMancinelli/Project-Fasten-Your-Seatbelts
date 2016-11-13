@@ -50,20 +50,21 @@ void draw() {
   }
     if(room == 1 && jumpDown == true){  
   world.nCloud = 0;        //het aantal gemaakte clouds
-  world.cloudMax = 20;    //het max aantal clouds dat je mag gebruiken
+  world.cloudMax = 60;    //het max aantal clouds dat je mag gebruiken
   world.wolkid = 0;
   world.nEnemy = 2;
   world.nBird = 1;
   world.alive = true;
   world.waves = 100;
   world.init();
+  world.leftOff = 0;
   cameraSwitch = false;
   jumpDown = false;
   score = 0;
   mana = maxmana = 64;
   hoogte= 0;
   room = 0;
-  world.generate(0);
+
   } 
 }
 
