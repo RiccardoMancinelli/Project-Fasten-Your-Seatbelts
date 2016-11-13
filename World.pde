@@ -1,12 +1,13 @@
 class World {
   int nCloud = 0;        //het aantal gemaakte clouds
-  int cloudMax = 20;    //het max aantal clouds dat je mag gebruiken
+  int cloudMax = 30;    //het max aantal clouds dat je mag gebruiken
   int wolkid = 0;
   int nEnemy = 2;
   int nBird = 1;
   boolean alive = true;
-   int waves = 100;
+   int waves = 1000;
   
+  int generationTimer = 300;            //zet een timer op 300 steps. (300/60 fps = 5 seconden).
   int[][] spawn = new int[8][waves];    //maakt 8 locaties aan waarop we dingen kunnen spawnen (hokjes van 80 pixels) en maakt in totaal ... waves 
   boolean[][] created = new boolean[8][waves];  //variable om te kijken of het object dat gemaakt moetst worden ook echt gemaakt is.
 
@@ -22,9 +23,12 @@ class World {
  //Initialize the game world
   void init(){
     player.init();
-    camera.init();
-    for (int i=0; i<cloudMax; i++){
-     cloud[i] = new Cloud(); 
+    camera.init();                                   
+    for (int i=0; i<cloudMax; i++){                  //maakt de wolken aan.
+     cloud[i] = new Cloud();
+     cloud[i].init();
+     cloud[i].oldx=cloud[i].x=0;
+     cloud[i].oldy=cloud[i].y=0;
     }
   
     
@@ -38,7 +42,7 @@ class World {
         }
     }
     
-      generate();
+    generate(0);      //calls the generation code.
     
     
     for (int k=0; k<nBird; k++)
@@ -62,31 +66,37 @@ class World {
   {
    camera.update();
    player.update();
-       if (hoogte == hoogte % 80 || hoogte == 0)
-   {generate();
-   }
-    for (int i=0; i<nCloud; i++)
-    {
+
+  for (int i=0; i<cloudMax; i++)
+   {
    cloud[i].update();
-   
+   }
+   /*
         if (cloud[i].y>height+64){
        spawn[cloud[i].oldx][cloud[i].oldy] = 0;
        created[cloud[i].oldx][cloud[i].oldy]=false;
-
-     }
+       generate(i);
+        
+    }*/
     
-    }
+    ////////////////////////////Generation related//////////////////
+    if (generationTimer >0 && cameraSwitch == true) {generationTimer -= 1;}                            //every five seconds the code will create the new objects on screen.
+    if ((hoogte+480)%320 == 0) {generate((hoogte+480)/320); generationTimer = 300;}                    //320 want 80 pixels per rij, en ik wil na 4 rijen (4 * 80 =320) nieuw genereren.
+    
+    
+    
+    
    for (int j=0; j<nEnemy; j++)
     {
-   enemy[j].update();
+     enemy[j].update();
     }
     for (int k=0; k<nBird; k++)
     {
      bird[k].update();
     }
           
-          
-    for (int i=0; i<nCloud; i++)
+          //Collision code met wolk.
+    for (int i=0; i<cloudMax; i++)
     {
      if (player.y < cloud[i].y+12 && player.y > cloud[i].y && player.x>cloud[i].x && player.x<cloud[i].x+cloud[i].w && player.vy >=0 && player.landed == false) 
        {player.landed = true;  player.vy = 0; wolkid = i;}
@@ -104,7 +114,7 @@ class World {
      if (player.y < bird[j].y+bird[j].h && player.y > bird[j].y && player.x>bird[j].x && player.x< bird[j].x+ bird[j].w) 
        {
        score += 50;
-       bird[j].originy = int(random(-64))-hoogte;        //verbergt de item uit het scherm
+       bird[j].originy = int(random(-64))-hoogte;        //verbergt de item uit het scherm. (Alternatief van instance_Destroy())
        bird[j].x = int(random(width-80));
        bird[j].movey=0;
        }
@@ -128,7 +138,7 @@ class World {
   void draw(){
     player.draw();
     camera.draw();
-    for (int i=0; i<nCloud; i++)
+    for (int i=0; i<cloudMax; i++)
     {
     cloud[i].draw();
     }
@@ -149,21 +159,22 @@ class World {
     textSize(16);
     text("Hoogte:" +hoogte, 10, 64); 
     text("Score:" + score, 10, 128); 
+    text("Ncloud:" + nCloud, 10, 192);
     
   }
   
-  void generate(){
-      ///////////////RANDOM SPAWNING CODE///////////////
-  if (hoogte % 80 == 0 || hoogte == 0){
-    for (int y = 0; y<=(hoogte+480)/80; y++)
+        ///////////////RANDOM GENERATION CODE///////////////
+  void generate(int startCount){
+    for (int y = startCount; y<=startCount+16; y++)                      //index staat voor het getal waarop we beginnen met tellen. +8 want 8 rijen objects per scherm.
     {
         for (int x = 0; x<8; x++)
         {
+          
           //Spawning clouds.
-          if (nCloud<=cloudMax && spawn[x][y] == 1 && created[x][y]==false)
+          if (spawn[x][y] == 1 && created[x][y]==false)
           {
-              if (nCloud==cloudMax){nCloud=0;}
-              cloud[nCloud].init();
+              if (nCloud>=cloudMax){nCloud=0;}
+              //cloud[nCloud].init();
               cloud[nCloud].x = x*80;
               cloud[nCloud].origny = height-50-(128*y);
               cloud[nCloud].oldy = y;
@@ -173,8 +184,7 @@ class World {
           }
           
         }
-     }
-  }
+    }
   }
 
 

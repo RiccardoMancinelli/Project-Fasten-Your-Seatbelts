@@ -63,7 +63,7 @@ void draw() {
   mana = maxmana = 64;
   hoogte= 0;
   room = 0;
-  world.generate();
+  world.generate(0);
   } 
 }
 
