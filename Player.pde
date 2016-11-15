@@ -45,8 +45,8 @@ class Player{
     if (leftDown && dir == 0){img = loadImage("player_stand_left.png"); dir = 1;}     
     
     //springen
-    if (mana > 0 && jumpDown && landed == false && vy >-2) {mana -= 1; vy = -jetpackspeed;} 
-    if (jumpDown && landed == true){vy = -jumpspeed; landed = false;}
+    if (mana > 0 && jumpDown && landed == false && vy >-2) {mana -= 1; vy = -jetpackspeed+scrollsnelheid;} 
+    if (jumpDown && landed == true){vy = -jumpspeed+scrollsnelheid; landed = false;}
     //zwaartekracht als je niet geland bent.
     if (landed == false){vy += 0.5;}
     if (landed == true && cameraSwitch == true) {y += scrollsnelheid;}

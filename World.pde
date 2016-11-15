@@ -99,7 +99,7 @@ class World {
     }
     
     if (player.y < height/2 && cameraSwitch == false && alive == true){        //activeert de camera
-      cameraSwitch = true;
+      cameraSwitch = true; scrollsnelheid = 1;
     }
   
       for (int j=0; j<nBird; j++)                              //pickup bird

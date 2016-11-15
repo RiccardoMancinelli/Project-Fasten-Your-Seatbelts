@@ -8,7 +8,7 @@ Game_over game_over = new Game_over();
 
   boolean leftDown, rightDown, jumpDown; //houd de speler de linker pijltjes toets in of de rechter?
   int score, mana, maxmana, hoogte, room; //Hoe hoog de speler score is, de afstand die hij omhoog heeft gereisd en hoeveel mana hij nog kan gebruiken.
-  float scrollsnelheid = 1;
+  float scrollsnelheid = 0;
   boolean cameraSwitch = false;      //kijkt of het scherm moet gaan scrollen
   
 void setup() {
@@ -64,6 +64,7 @@ void draw() {
   mana = maxmana = 64;
   hoogte= 0;
   room = 0;
+  scrollsnelheid = 0;
 
   } 
 }
