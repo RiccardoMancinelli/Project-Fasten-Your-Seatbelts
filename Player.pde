@@ -17,7 +17,7 @@ class Player{
     vy = 0;
     jumpspeed =10;
     jetpackspeed = 2;
-    //diameter = 20;
+    diameter = 20;
     w=32;
     h=32;
     center = diameter/2;
@@ -75,7 +75,9 @@ class Player{
   
   void draw(){
          img.resize(w, h);
-          image(img,x-16,y-30); 
+          image(img,x-16,y-24);
+            //  fill(clr);
+          //ellipse(x,y,diameter,diameter);
     
   }
 }
