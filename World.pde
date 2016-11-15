@@ -20,16 +20,20 @@ class World {
   
 
  //Initialize the game world
+ 
   void init(){
+    
     player.init();
     camera.init();                                   
-    for (int i=0; i<cloudMax; i++){                  //maakt de wolken aan.
+    for (int i=0; i<cloudMax; i++){        //maakt de wolken aan.
      cloud[i] = new Cloud();
      cloud[i].init();
      cloud[i].x = -128;        //hides the unused clouds from view
      cloud[i].y = 0;
+     cloud[i].waarde =(int)(random(6));
 
     }
+  
   
     
     ///////////////////RANDOM GENERATION/////////////////////
@@ -91,8 +95,12 @@ class World {
           //Collision code met wolk.
     for (int i=0; i<cloudMax; i++)
     {
-     if (player.y < cloud[i].y+12 && player.y > cloud[i].y && player.x>cloud[i].x && player.x<cloud[i].x+cloud[i].w && player.vy >=0 && player.landed == false) 
+     if (player.y < cloud[i].y+12 && player.y > cloud[i].y && player.x>cloud[i].x && player.x<cloud[i].x+cloud[i].w && player.vy >=0 && player.landed == false && cloud[i].jumpCloud == false) 
        {player.landed = true;  player.vy = 0; wolkid = i;}
+       
+        if (player.y < cloud[i].y+12 && player.y > cloud[i].y && player.x>cloud[i].x && player.x<cloud[i].x+cloud[i].w && player.vy >=0 && player.landed == false && cloud[i].jumpCloud == true) 
+       { player.vy -= 15; wolkid = i; mana = maxmana;}
+       
 
      if ((player.x< cloud[wolkid].x || player.x > cloud[wolkid].x+cloud[wolkid].w) && player.landed == true && player.y != height-26+hoogte)
      {player.landed = false;}
@@ -104,10 +112,14 @@ class World {
   
       for (int j=0; j<nBird; j++)                              //pickup bird
     {
-     if (player.y < bird[j].y+bird[j].h && player.y > bird[j].y && player.x>bird[j].x && player.x< bird[j].x+ bird[j].w) 
+     if (player.y < bird[j].y+bird[j].h && player.y > bird[j].y && player.x>bird[j].x && player.x< bird[j].x+ bird[j].w)  
        {
        score += 50;
        bird[j].originy = int(random(-64))-hoogte;        //verbergt de item uit het scherm. (Alternatief van instance_Destroy())
+       bird[j].x = int(random(width-80));
+       bird[j].movey=0;
+       }else if(bird[j].y<0 ){
+         bird[j].originy = int(random(-64))-hoogte;        //verbergt de item uit het scherm. (Alternatief van instance_Destroy())
        bird[j].x = int(random(width-80));
        bird[j].movey=0;
        }
