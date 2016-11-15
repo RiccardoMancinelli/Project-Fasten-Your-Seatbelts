@@ -16,7 +16,6 @@ class Cloud {
      //   world.created[oldx][oldy]=false;
       //   }
    
-
   }
   void draw() {
     img.resize(w, h);

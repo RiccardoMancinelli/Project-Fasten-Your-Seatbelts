@@ -4,6 +4,7 @@ class Player{
   boolean landed; 
   
  // 2DO: LANGZAMER BEWEGEN IN DE LUCHT
+ 
   
   void init(){
     landed = false;

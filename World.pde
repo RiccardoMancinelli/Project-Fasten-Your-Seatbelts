@@ -17,7 +17,6 @@ class World {
   Enemy [] enemy = new Enemy[nEnemy];
   Bird_Pick_Up [] bird = new Bird_Pick_Up[nBird];
   
-
   
 
  //Initialize the game world
