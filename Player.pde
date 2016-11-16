@@ -1,7 +1,7 @@
 class Player{  
   int x, y, w, h; // Position
   float clr, vx, vy, jumpspeed, center, diameter, jetpackspeed, maxSpeed, dir; // Size
-  boolean landed, manaPowers; 
+  boolean landed, manaPowers, bounce; 
   PImage img;
  // 2DO: LANGZAMER BEWEGEN IN DE LUCHT
  
@@ -44,7 +44,7 @@ class Player{
     if (leftDown && dir == 0){img = loadImage("player_stand_left.png"); dir = 1;}    
     //springen
     if (manaPowers==true && jumpDown && landed == false) { vy = -jetpackspeed+scrollsnelheid;}
-    if (manaPowers==false && mana > 0 && jumpDown && landed == false && vy >-2) {mana -= 1; vy = -jetpackspeed+scrollsnelheid;} 
+    if (manaPowers==false && mana > 0 && jumpDown && landed == false && bounce == false && vy >-2) {mana -= 1; vy = -jetpackspeed+scrollsnelheid;} 
     if (jumpDown && landed == true){vy = -jumpspeed+scrollsnelheid; landed = false;}
     //zwaartekracht als je niet geland bent.
     if (landed == false){vy += 0.5;}

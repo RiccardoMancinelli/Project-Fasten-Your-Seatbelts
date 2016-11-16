@@ -1,5 +1,5 @@
 class Cloud {
-  PImage img;
+  PImage img, img2;
   boolean jumpCloud = false;
   int waarde;
 
@@ -8,6 +8,7 @@ class Cloud {
     w = 80;
     h = 30;
     img = loadImage("cloud.png");
+    img2 = loadImage("cloudjump.png");
   }
   void update() {
    y = origny + hoogte;
@@ -28,5 +29,9 @@ class Cloud {
   void draw() {
     img.resize(w, h);
     image(img, x, y);
+    if (jumpCloud == true){
+     img2.resize(w, h);
+     image(img2, x,y);
+    }
   }
 }
