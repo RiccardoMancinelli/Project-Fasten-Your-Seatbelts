@@ -1,12 +1,13 @@
 class Player{  
-  int x, y; // Position
-  float w, h, clr, vx, vy, jumpspeed, center, diameter, jetpackspeed, maxSpeed; // Size
+  int x, y, w, h; // Position
+  float clr, vx, vy, jumpspeed, center, diameter, jetpackspeed, maxSpeed, dir; // Size
   boolean landed; 
-  
+  PImage img;
  // 2DO: LANGZAMER BEWEGEN IN DE LUCHT
  
   
   void init(){
+    img = loadImage("player_stand_left.png");
     landed = false;
     x = width/2;
     y = height-12;
@@ -18,6 +19,8 @@ class Player{
     diameter = 20;
     center = diameter/2;
     maxSpeed = 8;
+    w=32;
+    h=32;
     
   }
   
@@ -35,6 +38,9 @@ class Player{
     if (world.alive == true) {
     if (rightDown){x += vx;}
     if (leftDown){x -= vx;}   
+    //change sprites
+    if (rightDown && dir == 1){img = loadImage("player_stand_right.png"); dir = 0;} else
+    if (leftDown && dir == 0){img = loadImage("player_stand_left.png"); dir = 1;}    
     //springen
     if (mana > 0 && jumpDown && landed == false && vy >-2) {mana -= 1; vy = -jetpackspeed+scrollsnelheid;} 
     if (jumpDown && landed == true){vy = -jumpspeed+scrollsnelheid; landed = false;}
@@ -65,8 +71,10 @@ class Player{
   
   
   void draw(){
-    fill(clr);
-    ellipse(x,y,diameter,diameter);   
+      img.resize(w, h);
+      image(img,x-16,y-24);
+      //  fill(clr);
+      //ellipse(x,y,diameter,diameter);
     
   }
 }

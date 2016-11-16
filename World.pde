@@ -95,11 +95,13 @@ class World {
           //Collision code met wolk.
     for (int i=0; i<cloudMax; i++)
     {
-     if (player.y < cloud[i].y+12 && player.y > cloud[i].y && player.x>cloud[i].x && player.x<cloud[i].x+cloud[i].w && player.vy >=0 && player.landed == false && cloud[i].jumpCloud == false) 
-       {player.landed = true;  player.vy = 0; wolkid = i;}
-       
-        if (player.y < cloud[i].y+12 && player.y > cloud[i].y && player.x>cloud[i].x && player.x<cloud[i].x+cloud[i].w && player.vy >=0 && player.landed == false && cloud[i].jumpCloud == true) 
-       { player.vy -= 15; wolkid = i; mana = maxmana;}
+     if (player.y < cloud[i].y+12 && player.y > cloud[i].y && player.x>cloud[i].x && player.x<cloud[i].x+cloud[i].w && player.vy >=0 && player.landed == false) 
+     {
+     if  (cloud[i].jumpCloud == false)  
+     {player.landed = true;  player.vy = 0; wolkid = i;}
+     if  (cloud[i].jumpCloud == true)  
+       { player.vy = -8; wolkid = i; mana = maxmana; player.landed = false;}
+    }
        
 
      if ((player.x< cloud[wolkid].x || player.x > cloud[wolkid].x+cloud[wolkid].w) && player.landed == true && player.y != height-26+hoogte)
