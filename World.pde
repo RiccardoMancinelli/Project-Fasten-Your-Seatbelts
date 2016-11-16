@@ -81,7 +81,7 @@ class World {
 
     
     ////////////////////////////Generation related//////////////////
-    if (hoogte>=leftOff*128-height) {generate(leftOff); }                    //320 want 80 pixels per rij, Hij gaat verder met genereren waar hij gebleven was (leftOff)
+    if (hoogte>=leftOff*128-(height)) {generate(leftOff); }                    //320 want 80 pixels per rij, Hij gaat verder met genereren waar hij gebleven was (leftOff)
 
     
     
