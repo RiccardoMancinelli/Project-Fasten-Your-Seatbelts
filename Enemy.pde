@@ -30,10 +30,7 @@ class Enemy {
     if (d==0){
        x=x+speed; 
     }
-    
-    if (d==2){
-      x=x;
-    }
+
     
       y = origny + hoogte;
       if (y>height+64 && (d==1 || d==0)){
