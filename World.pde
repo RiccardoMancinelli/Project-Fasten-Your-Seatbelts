@@ -78,7 +78,7 @@ class World {
 
     
     ////////////////////////////Generation related//////////////////
-    if (hoogte>=leftOff*80) {generate(leftOff); }                    //320 want 80 pixels per rij, Hij gaat verder met genereren waar hij gebleven was (leftOff)
+    if (hoogte>=leftOff*128-height) {generate(leftOff); }                    //320 want 80 pixels per rij, Hij gaat verder met genereren waar hij gebleven was (leftOff)
 
     
     
@@ -160,7 +160,7 @@ class World {
     noStroke();
     fill(0,180,0); rect(0,464+hoogte,640,480-hoogte);  //tekent de grond
      
-    fill(0,0,0); rect(16,16,64,16);    //tekent de achtergrond van de mana bar op x=16, y=16, x2=64, y2=16
+    fill(0,0,0); rect(16,16,mana+1,16);    //tekent de achtergrond van de mana bar op x=16, y=16, x2=64, y2=16
     fill(255,0,0); rect(15,15,mana,15);    //tekent de hoeveelheid mana die je hebt.
     fill(0,0,0);
     textSize(16);
@@ -188,7 +188,7 @@ class World {
           if (spawn[x][y] == 1 && created[x][y]==false)
           {
             
-             if (nCloud==cloudMax-1){nCloud=0;}
+             if (nCloud==cloudMax){nCloud=0;}
               cloud[nCloud].x = x*80;
               cloud[nCloud].origny = height-50-(128*y);
               cloud[nCloud].oldy = y;
@@ -199,7 +199,7 @@ class World {
           }
           
         }
-        world.leftOff = y;
+        leftOff = y;
     }
     
   }
