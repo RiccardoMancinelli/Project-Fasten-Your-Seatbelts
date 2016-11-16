@@ -3,7 +3,8 @@ class World {
   int nCloud = 0;        //het aantal gemaakte clouds
   int cloudMax = 60;    //het max aantal clouds dat je mag gebruiken
   int wolkid = 0;
-  int nEnemy = 2;
+  int nEnemy = 0;
+  int enemyMax = 30;
   int nBird = 1;
   boolean alive = true;
    int waves = 1000;
@@ -14,7 +15,7 @@ class World {
   Player player = new Player();
   Camera camera = new Camera();
   Cloud [] cloud = new Cloud[cloudMax];
-  Enemy [] enemy = new Enemy[nEnemy];
+  Enemy [] enemy = new Enemy[enemyMax];
   Bird_Pick_Up [] bird = new Bird_Pick_Up[nBird];
   
   
@@ -42,8 +43,16 @@ class World {
         for (int x = 0; x<8; x++)
         {
           created[x][y]=false;          //This resets the previous random generation if the player went game over first
-         spawn[x][y]=int(random(3));    //spawn 1 = wolk, spawn 0 = niets, spawn 2 = enemy etc etc
+         spawn[x][y]=int(random(4));    //spawn 1 = wolk, spawn 0 = niets, spawn 2 = enemy etc etc
         }
+    }
+    for (int j=0; j<enemyMax; j++)
+    {
+    enemy[j] = new Enemy();
+    enemy[j].init();
+    enemy[j].d = 3;
+    enemy[j].x = -128;
+    enemy[j].origny = 0;
     }
     
     generate(leftOff);      //calls the generation code.
@@ -55,13 +64,7 @@ class World {
     bird[k].init();
     }
     
-    for (int j=0; j<nEnemy; j++)
-    {
-    enemy[j] = new Enemy();
-    enemy[j].init();
-    enemy[j].x = int(random(width-80));
-    enemy[j].origny = int(random(height-50))-64;
-    }
+
     
 
   }
@@ -83,7 +86,7 @@ class World {
     
     
     
-   for (int j=0; j<nEnemy; j++)
+   for (int j=0; j<enemyMax; j++)
     {
      enemy[j].update();
     }
@@ -132,7 +135,7 @@ class World {
     }
   
     /* Collision met enemy , enemy raakt, alive false player valt naar beneden */
-   for (int j = 0; j < nEnemy; j++) {
+   for (int j = 0; j < enemyMax; j++) {
    if (player.y < enemy[j].y+20 && player.y > enemy[j].y && player.x>enemy[j].x && player.x<enemy[j].x+enemy[j].w && alive == true) 
        {alive = false; 
         cameraSwitch = false;}
@@ -149,7 +152,7 @@ class World {
     {
     cloud[i].draw();
     }
-    for (int j=0; j<nEnemy; j++)
+    for (int j=0; j<enemyMax; j++)
     {
     enemy[j].draw();
     }
@@ -196,6 +199,17 @@ class World {
               created[x][y]=true; 
                 
              nCloud+=1;
+          }
+          //Spawning Enemies.
+          if (spawn[x][y] == 2 && created[x][y]==false)
+          {
+            
+             if (nEnemy==enemyMax){nEnemy=0;}
+              enemy[nEnemy].x = x*80;
+              enemy[nEnemy].origny = height-50-(128*y);
+              created[x][y]=true; 
+             enemy[nEnemy].d=2;
+             nEnemy+=1;
           }
           
         }

@@ -11,7 +11,8 @@ class Enemy {
     img = loadImage("flyingsquirrel.png");
     img2 = loadImage("flyingsquirrel2.png");
     img3 = loadImage("dogstatic.png");
-    d = int(random(3));
+    //d = int(random(3));
+    d = 3;    //0 = squirrel left, 1 = squirrel right, 2 = static, 3 = standby
     speed = 4;
   }
   void update() {
@@ -33,7 +34,7 @@ class Enemy {
 
     
       y = origny + hoogte;
-      if (y>height+64 && (d==1 || d==0)){
+   /*   if (y>height+64 && (d==1 || d==0)){
         x = 0;
         origny = int(random(-12))-hoogte;
         d = int(random(3));  
@@ -42,7 +43,7 @@ class Enemy {
         x = int(random(width));
         origny = int(random(-12))-hoogte;
         d = int(random(3)); 
-     }
+     }*/
   }
   void draw() {
     if (d==0){
