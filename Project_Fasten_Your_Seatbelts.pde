@@ -2,6 +2,7 @@
 
 // Er zijn meerdere objecten waar we op dit moment druk mee bezig zijn, zoals de enemy en de Bird_Pick_Up
 
+//Zie USING SOUNDS in powerpoint van workshop
 
 World world = new World();
 Game_over game_over = new Game_over();

@@ -122,8 +122,10 @@ class World {
       cameraSwitch = true; scrollsnelheid = 1;
     }
   
+    
       for (int j=0; j<nBird; j++)                              //pickup bird
     {
+
      if (player.y < bird[j].y+bird[j].h && player.y > bird[j].y && player.x>bird[j].x && player.x< bird[j].x+ bird[j].w)  
        {
        score += 50;
@@ -223,7 +225,17 @@ class World {
         leftOff = y;
     }
     
-  }
-
+    }
+    /*
+boolean collisionCheck(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2)        //Doet alle collision checking.
+    {
+      boolean collision = false;
+      
+      if (y1 < y2 && y1 > y2 + h2 && x1>x2 && x1<x2 + w2) 
+       {collision = true;}
+        else
+        {collision = false;}
+      return collision;
+    }*/
 
 };
