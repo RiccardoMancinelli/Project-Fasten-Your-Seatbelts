@@ -162,7 +162,8 @@ class World {
        powerUp[l].x = -256;
        spawn[powerUp[l].oldx][powerUp[l].oldy]=0;
        created[powerUp[l].oldx][powerUp[l].oldy]=false;
-       maxmana = maxmana + 10;
+       mana = maxmana = 128;
+       player.timer = 600;
        }
    
     }

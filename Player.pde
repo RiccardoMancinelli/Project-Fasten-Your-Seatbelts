@@ -26,6 +26,14 @@ class Player{
   }
   
   void update(){
+    if (timer > 0){
+      timer -= 1;
+    }
+    if (timer == 0)
+    {
+     mana = maxmana =64;  
+     timer =-1;
+    }
     if (x > width){
        x = 1; 
     }
