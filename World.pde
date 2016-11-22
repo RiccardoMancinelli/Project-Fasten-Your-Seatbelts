@@ -5,6 +5,8 @@ class World {
   int wolkid = 0;
   int nEnemy = 0;
   int enemyMax = 30;
+  int nPowerUp =0;
+  int powerUpMax = 30;
   int nBird = 1;
   boolean alive = true;
    int waves = 1000;
@@ -17,6 +19,8 @@ class World {
   Cloud [] cloud = new Cloud[cloudMax];
   Enemy [] enemy = new Enemy[enemyMax];
   Bird_Pick_Up [] bird = new Bird_Pick_Up[nBird];
+  Power_up [] powerUp = new Power_up[powerUpMax];
+  ArrayList<Power_up> Power_up = new ArrayList<Power_up>();
   
   
 
@@ -26,16 +30,6 @@ class World {
     
     player.init();
     camera.init();                                   
-    for (int i=0; i<cloudMax; i++){        //maakt de wolken aan.
-     cloud[i] = new Cloud();
-     cloud[i].init();
-     cloud[i].x = -128;        //hides the unused clouds from view
-     cloud[i].y = 0;
-     cloud[i].waarde =(int)(random(6));
-
-    }
-  
-  
     
     ///////////////////RANDOM GENERATION/////////////////////
    for (int y = 0; y<waves; y++)
@@ -46,6 +40,16 @@ class World {
          spawn[x][y]=int(random(4));    //spawn 1 = wolk, spawn 0 = niets, spawn 2 = enemy etc etc
         }
     }
+    
+     for (int i=0; i<cloudMax; i++)
+     {        //maakt de wolken aan.
+     cloud[i] = new Cloud();
+     cloud[i].init();
+     cloud[i].x = -128;        //hides the unused clouds from view
+     cloud[i].y = 0;
+     cloud[i].waarde =(int)(random(6));
+     }
+ 
     for (int j=0; j<enemyMax; j++)
     {
     enemy[j] = new Enemy();
@@ -54,16 +58,23 @@ class World {
     enemy[j].x = -128;
     enemy[j].origny = 0;
     }
-    
-    generate(leftOff);      //calls the generation code.
-    
-    
+
     for (int k=0; k<nBird; k++)
     {
     bird[k] = new Bird_Pick_Up();
     bird[k].init();
     }
     
+    for (int l=0; l<powerUpMax; l++){        //maakt de powerup aan.
+     powerUp[l] = new Power_up();
+     powerUp[l].init();
+     powerUp[l].x = -128;        //hides the unused powerups from view
+     powerUp[l].y = 0;
+     powerUp[l].oldx = 0;
+     powerUp[l].oldy = 0;
+    }
+    
+    generate(leftOff);      //calls the generation code.
 
     
 
@@ -78,22 +89,25 @@ class World {
    {
    cloud[i].update();
    }
-
-    
+  for (int j=0; j<enemyMax; j++)
+   {
+    enemy[j].update();
+   }
+  for (int k=0; k<nBird; k++)
+   {
+    bird[k].update();
+   }
+  for (int l=0; l<powerUpMax; l++)
+   {
+    powerUp[l].update();
+   }
     ////////////////////////////Generation related//////////////////
     if (hoogte>=leftOff*128-(height)) {generate(leftOff); }                    //320 want 80 pixels per rij, Hij gaat verder met genereren waar hij gebleven was (leftOff)
 
     
     
     
-   for (int j=0; j<enemyMax; j++)
-    {
-     enemy[j].update();
-    }
-    for (int k=0; k<nBird; k++)
-    {
-     bird[k].update();
-    }
+
           
           //Collision code met wolk.
        for (int i=0; i<cloudMax; i++)
@@ -138,7 +152,20 @@ class World {
        bird[j].movey=0;
        }
     }
-    
+    for (int l=0; l<powerUpMax; l++)
+     {
+
+     if (player.y < powerUp[l].y+powerUp[l].h && player.y > powerUp[l].y && player.x>powerUp[l].x && player.x< powerUp[l].x+ powerUp[l].w)  
+       {
+       score += 50;
+      // powerUp[l].y = int(random(-64))-hoogte;        //verbergt de item uit het scherm. (Alternatief van instance_Destroy())
+       powerUp[l].x = -256;
+       spawn[powerUp[l].oldx][powerUp[l].oldy]=0;
+       created[powerUp[l].oldx][powerUp[l].oldy]=false;
+       maxmana = maxmana + 10;
+       }
+   
+    }
     if (player.y < height/2 && cameraSwitch == false && alive == true ){        //activeert de camera
       cameraSwitch = true;
     }
@@ -164,6 +191,10 @@ class World {
     for (int j=0; j<enemyMax; j++)
     {
     enemy[j].draw();
+    }
+    for (int l=0; l<powerUpMax; l++)
+    {
+    powerUp[l].draw();
     }
     for (int k=0; k<nBird; k++)
     {
@@ -220,10 +251,20 @@ class World {
              enemy[nEnemy].d=2;
              nEnemy+=1;
           }
-          
+          if (spawn[x][y] == 3 && created[x][y]==false)
+          {
+            
+             if (nPowerUp==powerUpMax){nPowerUp=0;}
+              powerUp[nPowerUp].oldy = y;
+              powerUp[nPowerUp].oldx = x;
+              powerUp[nPowerUp].x = x*80;
+              powerUp[nPowerUp].origny = height-50-(128*y);
+              created[x][y]=true; 
+             nPowerUp+=1;                                                                              
+          }
         }
         leftOff = y;
-    }
+    }}
     
     }
     /*
@@ -237,5 +278,3 @@ boolean collisionCheck(int x1, int y1, int w1, int h1, int x2, int y2, int w2, i
         {collision = false;}
       return collision;
     }*/
-
-};

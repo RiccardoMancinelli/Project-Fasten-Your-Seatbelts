@@ -1,6 +1,6 @@
 class Player{  
   int x, y, w, h; // Position
-  float clr, vx, vy, jumpspeed, center, diameter, jetpackspeed, maxSpeed, dir; // Size
+  float clr, vx, vy, jumpspeed, center, diameter, jetpackspeed, maxSpeed, dir, timer; // Size
   boolean landed, manaPowers, bounce; 
   PImage img;
  // 2DO: LANGZAMER BEWEGEN IN DE LUCHT

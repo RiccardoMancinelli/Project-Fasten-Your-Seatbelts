@@ -13,11 +13,6 @@ class Power_up {
   void update() {
    y = origny + hoogte;
    
-   if (y>height+64){
-        x = int(random(width));
-        origny = int(random(-12))-hoogte;
-     }
-   
    //Code for generation
         //  if (y>height+64){
     //     world.spawn[oldx][oldy] = 0;
