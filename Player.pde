@@ -15,7 +15,7 @@ class Player{
     vx = 5;
     vy = 0;
     jumpspeed =10;
-    jetpackspeed = 2;
+    jetpackspeed = 3;
     diameter = 20;
     center = diameter/2;
     maxSpeed = 8;
@@ -32,8 +32,25 @@ class Player{
     
     if (x < 0){
        x = width; 
-    }   
+    }
     
+
+    
+    // versnellen van de camera
+     if (y < (height/3) && scrollsnelheid > staticscrollsnelheid){
+      scrollsnelheid = (height/3)-y;
+      y += height/3-y+(vy*0.5);
+    }
+    
+    // slowing down de camera
+    if (scrollsnelheid > (1/0.9) && y > height/3 && y < height/2.5){
+      scrollsnelheid *= 0.95;
+    }
+    if ( scrollsnelheid > (1/0.6) && y > height/2.5){
+      scrollsnelheid *= 0.6;
+    }
+      
+      
     
     // player movement
     if (world.alive == true) {
