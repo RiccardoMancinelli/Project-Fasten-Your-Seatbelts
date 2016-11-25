@@ -45,9 +45,9 @@ class Player{
 
     
     // versnellen van de camera
-     if (y < (height/3) && scrollsnelheid > staticscrollsnelheid){
-      scrollsnelheid = (height/3)-y;
-      y += height/3-y+(vy*0.5);
+     if (y < (height/4) && scrollsnelheid > staticscrollsnelheid){
+      scrollsnelheid = (height/4)-y;
+      y += height/4-y+(vy*0.5);
     }
     
     // slowing down de camera

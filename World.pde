@@ -1,13 +1,6 @@
 class World {
   
-  int nCloud = 0;        //het aantal gemaakte clouds
-  int cloudMax = 60;    //het max aantal clouds dat je mag gebruiken
-  int wolkid = 0;
-  int nEnemy = 0;
-  int enemyMax = 30;
-  int nPowerUp =0;
-  int powerUpMax = 30;
-  int nBird = 1;
+  int nCloud = 0, cloudMax = 60, wolkid = 0, nEnemy = 0, enemyMax = 30, nPowerUp = 0, powerUpMax = 30, nBird = 1;        //Alle plaatsbare items initializen
   boolean alive = true;
    int waves = 1000;
   int[][] spawn = new int[8][waves];    //maakt 8 locaties aan waarop we dingen kunnen spawnen (hokjes van 80 pixels) en maakt in totaal ... waves 
