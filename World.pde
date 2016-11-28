@@ -232,6 +232,7 @@ class World {
               cloud[nCloud].origny = height-50-(128*y);
               cloud[nCloud].oldy = y;
               cloud[nCloud].oldx = x;
+              cloud[nCloud].jumpCloud = false; 
               created[x][y]=true; 
                 
              nCloud+=1;
@@ -258,6 +259,20 @@ class World {
               powerUp[nPowerUp].origny = height-50-(128*y);
               created[x][y]=true; 
              nPowerUp+=1;                                                                              
+          }
+          //Spawning Jumpclouds.
+          if (spawn[x][y] == 4 && created[x][y]==false)
+          {
+            
+             if (nCloud==cloudMax){nCloud=0;}
+              cloud[nCloud].x = x*80;
+              cloud[nCloud].origny = height-50-(128*y);
+              cloud[nCloud].oldy = y;
+              cloud[nCloud].oldx = x;
+              cloud[nCloud].jumpCloud = true; 
+              created[x][y]=true; 
+                
+             nCloud+=1;
           }
           
         }

@@ -13,12 +13,12 @@ class Cloud {
   void update() {
    y = origny + hoogte;
    
-   
+ /*  
    if (waarde == 1){
     jumpCloud = true; 
    } if(waarde < 1 || waarde > 1){
     jumpCloud = false; 
-   }
+   }*/
    
   }
   void draw() {
