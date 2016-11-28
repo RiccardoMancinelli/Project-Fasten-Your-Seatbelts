@@ -2,7 +2,7 @@ class World {
   
   int nCloud = 0, cloudMax = 60, wolkid = 0, nEnemy = 0, enemyMax = 30, nPowerUp = 0, powerUpMax = 30, nBird = 1;        //Alle plaatsbare items initializen
   boolean alive = true;
-   int waves = 1000;
+  int waves = 1000;
   int[][] spawn = new int[8][waves];    //maakt 8 locaties aan waarop we dingen kunnen spawnen (hokjes van 80 pixels) en maakt in totaal ... waves 
   boolean[][] created = new boolean[8][waves];  //variable om te kijken of het object dat gemaakt moetst worden ook echt gemaakt is.
   int leftOff = 0;
@@ -13,35 +13,39 @@ class World {
   Enemy [] enemy = new Enemy[enemyMax];
   Bird_Pick_Up [] bird = new Bird_Pick_Up[nBird];
   Power_up [] powerUp = new Power_up[powerUpMax];
-  ArrayList<Power_up> Power_up = new ArrayList<Power_up>();
-  
   
 
- //Initialize the game world
  
   void init(){
     
-    player.init();
-    camera.init();                                   
-    
-    ///////////////////RANDOM GENERATION/////////////////////
-   for (int y = 0; y<waves; y++)
+    ///////////////////////////////////////////////////////////////////
+    ///////////////////Random generation///////////////////////////////
+    /////////////////////////////////////////////////////////////////// 
+   for (int y = 0; y<waves; y+=4)
     {
         for (int x = 0; x<8; x++)
         {
-          created[x][y]=false;          //This resets the previous random generation if the player went game over first
-         spawn[x][y]=int(random(4));    //spawn 1 = wolk, spawn 0 = niets, spawn 2 = enemy etc etc
+         created[x][y]=false;          //This resets the previous random generation if the player went game over first
+        //spawn[x][y]=int(random(4));    //spawn 1 = wolk, spawn 0 = niets, spawn 2 = enemy etc etc
         }
+        layouts(int(random(4)), y);    //spawns random level layout
     }
     
-     for (int i=0; i<cloudMax; i++)
-     {        //maakt de wolken aan.
-     cloud[i] = new Cloud();
-     cloud[i].init();
-     cloud[i].x = -128;        //hides the unused clouds from view
-     cloud[i].y = 0;
-     cloud[i].waarde =(int)(random(6));
-     }
+    ///////////////////////////////////////////////////////////////////
+    ///////////////////Initialiseren van objecten//////////////////////
+    /////////////////////////////////////////////////////////////////// 
+    
+    player.init();
+    camera.init();       
+    
+    for (int i=0; i<cloudMax; i++)
+    {        //maakt de wolken aan.
+    cloud[i] = new Cloud();
+    cloud[i].init();
+    cloud[i].x = -128;        //hides the unused clouds from view
+    cloud[i].y = 0;
+    cloud[i].waarde =(int)(random(6));
+    }
  
     for (int j=0; j<enemyMax; j++)
     {
@@ -66,15 +70,16 @@ class World {
      powerUp[l].oldx = 0;
      powerUp[l].oldy = 0;
     }
-    
-    generate(leftOff);      //calls the generation code.
-
-    
 
   }
- //Update the game 
+  
+
   void update()
   {
+    ///////////////////////////////////////////////////////////////////
+    ///////////////////Updates de objecten/////////////////////////////
+    /////////////////////////////////////////////////////////////////// 
+    
    camera.update();
    player.update();
 
@@ -94,8 +99,9 @@ class World {
    {
     powerUp[l].update();
    }
-    ////////////////////////////Generation related//////////////////
-    if (hoogte>=leftOff*128-(height)) {generate(leftOff); }                    //320 want 80 pixels per rij, Hij gaat verder met genereren waar hij gebleven was (leftOff)
+   
+   ////////////////////////////Generation related/////////////////////
+   if (hoogte>=leftOff*128-(height)) {generate(leftOff); }                    //320 want 80 pixels per rij, Hij gaat verder met genereren waar hij gebleven was (leftOff)
 
     
     
@@ -113,10 +119,7 @@ class World {
        { player.vy = -4; wolkid = i; mana = maxmana; player.landed = false; player.bounce = true;}
          if (jumpDown == true && player.bounce == true){
            { player.vy = -15; wolkid = i; mana = maxmana; player.landed = false;}
-         
        }
-     /*if (cloud[i].jumpCloud == true && rightDown == true )
-          { player.vy = -20; wolkid = i; mana = maxmana; player.landed = false;}*/
     }
        
  
@@ -136,12 +139,7 @@ class World {
      if (player.y < bird[j].y+bird[j].h && player.y > bird[j].y && player.x>bird[j].x && player.x< bird[j].x+ bird[j].w)  
        {
        score += 50;
-       bird[j].originy = int(random(-64))-hoogte;        //verbergt de item uit het scherm. (Alternatief van instance_Destroy())
-       bird[j].x = int(random(width-80));
-       bird[j].movey=0;
-       }else if(bird[j].y<0 ){
-         bird[j].originy = int(random(-64))-hoogte;        //verbergt de item uit het scherm. (Alternatief van instance_Destroy())
-       bird[j].x = int(random(width-80));
+       bird[j].x = -125;        //verbergt de item uit het scherm. (Alternatief van instance_Destroy())
        bird[j].movey=0;
        }
     }
@@ -203,8 +201,10 @@ class World {
     textSize(16);
     text("Hoogte:" +hoogte, 10, 64); 
     text("Score:" + score, 10, 128); 
-    text("Ncloud:" + nCloud, 128, 192);
 
+
+/*
+    text("Ncloud:" + nCloud, 128, 192);
        for (int y = 0; y<10; y++)
     {
         for (int x = 0; x<8; x++)
@@ -212,11 +212,13 @@ class World {
          text(spawn[x][y], 32*x, height-(32*y));
         }
     }
+    */
     
   }
   
         ///////////////RANDOM GENERATION CODE///////////////
-  void generate(int startCount){
+  void generate(int startCount)
+  {
     for (int y = startCount; y<startCount+16; y++)                      //index staat voor het getal waarop we beginnen met tellen. +8 want 8 rijen objects per scherm.
     {
         for (int x = 0; x<8; x++)
@@ -245,6 +247,7 @@ class World {
              enemy[nEnemy].d=2;
              nEnemy+=1;
           }
+          //Spawning powerups.
           if (spawn[x][y] == 3 && created[x][y]==false)
           {
             
@@ -256,9 +259,11 @@ class World {
               created[x][y]=true; 
              nPowerUp+=1;                                                                              
           }
+          
         }
-        leftOff = y;
-    }}
+        leftOff = y;              //Dit is de Y waar het genereren de vorige keer ophield.
+    }
+  }
     
     }
     /*

@@ -1,6 +1,4 @@
-//Hier komt alle code om de objecten uit ons spel te laden.
-
-// Er zijn meerdere objecten waar we op dit moment druk mee bezig zijn, zoals de enemy en de Bird_Pick_Up
+//Deze code zorgt dat alles wordt aangeroepen en werkt.
 
 //Zie USING SOUNDS in powerpoint van workshop
 
@@ -14,42 +12,49 @@ Game_over game_over = new Game_over();
   
 void setup() {
   size(640, 480);
-  if(room == 0){
-  mana = maxmana = 64;
-  // Initialize the ball and the paddle
-
-  world.init();  
+  if(room == 0)         //Als de room 0 is (dus het game scherm)
+    { 
+    mana = maxmana = 64;
+    world.init();  
   }
 }
 
-// All the code that alters the Game World goes here
 void updateGame(){
-  if(room == 0){
-  //player.update();
+  if(room == 0)        //Als de room 0 is (dus het game scherm)
+  {
   world.update();
+  }
+}
 
-}}
 
-// All the code that draws the Game World goes here
 void drawGame(){
-  if(room == 0){
-  //player.draw();
+  if(room == 0)      //Als de room 0 is (dus het game scherm)
+  {
   world.draw();
   }
-
 }
 
 void draw() {
-  if(room == 0){
+  if(room == 0)      //Als de room 0 is (dus het game scherm)
+  {
   background(255);
-  
-  updateGame(); // Update your game first
-  drawGame();   // Draw your game after everything is updated
-  }else if (room == 1){
-    background(0);
-    game_over.draw();     
-  }
-    if(room == 1 && jumpDown == true){  
+  updateGame();       // Update your game first
+  drawGame();         // Draw your game after everything is updated
+  }else 
+  if (room == 1)
+    {
+      background(0);
+      game_over.draw();     
+    }
+  if(room == 1 && jumpDown == true)
+    {  
+      reset();        //Resets the game/room
+    } 
+}
+
+
+  void reset()
+  {
   world.nCloud = 0;        //het aantal gemaakte clouds
   world.cloudMax = 60;    //het max aantal clouds dat je mag gebruiken
   world.wolkid = 0;
@@ -67,15 +72,11 @@ void draw() {
   room = 0;
   scrollsnelheid = 0;
   staticscrollsnelheid = 1;
-
-  } 
-}
-
+  };
  
 
  
-
-
+    //This code checks which buttons are pressed by the player.
     void keyPressed(){
     if(keyCode == LEFT){leftDown = true;}
     if(keyCode == RIGHT){rightDown = true;}

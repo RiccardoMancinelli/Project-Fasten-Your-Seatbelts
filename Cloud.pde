@@ -19,11 +19,6 @@ class Cloud {
    } if(waarde < 1 || waarde > 1){
     jumpCloud = false; 
    }
-   //Code for generation
-        //  if (y>height+64){
-    //     world.spawn[oldx][oldy] = 0;
-     //   world.created[oldx][oldy]=false;
-      //   }
    
   }
   void draw() {
