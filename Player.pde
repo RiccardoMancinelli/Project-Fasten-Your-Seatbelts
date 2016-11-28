@@ -26,14 +26,19 @@ class Player{
   }
   
   void update(){
+    
+    //Resets powerups:
+    
     if (timer > 0){
       timer -= 1;
     }
     if (timer == 0)
     {
-     mana = maxmana =64;  
-     timer =-1;
+     mana = maxmana = 64;  
+     timer = -1;
     }
+    //
+    
     if (x > width){
        x = 1; 
     }
@@ -85,6 +90,7 @@ class Player{
     
     //zodra je geland bent krijg je je mana terug
       if (landed == true && mana<maxmana) {mana+=4;}
+      if (mana > maxmana) {mana = maxmana;}
     }
     else {
       y = y + 8;
