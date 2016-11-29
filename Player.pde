@@ -25,6 +25,7 @@ class Player{
     w=32;
     h=32;
     manaPowers=false;
+    staticscrollsnelheid = 1;
     
   }
   
@@ -58,20 +59,29 @@ class Player{
 
     
     // versnellen van de camera
-     if (y < (height/4) && scrollsnelheid > staticscrollsnelheid){
+     if (y < (height/4)){
       scrollsnelheid = (height/4)-y;
       y += height/4-y+(vy*0.5);
     }
     
-    // slowing down de camera
+ //scrollen versnellen
+     staticscrollsnelheid = hoogte/2500 + 1;  //2500 kwadrateren elke keer dat deze code wordt verandert?
+     text("SSCRSN:" +staticscrollsnelheid, 200, 64);
+     text("SCRSN:" + scrollsnelheid, 200, 128);
+    
+      
+     if (scrollsnelheid < staticscrollsnelheid){
+       scrollsnelheid = staticscrollsnelheid;
+    }
+    
+    
+    /*// slowing down de camera (niet meer nodig)
     if (scrollsnelheid > (1/0.9) && y > height/3 && y < height/2.5){
-      scrollsnelheid *= 0.95;
+      staticscrollsnelheid *= 0.95;
     }
     if ( scrollsnelheid > (1/0.6) && y > height/2.5){
-      scrollsnelheid *= 0.6;
-    }
-      
-      
+      staticscrollsnelheid *= 0.6;
+    }*/
     
     // player movement
     if (world.alive == true) {
