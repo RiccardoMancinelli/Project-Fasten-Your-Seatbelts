@@ -12,6 +12,8 @@ class Bird_Pick_Up{
     y = originy + hoogte + movey;
   }
   
+
+  
   void draw(){
     
 
