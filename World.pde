@@ -111,7 +111,7 @@ class World {
           //Collision code met wolk.
        for (int i=0; i<cloudMax; i++)
     {
-     if (player.y < cloud[i].y+12 && player.y > cloud[i].y && player.x>cloud[i].x && player.x<cloud[i].x+cloud[i].w && player.vy >=0 && player.landed == false)
+     if (player.y < cloud[i].y+12 && player.y > cloud[i].y && player.x>cloud[i].x && player.x<cloud[i].x+cloud[i].w+1 && player.vy >=0 && player.landed == false)
      {
      if  (cloud[i].jumpCloud == false )  
      {player.landed = true;  player.vy = 0; wolkid = i; player.bounce = false;}
@@ -166,7 +166,7 @@ class World {
   
     /* Collision met enemy , enemy raakt, alive false player valt naar beneden */
    for (int j = 0; j < enemyMax; j++) {
-   if (player.y < enemy[j].y+20 && player.y > enemy[j].y && player.x>enemy[j].x && player.x<enemy[j].x+enemy[j].w && alive == true) 
+   if (player.y < enemy[j].y+enemy[j].h+10 && player.y > enemy[j].y && player.x>enemy[j].x && player.x<enemy[j].x+enemy[j].w && alive == true) 
        {alive = false; 
         cameraSwitch = false;}
    }

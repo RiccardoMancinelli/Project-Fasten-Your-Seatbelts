@@ -55,7 +55,7 @@ class Enemy {
       image(img2, x, y); 
     }
     if (d==2){
-      img3.resize(w, h2);
+      img3.resize(w, h);
       image(img3, x, y);
     }
   }  
