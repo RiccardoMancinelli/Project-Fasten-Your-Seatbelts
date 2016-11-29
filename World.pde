@@ -28,7 +28,7 @@ class World {
          created[x][y]=false;          //This resets the previous random generation if the player went game over first
         //spawn[x][y]=int(random(4));    //spawn 1 = wolk, spawn 0 = niets, spawn 2 = enemy etc etc
         }
-        layouts(int(random(4)), y);    //spawns random level layout
+        layouts(int(random(6)), y);    //spawns random level layout
     }
     
     ///////////////////////////////////////////////////////////////////
