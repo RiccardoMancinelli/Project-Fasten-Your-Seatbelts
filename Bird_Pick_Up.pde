@@ -1,12 +1,7 @@
 class Bird_Pick_Up{
   PImage img;
-  int x = int(random(width-80));
-  int y = 10;
-  int w = 40;
-  int h = 50;
-  int originy = 10;
-  int movey = 0;
-  
+  int x, y, w = 40, h = 50, oldy, oldx, originy = 10,  movey = 0;
+
   
   void init(){
    img = loadImage("bird.png"); 

@@ -1,17 +1,16 @@
 class World {
   
-  int nCloud = 0, cloudMax = 60, wolkid = 0, nEnemy = 0, enemyMax = 30, nPowerUp = 0, powerUpMax = 30, nBird = 1;        //Alle plaatsbare items initializen
+  int wolkid = 0, cloudMax = 64, enemyMax = 32, powerUpMax = 32, birdMax = 32;        //Alle plaatsbare items initializen
+  int nCloud = 0, nEnemy = 0, nPowerUp = 0, nBird = 0, waves = 1000, leftOff = 0;
   boolean alive = true;
-  int waves = 1000;
   int[][] spawn = new int[8][waves];    //maakt 8 locaties aan waarop we dingen kunnen spawnen (hokjes van 80 pixels) en maakt in totaal ... waves 
   boolean[][] created = new boolean[8][waves];  //variable om te kijken of het object dat gemaakt moetst worden ook echt gemaakt is.
-  int leftOff = 0;
 
   Player player = new Player();
   Camera camera = new Camera();
   Cloud [] cloud = new Cloud[cloudMax];
   Enemy [] enemy = new Enemy[enemyMax];
-  Bird_Pick_Up [] bird = new Bird_Pick_Up[nBird];
+  Bird_Pick_Up [] bird = new Bird_Pick_Up[birdMax];
   Power_up [] powerUp = new Power_up[powerUpMax];
   
 
@@ -26,7 +25,6 @@ class World {
         for (int x = 0; x<8; x++)
         {
          created[x][y]=false;          //This resets the previous random generation if the player went game over first
-        //spawn[x][y]=int(random(4));    //spawn 1 = wolk, spawn 0 = niets, spawn 2 = enemy etc etc
         }
         layouts(int(random(6)), y);    //spawns random level layout
     }
@@ -56,10 +54,12 @@ class World {
     enemy[j].origny = 0;
     }
 
-    for (int k=0; k<nBird; k++)
+    for (int k=0; k<birdMax; k++)
     {
     bird[k] = new Bird_Pick_Up();
     bird[k].init();
+    bird[k].x = -128;
+    bird[k].y = 0;
     }
     
     for (int l=0; l<powerUpMax; l++){        //maakt de powerup aan.
@@ -91,7 +91,7 @@ class World {
    {
     enemy[j].update();
    }
-  for (int k=0; k<nBird; k++)
+  for (int k=0; k<birdMax; k++)
    {
     bird[k].update();
    }
@@ -141,6 +141,8 @@ class World {
        score += 50;
        bird[j].x = -125;        //verbergt de item uit het scherm. (Alternatief van instance_Destroy())
        bird[j].movey=0;
+       spawn[bird[j].oldx][bird[j].oldy]=0;
+       created[bird[j].oldx][bird[j].oldy]=false;
        }
     }
     for (int l=0; l<powerUpMax; l++)
@@ -188,7 +190,7 @@ class World {
     {
     powerUp[l].draw();
     }
-    for (int k=0; k<nBird; k++)
+    for (int k=0; k<birdMax; k++)
     {
     bird[k].draw();
     }
@@ -201,19 +203,6 @@ class World {
     textSize(16);
     text("Hoogte:" +hoogte, 10, 64); 
     text("Score:" + score, 10, 128); 
-
-
-/*
-    text("Ncloud:" + nCloud, 128, 192);
-       for (int y = 0; y<10; y++)
-    {
-        for (int x = 0; x<8; x++)
-        {
-         text(spawn[x][y], 32*x, height-(32*y));
-        }
-    }
-    */
-    
   }
   
         ///////////////RANDOM GENERATION CODE///////////////
@@ -273,6 +262,18 @@ class World {
               created[x][y]=true; 
                 
              nCloud+=1;
+          }
+          //Spawning Birds
+          if (spawn[x][y] == 5 && created[x][y]==false)
+          {
+            
+             if (nBird==birdMax){nBird=0;}
+              bird[nBird].oldy = y;
+              bird[nBird].oldx = x;
+              bird[nBird].x = x*80;
+              bird[nBird].y = height-50-(128*y);
+              created[x][y]=true; 
+             nBird+=1;                                                                              
           }
           
         }
