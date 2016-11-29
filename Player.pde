@@ -2,12 +2,15 @@ class Player{
   int x, y, w, h; // Position
   float clr, vx, vy, jumpspeed, center, diameter, jetpackspeed, maxSpeed, dir, timer; // Size
   boolean landed, manaPowers, bounce; 
-  PImage img;
- // 2DO: LANGZAMER BEWEGEN IN DE LUCHT
+  PImage img, spr_player_stand_left, spr_player_stand_right;
+  
  
   
   void init(){
-    img = loadImage("player_stand_left.png");
+    //Loads all the sprites
+    img = spr_player_stand_left = loadImage("player_stand_left.png");
+    spr_player_stand_right = loadImage("player_stand_right.png");
+    
     landed = false;
     x = width/2;
     y = height-12;
@@ -34,9 +37,14 @@ class Player{
     }
     if (timer == 0)
     {
-     mana = maxmana = 64;  
+
      timer = -1;
     }
+    if (timer < 1 && maxmana >64)
+    {
+     maxmana -= 1; 
+    }
+    
     //
     
     if (x > width){
@@ -70,8 +78,8 @@ class Player{
     if (rightDown){x += vx;}
     if (leftDown){x -= vx;}   
     //change sprites
-    if (rightDown && dir == 1){img = loadImage("player_stand_right.png"); dir = 0;} else
-    if (leftDown && dir == 0){img = loadImage("player_stand_left.png"); dir = 1;}    
+    if (rightDown && dir == 1){img = spr_player_stand_right; dir = 0;} else
+    if (leftDown && dir == 0){img = spr_player_stand_left; dir = 1;}    
     //springen
     if (manaPowers==true && jumpDown && landed == false) { vy = -jetpackspeed+scrollsnelheid;}
     if (manaPowers==false && mana > 0 && jumpDown && landed == false && bounce == false && vy >-2) {mana -= 1; vy = -jetpackspeed+scrollsnelheid;} 
