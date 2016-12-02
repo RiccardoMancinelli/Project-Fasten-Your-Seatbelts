@@ -1,7 +1,7 @@
 class World {
 
   int wolkid = 0, cloudMax = 64, enemyMax = 32, powerUpMax = 32, birdMax = 32;        //Alle plaatsbare items initializen
-  int nCloud = 0, nEnemy = 0, nPowerUp = 0, nBird = 0, waves = 1000, leftOff = 0;
+  int nCloud = 0, nEnemy = 0, nPowerUp = 0, nBird = 0, waves = 500, leftOff = 0;
   boolean alive = true;
   int[][] spawn = new int[8][waves];    //maakt 8 locaties aan waarop we dingen kunnen spawnen (hokjes van 80 pixels) en maakt in totaal ... waves 
   boolean[][] created = new boolean[8][waves];  //variable om te kijken of het object dat gemaakt moetst worden ook echt gemaakt is.
@@ -31,7 +31,7 @@ class World {
     
     for (int y = 0; y<waves; y+=4)
     {
-      layouts(int(random(6)), y);    //spawns random level layout
+      layouts(int(random(7)), y);    //spawns random level layout
     }
 
     ///////////////////////////////////////////////////////////////////
@@ -107,7 +107,7 @@ class World {
     ////////////////////////////Generation related/////////////////////
     if (hoogte>=leftOff*128-(height)) {
       generate(leftOff);
-    }                    //320 want 80 pixels per rij, Hij gaat verder met genereren waar hij gebleven was (leftOff)
+    }                    //Hij gaat verder met genereren waar hij gebleven was (leftOff)
 
 
 
@@ -309,7 +309,7 @@ class World {
           bird[nBird].oldy = y;
           bird[nBird].oldx = x;
           bird[nBird].x = x*80;
-          bird[nBird].y = height-50-(128*y);
+          bird[nBird].originy = height-50-(128*y);
           created[x][y]=true; 
           nBird+=1;
         }
@@ -331,7 +331,7 @@ void reset()
   nEnemy = 0; 
   nPowerUp = 0; 
   nBird = 0; 
-  waves = 1000; 
+  waves = 500; 
   leftOff = 0;
   alive = true;
       for (int y = 0; y<waves; y++)

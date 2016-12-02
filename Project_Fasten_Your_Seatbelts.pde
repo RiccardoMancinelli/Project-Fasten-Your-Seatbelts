@@ -49,6 +49,7 @@ void draw() {
   if(room == 1 && jumpDown == true)
     {  
       reset();        //Resets the game/room
+
     } 
 }
 

@@ -8,7 +8,7 @@ class Bird_Pick_Up{
   }
   
   void update(){
-    movey ++;
+   // movey ++;
     y = originy + hoogte + movey;
   }
   

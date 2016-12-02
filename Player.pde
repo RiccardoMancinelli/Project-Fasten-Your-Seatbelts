@@ -8,8 +8,8 @@ class Player{
   
   void init(){
     //Loads all the sprites
-    img = spr_player_stand_left = loadImage("player_stand_left.png");
-    spr_player_stand_right = loadImage("player_stand_right.png");
+    spr_player_stand_left = loadImage("player_stand_left.png");
+    img = spr_player_stand_right = loadImage("player_stand_right.png");
     
     landed = false;
     x = width/2;
@@ -18,7 +18,7 @@ class Player{
     vx = 5;
     vy = 0;
     jumpspeed =10;
-    jetpackspeed = 3;
+    jetpackspeed = 4;
     diameter = 20;
     center = diameter/2;
     maxSpeed = 8;
@@ -66,23 +66,15 @@ class Player{
     
  //scrollen versnellen
      staticscrollsnelheid = hoogte/2500 + 1;  //2500 kwadrateren elke keer dat deze code wordt verandert?
-     text("SSCRSN:" +staticscrollsnelheid, 200, 64);
-     text("SCRSN:" + scrollsnelheid, 200, 128);
+    // text("SSCRSN:" +staticscrollsnelheid, 200, 64);
+     //text("SCRSN:" + scrollsnelheid, 200, 128);
     
       
      if (scrollsnelheid < staticscrollsnelheid){
        scrollsnelheid = staticscrollsnelheid;
     }
     
-    
-    /*// slowing down de camera (niet meer nodig)
-    if (scrollsnelheid > (1/0.9) && y > height/3 && y < height/2.5){
-      staticscrollsnelheid *= 0.95;
-    }
-    if ( scrollsnelheid > (1/0.6) && y > height/2.5){
-      staticscrollsnelheid *= 0.6;
-    }*/
-    
+
     // player movement
     if (world.alive == true) {
     if (rightDown){x += vx;}
@@ -107,7 +99,7 @@ class Player{
 
     
     //zodra je geland bent krijg je je mana terug
-      if (landed == true && mana<maxmana) {mana+=4;}
+      if (landed == true && mana<maxmana) {mana+=8;}
       if (mana > maxmana) {mana = maxmana;}
     }
     else {
@@ -116,6 +108,7 @@ class Player{
       //speler uit het scherm moet naar gameover scherm
     if (y>height+64 && room == 0)
     {
+      score += hoogte;
       room = 1;
     }  
   }
