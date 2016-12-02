@@ -31,7 +31,7 @@ class World {
     
     for (int y = 0; y<waves; y+=4)
     {
-      layouts(int(random(6)), y);    //spawns random level layout
+      layouts(int(random(7)), y);    //spawns random level layout
     }
 
     ///////////////////////////////////////////////////////////////////
