@@ -11,9 +11,7 @@ class Power_up {
     manaPowers=false;
   }
   void update() {
-   y = origny + hoogte;
-   
-   
+    y = origny + hoogte;
   }
   void draw() {
     img.resize(w, h);

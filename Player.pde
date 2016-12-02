@@ -1,20 +1,20 @@
-class Player{  
+class Player {  
   int x, y, w, h; // Position
   float clr, vx, vy, jumpspeed, center, diameter, jetpackspeed, maxSpeed, dir, timer; // Size
   boolean landed, manaPowers, bounce; 
   PImage img, spr_player_stand_left, spr_player_stand_right;
-  
- 
-  
-  void init(){
+
+
+
+  void init() {
     //Loads all the sprites
     spr_player_stand_left = loadImage("player_stand_left.png");
     img = spr_player_stand_right = loadImage("player_stand_right.png");
-    
+
     landed = false;
     x = width/2;
     y = height-12;
-    clr = color(255,255,255);
+    clr = color(255, 255, 255);
     vx = 5;
     vy = 0;
     jumpspeed =10;
@@ -26,99 +26,128 @@ class Player{
     h=32;
     manaPowers=false;
     staticscrollsnelheid = 1;
-    
   }
-  
-  void update(){
-    
+
+  void update() {
+
     //Resets powerups:
-    
-    if (timer > 0){
+
+    if (timer > 0) {
       timer -= 1;
     }
     if (timer == 0)
     {
 
-     timer = -1;
+      timer = -1;
     }
     if (timer < 1 && maxmana >64)
     {
-     maxmana -= 1; 
+      maxmana -= 1;
     }
-    
-    //
-    
-    if (x > width){
-       x = 1; 
-    }
-    
-    if (x < 0){
-       x = width; 
-    }
-    
 
-    
+    //
+
+    if (x > width) {
+      x = 1;
+    }
+
+    if (x < 0) {
+      x = width;
+    }
+
+
+
     // versnellen van de camera
-     if (y < (height/4)){
+    if (y < (height/4)) {
       scrollsnelheid = (height/4)-y;
       y += height/4-y+(vy*0.5);
     }
-    
- //scrollen versnellen
-     staticscrollsnelheid = hoogte/2500 + 1;  //2500 kwadrateren elke keer dat deze code wordt verandert?
+
+    //scrollen versnellen
+    staticscrollsnelheid = hoogte/2500 + 1;  //2500 kwadrateren elke keer dat deze code wordt verandert?
     // text("SSCRSN:" +staticscrollsnelheid, 200, 64);
-     //text("SCRSN:" + scrollsnelheid, 200, 128);
-    
-      
-     if (scrollsnelheid < staticscrollsnelheid){
-       scrollsnelheid = staticscrollsnelheid;
+    //text("SCRSN:" + scrollsnelheid, 200, 128);
+
+
+    if (scrollsnelheid < staticscrollsnelheid) {
+      scrollsnelheid = staticscrollsnelheid;
     }
-    
+
 
     // player movement
     if (world.alive == true) {
-    if (rightDown){x += vx;}
-    if (leftDown){x -= vx;}   
-    //change sprites
-    if (rightDown && dir == 1){img = spr_player_stand_right; dir = 0;} else
-    if (leftDown && dir == 0){img = spr_player_stand_left; dir = 1;}    
-    //springen
-    if (manaPowers==true && jumpDown && landed == false) { vy = -jetpackspeed+scrollsnelheid;}
-    if (manaPowers==false && mana > 0 && jumpDown && landed == false && bounce == false && vy >-2) {mana -= 1; vy = -jetpackspeed+scrollsnelheid;} 
-    if (jumpDown && landed == true){vy = -jumpspeed+scrollsnelheid; landed = false;}
-    //zwaartekracht als je niet geland bent.
-    if (landed == false){vy += 0.5;}
-    if (landed == true && cameraSwitch == true) {y += scrollsnelheid;}
-    y += vy;
-     //als speler met een snelheid hoger dan maxspeed valt, dan is zijn snelheid gelijk aan de max snelheid.
-    if (vy > maxSpeed) {vy = maxSpeed;}
-    
-    //collision met ondergrond
-    if (y>height-16+hoogte && landed == false) {vy = 0; y=height-26+hoogte; landed = true;}
-    
+      if (rightDown) {
+        x += vx;
+      }
+      if (leftDown) {
+        x -= vx;
+      }   
+      //change sprites
+      if (rightDown && dir == 1) {
+        img = spr_player_stand_right; 
+        dir = 0;
+      } else
+        if (leftDown && dir == 0) {
+          img = spr_player_stand_left; 
+          dir = 1;
+        }    
+      //springen
+      if (manaPowers==true && jumpDown && landed == false) { 
+        vy = -jetpackspeed+scrollsnelheid;
+      }
+      if (manaPowers==false && mana > 0 && jumpDown && landed == false && bounce == false && vy >-2) {
+        mana -= 1; 
+        vy = -jetpackspeed+scrollsnelheid;
+      } 
+      if (jumpDown && landed == true) {
+        vy = -jumpspeed+scrollsnelheid; 
+        landed = false;
+      }
+      //zwaartekracht als je niet geland bent.
+      if (landed == false) {
+        vy += 0.5;
+      }
+      if (landed == true && cameraSwitch == true) {
+        y += scrollsnelheid;
+      }
+      y += vy;
+      //als speler met een snelheid hoger dan maxspeed valt, dan is zijn snelheid gelijk aan de max snelheid.
+      if (vy > maxSpeed) {
+        vy = maxSpeed;
+      }
 
-    
-    //zodra je geland bent krijg je je mana terug
-      if (landed == true && mana<maxmana) {mana+=8;}
-      if (mana > maxmana) {mana = maxmana;}
-    }
-    else {
+      //collision met ondergrond
+      if (y>height-16+hoogte && landed == false) {
+        vy = 0; 
+        y=height-26+hoogte; 
+        landed = true;
+      }
+
+
+
+      //zodra je geland bent krijg je je mana terug
+      if (landed == true && mana<maxmana) {
+        mana+=8;
+      }
+      if (mana > maxmana) {
+        mana = maxmana;
+      }
+    } else {
       y = y + 8;
     }
-      //speler uit het scherm moet naar gameover scherm
+    //speler uit het scherm moet naar gameover scherm
     if (y>height+64 && room == 0)
     {
       score += hoogte;
       room = 1;
-    }  
+    }
   }
-  
-  
-  void draw(){
-      img.resize(w, h);
-      image(img,x-16,y-24);
-      //  fill(clr);
-      //ellipse(x,y,diameter,diameter);
-    
+
+
+  void draw() {
+    img.resize(w, h);
+    image(img, x-16, y-24);
+    //  fill(clr);
+    //ellipse(x,y,diameter,diameter);
   }
 }

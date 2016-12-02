@@ -28,7 +28,7 @@ class World {
         created[x][y]=false;          //This resets the previous random generation if the player went game over first
       }
     }
-    
+
     for (int y = 0; y<waves; y+=4)
     {
       layouts(int(random(7)), y);    //spawns random level layout
@@ -318,23 +318,23 @@ class World {
     }
   }
 
-void reset()
-{
-  
-  
-  wolkid = 0; 
-  cloudMax = 64; 
-  enemyMax = 32;  
-  powerUpMax = 32;  
-  birdMax = 32;        //Alle plaatsbare items initializen
-  nCloud = 0; 
-  nEnemy = 0; 
-  nPowerUp = 0; 
-  nBird = 0; 
-  waves = 500; 
-  leftOff = 0;
-  alive = true;
-      for (int y = 0; y<waves; y++)
+  void reset()
+  {
+
+
+    wolkid = 0; 
+    cloudMax = 64; 
+    enemyMax = 32;  
+    powerUpMax = 32;  
+    birdMax = 32;        //Alle plaatsbare items initializen
+    nCloud = 0; 
+    nEnemy = 0; 
+    nPowerUp = 0; 
+    nBird = 0; 
+    waves = 500; 
+    leftOff = 0;
+    alive = true;
+    for (int y = 0; y<waves; y++)
     {
       for (int x = 0; x<8; x++)
       {
@@ -342,7 +342,7 @@ void reset()
         created[x][y]=false;          //This resets the previous random generation if the player went game over first
       }
     }
-}
+  }
 }
 /*
 boolean collisionCheck(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2)        //Doet alle collision checking.
