@@ -92,17 +92,16 @@ class World {
       powerUp[j].update();
     }
 
+    ///////////////////////////////////////////////////////////////////
     ////////////////////////////Generation related/////////////////////
+    ///////////////////////////////////////////////////////////////////
     if (hoogte>=leftOff*128-(height)) {
       generate(leftOff);
     }                    //Hij gaat verder met genereren waar hij gebleven was (leftOff)
 
-
-
-
-
-
-    //Collision code met wolk.
+    ///////////////////////////////////////////////////////////////////
+    ////////////////////////////Wolk Collision/////////////////////////
+    ///////////////////////////////////////////////////////////////////
     for (int i=0; i<cloudMax; i++)
     {
       if (player.y < cloud[i].y+12 && player.y > cloud[i].y && player.x>cloud[i].x && player.x<cloud[i].x+cloud[i].w+1 && player.vy >=0 && player.landed == false)
@@ -147,6 +146,9 @@ class World {
       scrollsnelheid = 1;
     }
 
+    ///////////////////////////////////////////////////////////////////
+    ////////////////////////////Item Collision/////////////////////////
+    ///////////////////////////////////////////////////////////////////
 
     for (int j=0; j<nBird; j++)                              //pickup bird
     {
@@ -157,7 +159,7 @@ class World {
         bird[j].x = -125;        //verbergt de item uit het scherm. (Alternatief van instance_Destroy())
         bird[j].movey=0;
         spawn[bird[j].oldx][bird[j].oldy]=0;
-        //created[bird[j].oldx][bird[j].oldy]=false;
+        created[bird[j].oldx][bird[j].oldy]=false;
       }
     }
     for (int l=0; l<itemMax; l++)
@@ -166,7 +168,6 @@ class World {
       if (player.y < powerUp[l].y+powerUp[l].h && player.y > powerUp[l].y && player.x>powerUp[l].x && player.x< powerUp[l].x+ powerUp[l].w)  
       {
         score += 50;
-        // powerUp[l].y = int(random(-64))-hoogte;        //verbergt de item uit het scherm. (Alternatief van instance_Destroy())
         powerUp[l].x = -256;
         spawn[powerUp[l].oldx][powerUp[l].oldy]=0;
         created[powerUp[l].oldx][powerUp[l].oldy]=false;
@@ -187,7 +188,9 @@ class World {
       }
     }
   }
-  //Draw the game
+    ///////////////////////////////////////////////////////////////////
+    ////////////////////////////Draws the game world///////////////////
+    ///////////////////////////////////////////////////////////////////
   void draw() {
     player.draw();
     camera.draw();
@@ -216,7 +219,10 @@ class World {
     text("Score:" + score, 10, 80);
   }
 
-  ///////////////RANDOM GENERATION CODE///////////////
+    ///////////////////////////////////////////////////////////////////
+    ////////////////////////////RANDOM GENERATION//////////////////////
+    ///////////////////////////////////////////////////////////////////
+    /* Deze code plaatst onze items aan de hand van de lijst die we eerder hebben gemaakt.*/
   void generate(int startCount)
   {
     for (int y = startCount; y<startCount+16; y++)                      //index staat voor het getal waarop we beginnen met tellen. +8 want 8 rijen objects per scherm.
@@ -300,11 +306,11 @@ class World {
       leftOff = y;              //Dit is de Y waar het genereren de vorige keer ophield.
     }
   }
-
+    ///////////////////////////////////////////////////////////////////
+    ////////////////////////////RESET THE GAME/////////////////////////
+    ///////////////////////////////////////////////////////////////////
   void reset()
   {
-
-
     wolkid = 0; 
     cloudMax = 64; 
     itemMax = 32;   //Alle plaatsbare items initializen
