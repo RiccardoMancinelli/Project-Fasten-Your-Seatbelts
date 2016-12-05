@@ -1,6 +1,6 @@
 class Bird_Pick_Up {
   PImage img;
-  int x, y, w = 40, h = 50, oldy, oldx, originy = 10, movey = 0;
+  int x, y, w = 48, h = 48, oldy, oldx, originy = 10, movey = 0;
 
 
   void init() {
