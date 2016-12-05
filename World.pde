@@ -1,7 +1,7 @@
 class World {
 
   int wolkid = 0, cloudMax = 64, itemMax = 32;        //Alle plaatsbare items initializen
-  int nCloud = 0, nEnemy = 0, nPowerUp = 0, nBird = 0, waves = 500, leftOff = 0;
+  int nCloud = 0, nEnemy = 0, nPowerUp = 0, nBird = 0, waves = 1000, leftOff = 0;
   boolean alive = true;
   int[][] spawn = new int[8][waves];    //maakt 8 locaties aan waarop we dingen kunnen spawnen (hokjes van 80 pixels) en maakt in totaal ... waves 
   boolean[][] created = new boolean[8][waves];  //variable om te kijken of het object dat gemaakt moetst worden ook echt gemaakt is.
@@ -316,7 +316,7 @@ class World {
     leftOff = 0;
     alive = true;
 
-    player.init();
+    player.reset();
     camera.init();     
 
     for (int y = 0; y<waves; y++)

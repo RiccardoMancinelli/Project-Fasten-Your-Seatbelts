@@ -28,16 +28,34 @@ class Player {
     staticscrollsnelheid = 1;
   }
 
+  void reset() {
+    img = spr_player_stand_right;
+    dir = 0;
+    landed = false;
+    x = width/2;
+    y = height-12;
+    clr = color(255, 255, 255);
+    vx = 5;
+    vy = 0;
+    jumpspeed =10;
+    jetpackspeed = 4;
+    diameter = 20;
+    center = diameter/2;
+    maxSpeed = 8;
+    w=32;
+    h=32;
+    manaPowers=false;
+    staticscrollsnelheid = 1;
+  }
+
   void update() {
 
     //Resets powerups:
-
     if (timer > 0) {
       timer -= 1;
     }
     if (timer == 0)
     {
-
       timer = -1;
     }
     if (timer < 1 && maxmana >64)
@@ -45,12 +63,10 @@ class Player {
       maxmana -= 1;
     }
 
-    //
-
+    //Het scherm loopt. als de speler naar rechts loopt komt hij links weer tevoorschijn.
     if (x > width) {
       x = 1;
     }
-
     if (x < 0) {
       x = width;
     }
@@ -65,9 +81,6 @@ class Player {
 
     //scrollen versnellen
     staticscrollsnelheid = hoogte/2500 + 1;  //2500 kwadrateren elke keer dat deze code wordt verandert?
-    // text("SSCRSN:" +staticscrollsnelheid, 200, 64);
-    //text("SCRSN:" + scrollsnelheid, 200, 128);
-
 
     if (scrollsnelheid < staticscrollsnelheid) {
       scrollsnelheid = staticscrollsnelheid;
@@ -143,11 +156,8 @@ class Player {
     }
   }
 
-
   void draw() {
     img.resize(w, h);
     image(img, x-16, y-24);
-    //  fill(clr);
-    //ellipse(x,y,diameter,diameter);
   }
 }
