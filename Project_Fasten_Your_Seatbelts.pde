@@ -56,7 +56,7 @@ void draw() {
 void reset()
 {
   world.reset();
-  world.init();
+  //world.init();
 
   cameraSwitch = false;
   jumpDown = false;

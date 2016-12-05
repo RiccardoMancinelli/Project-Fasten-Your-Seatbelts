@@ -47,7 +47,6 @@ class World {
       cloud[i].init();
       cloud[i].x = -128;        //hides the unused clouds from view
       cloud[i].y = 0;
-      cloud[i].waarde =(int)(random(6));
     }
 
     for (int j=0; j<enemyMax; j++)
@@ -334,6 +333,10 @@ class World {
     waves = 500; 
     leftOff = 0;
     alive = true;
+    
+    player.init();
+    camera.init();     
+    
     for (int y = 0; y<waves; y++)
     {
       for (int x = 0; x<8; x++)
@@ -342,6 +345,11 @@ class World {
         created[x][y]=false;          //This resets the previous random generation if the player went game over first
       }
     }
+        for (int y = 0; y<waves; y+=4)
+    {
+      layouts(int(random(7)), y);    //spawns random level layout
+    }
+    
   }
 }
 /*

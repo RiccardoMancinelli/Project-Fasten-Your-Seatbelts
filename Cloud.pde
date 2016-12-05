@@ -1,7 +1,6 @@
 class Cloud {
   PImage img, img2;
   boolean jumpCloud = false;
-  int waarde;
 
   int x, y, w, h, origny, oldy, oldx;
   void init() {
@@ -13,12 +12,6 @@ class Cloud {
   void update() {
     y = origny + hoogte;
 
-    /*  
-     if (waarde == 1){
-     jumpCloud = true; 
-     } if(waarde < 1 || waarde > 1){
-     jumpCloud = false; 
-     }*/
   }
   void draw() {
     img.resize(w, h);
