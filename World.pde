@@ -234,7 +234,7 @@ class World {
   {
     for (int y = startCount; y<startCount+16; y++)                      //index staat voor het getal waarop we beginnen met tellen. +8 want 8 rijen objects per scherm.
     {
-      for (int x = 0; x<8; x++)
+      for (int x = 0; x<39; x++)
       {
         //Spawning clouds.
         if (spawn[x][y] == 1 && created[x][y]==false)
