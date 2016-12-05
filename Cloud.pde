@@ -11,7 +11,10 @@ class Cloud {
   }
   void update() {
     y = origny + hoogte;
-
+  }
+  void reset() {
+      x = -128;        //hides the unused clouds from view
+      y = 0;
   }
   void draw() {
     img.resize(w, h);

@@ -15,6 +15,12 @@ class Enemy {
     d = 3;    //0 = squirrel left, 1 = squirrel right, 2 = static, 3 = standby
     speed = 4;
   }
+  void reset(){
+      d = 3;
+      x = -128;
+      origny = 0;
+  }
+  
   void update() {
 
     if (x > width) {

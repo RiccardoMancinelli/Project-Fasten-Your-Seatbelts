@@ -1,6 +1,6 @@
 class World {
 
-  int wolkid = 0, cloudMax = 64, enemyMax = 32, powerUpMax = 32, birdMax = 32;        //Alle plaatsbare items initializen
+  int wolkid = 0, cloudMax = 64, itemMax = 32;        //Alle plaatsbare items initializen
   int nCloud = 0, nEnemy = 0, nPowerUp = 0, nBird = 0, waves = 500, leftOff = 0;
   boolean alive = true;
   int[][] spawn = new int[8][waves];    //maakt 8 locaties aan waarop we dingen kunnen spawnen (hokjes van 80 pixels) en maakt in totaal ... waves 
@@ -9,9 +9,9 @@ class World {
   Player player = new Player();
   Camera camera = new Camera();
   Cloud [] cloud = new Cloud[cloudMax];
-  Enemy [] enemy = new Enemy[enemyMax];
-  Bird_Pick_Up [] bird = new Bird_Pick_Up[birdMax];
-  Power_up [] powerUp = new Power_up[powerUpMax];
+  Enemy [] enemy = new Enemy[itemMax];
+  Bird_Pick_Up [] bird = new Bird_Pick_Up[itemMax];
+  Power_up [] powerUp = new Power_up[itemMax];
 
 
 
@@ -49,30 +49,25 @@ class World {
       cloud[i].y = 0;
     }
 
-    for (int j=0; j<enemyMax; j++)
+    for (int j=0; j<itemMax; j++)
     {
       enemy[j] = new Enemy();
       enemy[j].init();
       enemy[j].d = 3;
       enemy[j].x = -128;
       enemy[j].origny = 0;
-    }
 
-    for (int k=0; k<birdMax; k++)
-    {
-      bird[k] = new Bird_Pick_Up();
-      bird[k].init();
-      bird[k].x = -128;
-      bird[k].y = 0;
-    }
+      bird[j] = new Bird_Pick_Up();
+      bird[j].init();
+      bird[j].x = -128;
+      bird[j].y = 0;
 
-    for (int l=0; l<powerUpMax; l++) {        //maakt de powerup aan.
-      powerUp[l] = new Power_up();
-      powerUp[l].init();
-      powerUp[l].x = -128;        //hides the unused powerups from view
-      powerUp[l].y = 0;
-      powerUp[l].oldx = 0;
-      powerUp[l].oldy = 0;
+      powerUp[j] = new Power_up();
+      powerUp[j].init();
+      powerUp[j].x = -128;        //hides the unused powerups from view
+      powerUp[j].y = 0;
+      powerUp[j].oldx = 0;
+      powerUp[j].oldy = 0;
     }
   }
 
@@ -90,17 +85,11 @@ class World {
     {
       cloud[i].update();
     }
-    for (int j=0; j<enemyMax; j++)
+    for (int j=0; j<itemMax; j++)
     {
       enemy[j].update();
-    }
-    for (int k=0; k<birdMax; k++)
-    {
-      bird[k].update();
-    }
-    for (int l=0; l<powerUpMax; l++)
-    {
-      powerUp[l].update();
+      bird[j].update();
+      powerUp[j].update();
     }
 
     ////////////////////////////Generation related/////////////////////
@@ -171,7 +160,7 @@ class World {
         //created[bird[j].oldx][bird[j].oldy]=false;
       }
     }
-    for (int l=0; l<powerUpMax; l++)
+    for (int l=0; l<itemMax; l++)
     {
 
       if (player.y < powerUp[l].y+powerUp[l].h && player.y > powerUp[l].y && player.x>powerUp[l].x && player.x< powerUp[l].x+ powerUp[l].w)  
@@ -190,7 +179,7 @@ class World {
     }
 
     /* Collision met enemy , enemy raakt, alive false player valt naar beneden */
-    for (int j = 0; j < enemyMax; j++) {
+    for (int j = 0; j < itemMax; j++) {
       if (player.y < enemy[j].y+enemy[j].h+10 && player.y > enemy[j].y && player.x>enemy[j].x && player.x<enemy[j].x+enemy[j].w && alive == true) 
       {
         alive = false; 
@@ -206,18 +195,13 @@ class World {
     {
       cloud[i].draw();
     }
-    for (int j=0; j<enemyMax; j++)
+    for (int j=0; j<itemMax; j++)
     {
       enemy[j].draw();
+      powerUp[j].draw();
+      bird[j].draw();
     }
-    for (int l=0; l<powerUpMax; l++)
-    {
-      powerUp[l].draw();
-    }
-    for (int k=0; k<birdMax; k++)
-    {
-      bird[k].draw();
-    }
+
     noStroke();
     fill(0, 180, 0); 
     rect(0, 464+hoogte, 640, 480-hoogte);  //tekent de grond
@@ -229,7 +213,7 @@ class World {
     fill(0, 0, 0);
     textSize(16);
     text("Hoogte:" +hoogte, 10, 64); 
-    text("Score:" + score, 10, 128);
+    text("Score:" + score, 10, 80);
   }
 
   ///////////////RANDOM GENERATION CODE///////////////
@@ -259,7 +243,7 @@ class World {
         if (spawn[x][y] == 2 && created[x][y]==false)
         {
 
-          if (nEnemy==enemyMax) {
+          if (nEnemy==itemMax) {
             nEnemy=0;
           }
           enemy[nEnemy].x = x*80;
@@ -272,7 +256,7 @@ class World {
         if (spawn[x][y] == 3 && created[x][y]==false)
         {
 
-          if (nPowerUp==powerUpMax) {
+          if (nPowerUp==itemMax) {
             nPowerUp=0;
           }
           powerUp[nPowerUp].oldy = y;
@@ -302,7 +286,7 @@ class World {
         if (spawn[x][y] == 5 && created[x][y]==false)
         {
 
-          if (nBird==birdMax) {
+          if (nBird==itemMax) {
             nBird=0;
           }
           bird[nBird].oldy = y;
@@ -323,9 +307,7 @@ class World {
 
     wolkid = 0; 
     cloudMax = 64; 
-    enemyMax = 32;  
-    powerUpMax = 32;  
-    birdMax = 32;        //Alle plaatsbare items initializen
+    itemMax = 32;   //Alle plaatsbare items initializen
     nCloud = 0; 
     nEnemy = 0; 
     nPowerUp = 0; 
@@ -333,10 +315,10 @@ class World {
     waves = 500; 
     leftOff = 0;
     alive = true;
-    
+
     player.init();
     camera.init();     
-    
+
     for (int y = 0; y<waves; y++)
     {
       for (int x = 0; x<8; x++)
@@ -345,11 +327,23 @@ class World {
         created[x][y]=false;          //This resets the previous random generation if the player went game over first
       }
     }
-        for (int y = 0; y<waves; y+=4)
+    for (int y = 0; y<waves; y+=4)
     {
       layouts(int(random(7)), y);    //spawns random level layout
     }
-    
+
+    for (int i=0; i<cloudMax; i++)
+    {        //maakt de wolken aan.
+      cloud[i].x = -128;        //hides the unused clouds from view
+      cloud[i].y = 0;
+    }
+
+    for (int j=0; j<itemMax; j++)
+    {
+      enemy[j].reset();
+      bird[j].reset();
+      powerUp[j].reset();
+    }
   }
 }
 /*

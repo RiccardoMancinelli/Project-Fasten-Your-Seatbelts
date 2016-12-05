@@ -12,6 +12,11 @@ class Bird_Pick_Up {
     y = originy + hoogte + movey;
   }
 
+  void reset() {
+    x = -128;
+    y = 0;
+  }
+
   void draw() {
     img.resize(w, h);
     image(img, x, y);
