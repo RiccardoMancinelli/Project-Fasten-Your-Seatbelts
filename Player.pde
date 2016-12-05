@@ -2,7 +2,7 @@ class Player {
   int x, y, w, h; // Position
   float clr, vx, vy, jumpspeed, center, diameter, jetpackspeed, maxSpeed, dir, timer; // Size
   boolean landed, manaPowers, bounce; 
-  PImage img, spr_player_stand_left, spr_player_stand_right;
+  PImage img, spr_player_stand_left, spr_player_stand_right,spr_player_jump_right,spr_player_jump_left, spr_player_dead;
 
 
 
@@ -10,6 +10,10 @@ class Player {
     //Loads all the sprites
     spr_player_stand_left = loadImage("player_stand_left.png");
     img = spr_player_stand_right = loadImage("player_stand_right.png");
+    spr_player_jump_left = loadImage("player_jump_left.png");
+    spr_player_jump_right = loadImage("player_jump_right.png");
+    spr_player_dead = loadImage("player_dead.png");
+
 
     landed = false;
     x = width/2;
@@ -97,11 +101,13 @@ class Player {
       }   
       //change sprites
       if (rightDown && dir == 1) {
-        img = spr_player_stand_right; 
+          if (landed == true  && world.alive == true){img = spr_player_stand_right;}
+          if (landed == false && world.alive == true){img = spr_player_jump_right;}
         dir = 0;
       } else
         if (leftDown && dir == 0) {
-          img = spr_player_stand_left; 
+          if (landed == true && world.alive == true){img = spr_player_stand_left;}
+          if (landed == false && world.alive == true){img = spr_player_jump_left;}
           dir = 1;
         }    
       //springen
@@ -114,6 +120,8 @@ class Player {
       } 
       if (jumpDown && landed == true) {
         vy = -jumpspeed+scrollsnelheid; 
+          if (dir == 1 && world.alive == true){img = spr_player_jump_left;}
+          if (dir == 0 && world.alive == true){img = spr_player_jump_right;}
         landed = false;
       }
       //zwaartekracht als je niet geland bent.
@@ -134,6 +142,8 @@ class Player {
         vy = 0; 
         y=height-26+hoogte; 
         landed = true;
+          if (dir == 1 && world.alive == true){img = spr_player_stand_left;}
+          if (dir == 0 && world.alive == true){img = spr_player_stand_right;}
       }
 
 

@@ -5,12 +5,12 @@ class Enemy {
 
   int x, y, w, h, origny, d, speed, h2;
   void init() {
-    w = 80;
-    h = 30;
+    w = 46;
+    h = 59;
     h2 = 80;
     img = loadImage("flyingsquirrel.png");
     img2 = loadImage("flyingsquirrel2.png");
-    img3 = loadImage("dogstatic.png");
+    img3 = loadImage("enemy_one.png");
     //d = int(random(3));
     d = 3;    //0 = squirrel left, 1 = squirrel right, 2 = static, 3 = standby
     speed = 4;

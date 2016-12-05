@@ -1,6 +1,6 @@
 class World {
 
-  int wolkid = 0, cloudMax = 64, itemMax = 32;        //Alle plaatsbare items initializen
+  int wolkid = 0, cloudMax = 64, itemMax = 32, totalLevels = 7;        //Alle plaatsbare items initializen
   int nCloud = 0, nEnemy = 0, nPowerUp = 0, nBird = 0, waves = 1000, leftOff = 0;
   boolean alive = true;
   int[][] spawn = new int[8][waves];    //maakt 8 locaties aan waarop we dingen kunnen spawnen (hokjes van 80 pixels) en maakt in totaal ... waves 
@@ -28,10 +28,10 @@ class World {
         created[x][y]=false;          //This resets the previous random generation if the player went game over first
       }
     }
-
-    for (int y = 0; y<waves; y+=4)
+    layouts(0, 0);    //Maakt elke eerste scherm dezelfde layout
+    for (int y = 4; y<waves; y+=4)
     {
-      layouts(int(random(7)), y);    //spawns random level layout
+      layouts(int(random(totalLevels))+1, y);    //spawns random level layout
     }
 
     ///////////////////////////////////////////////////////////////////
@@ -108,6 +108,12 @@ class World {
       {
         if  (cloud[i].jumpCloud == false )  
         {
+          if (player.dir == 1) {
+            player.img = player.spr_player_stand_left;
+          }
+          if (player.dir == 0) {
+            player.img = player.spr_player_stand_right;
+          }
           player.landed = true;  
           player.vy = 0; 
           wolkid = i; 
@@ -185,12 +191,13 @@ class World {
       {
         alive = false; 
         cameraSwitch = false;
+        player.img = player.spr_player_dead;
       }
     }
   }
-    ///////////////////////////////////////////////////////////////////
-    ////////////////////////////Draws the game world///////////////////
-    ///////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////
+  ////////////////////////////Draws the game world///////////////////
+  ///////////////////////////////////////////////////////////////////
   void draw() {
     player.draw();
     camera.draw();
@@ -219,10 +226,10 @@ class World {
     text("Score:" + score, 10, 80);
   }
 
-    ///////////////////////////////////////////////////////////////////
-    ////////////////////////////RANDOM GENERATION//////////////////////
-    ///////////////////////////////////////////////////////////////////
-    /* Deze code plaatst onze items aan de hand van de lijst die we eerder hebben gemaakt.*/
+  ///////////////////////////////////////////////////////////////////
+  ////////////////////////////RANDOM GENERATION//////////////////////
+  ///////////////////////////////////////////////////////////////////
+  /* Deze code plaatst onze items aan de hand van de lijst die we eerder hebben gemaakt.*/
   void generate(int startCount)
   {
     for (int y = startCount; y<startCount+16; y++)                      //index staat voor het getal waarop we beginnen met tellen. +8 want 8 rijen objects per scherm.
@@ -252,7 +259,7 @@ class World {
           if (nEnemy==itemMax) {
             nEnemy=0;
           }
-          enemy[nEnemy].x = x*80;
+          enemy[nEnemy].x = x*80 + (80-enemy[nEnemy].w)/2; //the '+ (80-enemywidth)/2' puts enemy in the middle of the grid.;
           enemy[nEnemy].origny = height-50-(128*y);
           created[x][y]=true; 
           enemy[nEnemy].d=2;
@@ -267,7 +274,7 @@ class World {
           }
           powerUp[nPowerUp].oldy = y;
           powerUp[nPowerUp].oldx = x;
-          powerUp[nPowerUp].x = x*80;
+          powerUp[nPowerUp].x = x*80+ (80-powerUp[nPowerUp].w)/2;
           powerUp[nPowerUp].origny = height-50-(128*y);
           created[x][y]=true; 
           nPowerUp+=1;
@@ -297,7 +304,7 @@ class World {
           }
           bird[nBird].oldy = y;
           bird[nBird].oldx = x;
-          bird[nBird].x = x*80;
+          bird[nBird].x = x*80+ (80- bird[nBird].w)/2;
           bird[nBird].originy = height-50-(128*y);
           created[x][y]=true; 
           nBird+=1;
@@ -306,9 +313,9 @@ class World {
       leftOff = y;              //Dit is de Y waar het genereren de vorige keer ophield.
     }
   }
-    ///////////////////////////////////////////////////////////////////
-    ////////////////////////////RESET THE GAME/////////////////////////
-    ///////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////
+  ////////////////////////////RESET THE GAME/////////////////////////
+  ///////////////////////////////////////////////////////////////////
   void reset()
   {
     wolkid = 0; 
@@ -333,9 +340,10 @@ class World {
         created[x][y]=false;          //This resets the previous random generation if the player went game over first
       }
     }
-    for (int y = 0; y<waves; y+=4)
+        layouts(0, 0);    //Maakt elke eerste scherm dezelfde layout
+    for (int y = 4; y<waves; y+=4)
     {
-      layouts(int(random(7)), y);    //spawns random level layout
+      layouts(int(random(totalLevels)+1), y);    //spawns random level layout
     }
 
     for (int i=0; i<cloudMax; i++)
