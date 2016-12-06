@@ -161,7 +161,7 @@ class World {
 
       if (player.y < bird[j].y+bird[j].h && player.y > bird[j].y && player.x>bird[j].x && player.x< bird[j].x+ bird[j].w)  
       {
-        score += 50;
+        score += 500;
         bird[j].x = -125;        //verbergt de item uit het scherm. (Alternatief van instance_Destroy())
         bird[j].movey=0;
         spawn[bird[j].oldx][bird[j].oldy]=0;
@@ -173,7 +173,7 @@ class World {
 
       if (player.y < powerUp[l].y+powerUp[l].h && player.y > powerUp[l].y && player.x>powerUp[l].x && player.x< powerUp[l].x+ powerUp[l].w)  
       {
-        score += 50;
+        score += 200;
         powerUp[l].x = -256;
         spawn[powerUp[l].oldx][powerUp[l].oldy]=0;
         created[powerUp[l].oldx][powerUp[l].oldy]=false;
@@ -193,6 +193,7 @@ class World {
         alive = false; 
         cameraSwitch = false;
         player.img = player.spr_player_dead;
+        file1.play();
       }
     }
   }
@@ -224,7 +225,7 @@ class World {
     fill(0, 0, 0);
     textSize(16);
     text("Hoogte:" +hoogte, 10, 64); 
-    text("Score:" + score, 10, 80);
+    text("Score:" + (score + hoogte), 10, 80);
   }
 
   ///////////////////////////////////////////////////////////////////
