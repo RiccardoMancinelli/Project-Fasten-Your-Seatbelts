@@ -1,6 +1,6 @@
 class World {
 
-  int wolkid = 0, cloudMax = 64, itemMax = 32, totalLevels = 7;        //Alle plaatsbare items initializen
+  int wolkid = 0, cloudMax = 64, itemMax = 32, totalLevels = 38;        //Alle plaatsbare items initializen
   int nCloud = 0, nEnemy = 0, nPowerUp = 0, nBird = 0, waves = 1000, leftOff = 0;
   boolean alive = true;
   int[][] spawn = new int[8][waves];    //maakt 8 locaties aan waarop we dingen kunnen spawnen (hokjes van 80 pixels) en maakt in totaal ... waves 
@@ -234,7 +234,7 @@ class World {
   {
     for (int y = startCount; y<startCount+16; y++)                      //index staat voor het getal waarop we beginnen met tellen. +8 want 8 rijen objects per scherm.
     {
-      for (int x = 0; x<39; x++)
+      for (int x = 0; x<8; x++)
       {
         //Spawning clouds.
         if (spawn[x][y] == 1 && created[x][y]==false)
