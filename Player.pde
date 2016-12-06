@@ -162,7 +162,9 @@ class Player {
     if (y>height+64 && room == 0)
     {
       score += hoogte;
+      respawnTimer = 30;
       room = 1;
+      
     }
   }
 
