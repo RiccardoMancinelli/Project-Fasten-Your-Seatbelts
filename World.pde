@@ -179,6 +179,7 @@ class World {
         created[powerUp[l].oldx][powerUp[l].oldy]=false;
         mana = maxmana = 128;
         player.timer = 600;
+        file.play();
       }
     }
     if (player.y < height/2 && cameraSwitch == false && alive == true ) {        //activeert de camera
