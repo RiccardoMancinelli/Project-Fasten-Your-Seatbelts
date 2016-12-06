@@ -9,8 +9,12 @@ float scrollsnelheid = 0, staticscrollsnelheid, respawnTimer;
 boolean cameraSwitch = false;      //kijkt of het scherm moet gaan scrollen
 import processing.sound.*;
 SoundFile file;
+
+SoundFile file1;
 void setup() {
   file = new SoundFile(this, "Powerup_gunpowder.wav");
+  file1 = new SoundFile(this, "player_dead.wav");
+
   size(640, 480);
   if (room == 0)         //Als de room 0 is (dus het game scherm)
   { 
