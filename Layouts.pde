@@ -651,6 +651,78 @@ world.spawn[7][y + 0] = 1;
 }
 ///////////////////////////////////////////////////
 
+//////////////LEVEL LAYOUT NUMBER: 39////////////////
+if (selected == 39){
+world.spawn[1][y + 3] = 1;
+world.spawn[2][y + 3] = 1;
+world.spawn[4][y + 3] = 1;
+world.spawn[7][y + 3] = 1;
+world.spawn[2][y + 2] = 5;
+world.spawn[4][y + 2] = 5;
+world.spawn[1][y + 1] = 1;
+world.spawn[3][y + 1] = 1;
+world.spawn[5][y + 1] = 1;
+world.spawn[2][y + 0] = 4;
+world.spawn[4][y + 0] = 4;
+}
+///////////////////////////////////////////////////
+
+//////////////LEVEL LAYOUT NUMBER: 40////////////////
+if (selected == 40){
+world.spawn[1][y + 3] = 1;
+world.spawn[4][y + 3] = 2;
+world.spawn[5][y + 3] = 2;
+world.spawn[7][y + 3] = 1;
+world.spawn[2][y + 2] = 5;
+world.spawn[3][y + 2] = 5;
+world.spawn[6][y + 2] = 1;
+world.spawn[1][y + 1] = 2;
+world.spawn[5][y + 1] = 1;
+world.spawn[0][y + 0] = 1;
+world.spawn[2][y + 0] = 1;
+world.spawn[5][y + 0] = 3;
+world.spawn[6][y + 0] = 1;
+}
+///////////////////////////////////////////////////
+
+//////////////LEVEL LAYOUT NUMBER: 41////////////////
+if (selected == 41){
+world.spawn[1][y + 3] = 5;
+world.spawn[2][y + 3] = 5;
+world.spawn[3][y + 3] = 4;
+world.spawn[7][y + 3] = 5;
+world.spawn[1][y + 2] = 1;
+world.spawn[5][y + 2] = 4;
+world.spawn[6][y + 2] = 2;
+world.spawn[2][y + 1] = 2;
+world.spawn[4][y + 1] = 3;
+world.spawn[5][y + 1] = 2;
+world.spawn[1][y + 0] = 1;
+world.spawn[2][y + 0] = 1;
+world.spawn[4][y + 0] = 1;
+world.spawn[6][y + 0] = 1;
+world.spawn[7][y + 0] = 1;
+}
+///////////////////////////////////////////////////
+
+//////////////LEVEL LAYOUT NUMBER: 42////////////////
+if (selected == 42){
+world.spawn[1][y + 3] = 2;
+world.spawn[2][y + 3] = 2;
+world.spawn[3][y + 3] = 2;
+world.spawn[5][y + 3] = 5;
+world.spawn[6][y + 3] = 5;
+world.spawn[7][y + 3] = 1;
+world.spawn[0][y + 2] = 2;
+world.spawn[5][y + 2] = 4;
+world.spawn[2][y + 1] = 1;
+world.spawn[7][y + 1] = 2;
+world.spawn[0][y + 0] = 1;
+world.spawn[4][y + 0] = 2;
+world.spawn[6][y + 0] = 2;
+}
+///////////////////////////////////////////////////
+
 
 
   
