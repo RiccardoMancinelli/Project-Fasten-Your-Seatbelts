@@ -1,7 +1,5 @@
 //Deze code zorgt dat alles wordt aangeroepen en werkt.
 
-//Zie USING SOUNDS in powerpoint van workshop
-
 World world = new World();
 Game_over game_over = new Game_over();
 
@@ -9,8 +7,10 @@ boolean leftDown, rightDown, jumpDown; //houd de speler de linker pijltjes toets
 int score, mana, maxmana, hoogte, room; //Hoe hoog de speler score is, de afstand die hij omhoog heeft gereisd en hoeveel mana hij nog kan gebruiken.
 float scrollsnelheid = 0, staticscrollsnelheid, respawnTimer;
 boolean cameraSwitch = false;      //kijkt of het scherm moet gaan scrollen
-
+import processing.sound.*;
+SoundFile file;
 void setup() {
+  file = new SoundFile(this, "Powerup_gunpowder.wav");
   size(640, 480);
   if (room == 0)         //Als de room 0 is (dus het game scherm)
   { 

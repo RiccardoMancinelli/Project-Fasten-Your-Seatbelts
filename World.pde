@@ -1,5 +1,5 @@
 class World {
-
+  
   int wolkid = 0, cloudMax = 64, itemMax = 32, totalLevels = 38;        //Alle plaatsbare items initializen
   int nCloud = 0, nEnemy = 0, nPowerUp = 0, nBird = 0, waves = 1000, leftOff = 0;
   boolean alive = true;
@@ -12,11 +12,9 @@ class World {
   Enemy [] enemy = new Enemy[itemMax];
   Bird_Pick_Up [] bird = new Bird_Pick_Up[itemMax];
   Power_up [] powerUp = new Power_up[itemMax];
-
-
-
+  
   void init() {
-
+    
     ///////////////////////////////////////////////////////////////////
     ///////////////////Random generation///////////////////////////////
     /////////////////////////////////////////////////////////////////// 
@@ -179,6 +177,7 @@ class World {
         created[powerUp[l].oldx][powerUp[l].oldy]=false;
         mana = maxmana = 128;
         player.timer = 600;
+        file.play();
       }
     }
     if (player.y < height/2 && cameraSwitch == false && alive == true ) {        //activeert de camera
