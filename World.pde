@@ -105,7 +105,7 @@ class World {
     {
       if (player.y < cloud[i].y+12 && player.y > cloud[i].y && player.x>cloud[i].x && player.x<cloud[i].x+cloud[i].w+1 && player.vy >=0 && player.landed == false)
       {
-        if  (cloud[i].jumpCloud == false )  
+        if  (cloud[i].specialCloud == 0 )  
         {
           if (player.dir == 1) {
             player.img = player.spr_player_stand_left;
@@ -118,7 +118,8 @@ class World {
           wolkid = i; 
           player.bounce = false;
         }
-        if  (cloud[i].jumpCloud == true)  
+        // jump cloud
+        if  (cloud[i].specialCloud == 1)  
         { 
           if (player.dir == 1) {
             player.img = player.spr_player_stand_left;
@@ -141,6 +142,17 @@ class World {
             player.bounce = false;
           }
         }
+       // moving cloud
+        if  (cloud[i].specialCloud == 2)  
+        { 
+          player.vy = 0; 
+          wolkid = i; 
+          mana = maxmana; 
+          player.landed = true; 
+          
+        }
+        
+      } 
       }
 
 
@@ -148,7 +160,7 @@ class World {
       {
         player.landed = false;
       }
-    }
+    
 
 
     if (player.y < height/2 && cameraSwitch == false && alive == true) {        //activeert de camera
@@ -253,7 +265,7 @@ class World {
           cloud[nCloud].origny = height-65-(128*y);
           cloud[nCloud].oldy = y;
           cloud[nCloud].oldx = x;
-          cloud[nCloud].jumpCloud = false; 
+          cloud[nCloud].specialCloud = 0; 
           created[x][y]=true; 
 
           nCloud+=1;
@@ -296,11 +308,28 @@ class World {
           cloud[nCloud].origny = height-65-(128*y);
           cloud[nCloud].oldy = y;
           cloud[nCloud].oldx = x;
-          cloud[nCloud].jumpCloud = true; 
+          cloud[nCloud].specialCloud = 1; 
           created[x][y]=true; 
 
           nCloud+=1;
         }
+        // Spawning Move clouds
+        if (spawn[x][y] == 5 && created[x][y]==false)
+        {
+
+          if (nCloud==cloudMax) {
+            nCloud=0;
+          }
+
+          cloud[nCloud].x = x*80;  
+          cloud[nCloud].origny = height-(128*y);//height-50-(128*y);
+          cloud[nCloud].oldy = y; // x en y in de tabel (level editor), niet laten bewegen 
+          cloud[nCloud].oldx = x; // niet laten bewegen 
+          cloud[nCloud].specialCloud = 2; // 2 variabelen start/end , 1 om bewegend te maken velocity
+          created[x][y]=true; 
+
+          nCloud+=1;
+        
         //Spawning Birds
         if (spawn[x][y] == 5 && created[x][y]==false)
         {
@@ -317,6 +346,7 @@ class World {
         }
       }
       leftOff = y;              //Dit is de Y waar het genereren de vorige keer ophield.
+      }
     }
   }
   ///////////////////////////////////////////////////////////////////
