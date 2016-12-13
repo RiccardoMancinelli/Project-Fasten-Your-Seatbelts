@@ -124,6 +124,15 @@ class Player {
           if (dir == 0 && world.alive == true){img = spr_player_jump_right;}
         landed = false;
       }
+      //Jumpcloud
+              if (jumpDown == true && bounce == true) 
+          { 
+          vy = -15; 
+          mana = maxmana; 
+         landed = false;
+          bounce = false;
+          }
+      
       //zwaartekracht als je niet geland bent.
       if (landed == false) {
         vy += 0.5;
