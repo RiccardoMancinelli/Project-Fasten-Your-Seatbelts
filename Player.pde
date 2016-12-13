@@ -1,8 +1,8 @@
 class Player {  
   int x, y, w, h; // Position
-  float clr, vx, vy, jumpspeed, center, diameter, jetpackspeed, maxSpeed, dir, timer; // Size
-  boolean landed, manaPowers, bounce; 
-  PImage img, spr_player_stand_left, spr_player_stand_right,spr_player_jump_right,spr_player_jump_left, spr_player_dead;
+  float clr, vx, vy, jumpspeed, center, diameter, jetpackspeed, maxSpeed, dir, timer, timer2; // Size
+  boolean landed, manaPowers, bounce, shield, life; 
+  PImage img, spr_player_stand_left, spr_player_stand_right,spr_player_jump_right,spr_player_jump_left, spr_player_dead, barrier;
 
 
 
@@ -13,6 +13,7 @@ class Player {
     spr_player_jump_left = loadImage("player_jump_left.png");
     spr_player_jump_right = loadImage("player_jump_right.png");
     spr_player_dead = loadImage("player_dead.png");
+    barrier = loadImage("barrier.png");
 
 
     landed = false;
@@ -29,6 +30,7 @@ class Player {
     w=32;
     h=32;
     manaPowers=false;
+    shield = false;
     staticscrollsnelheid = 1;
   }
 
@@ -49,12 +51,14 @@ class Player {
     w=32;
     h=32;
     manaPowers=false;
+    shield = false;
     staticscrollsnelheid = 1;
   }
 
   void update() {
 
     //Resets powerups:
+    //timer jetpack
     if (timer > 0) {
       timer -= 1;
     }
@@ -65,6 +69,18 @@ class Player {
     if (timer < 1 && maxmana >64)
     {
       maxmana -= 1;
+    }
+    //timer shield
+    if (timer2 > 0) {
+      timer2 -= 1;
+    }
+    if (timer2 == 0)
+    {
+      timer2 = -1;
+    }
+    if (timer2 < 1 && shield == true)
+    {
+      shield = false;
     }
 
     //Het scherm loopt. als de speler naar rechts loopt komt hij links weer tevoorschijn.
@@ -109,34 +125,18 @@ class Player {
           if (landed == true && world.alive == true){img = spr_player_stand_left;}
           if (landed == false && world.alive == true){img = spr_player_jump_left;}
           dir = 1;
-        }    
-      //springen
-      if (manaPowers==true && jumpDown && landed == false) {  //nakijken, want waarom?????
-        vy = -jetpackspeed+scrollsnelheid;
-      } 
-      //jumpcloud
-          if (jumpDown == true && bounce == true) 
-          { 
-            vy = -15;
-            mana = maxmana; 
-            landed = false;
-            bounce = false;
+        }
 
-          if (dir == 1) {
-            img = spr_player_stand_left;
-          }
-          if (dir == 0) {
-            img = spr_player_stand_right;
-          }
-          }
-      
-      
-      if (manaPowers==false && mana > 0 && jumpDown && landed == false && vy >-2) {
+      //springen
+      if (manaPowers==true && jumpDown && landed == false) { 
+        vy = -jetpackspeed+scrollsnelheid;
+      }
+      if (manaPowers==false && mana > 0 && jumpDown && landed == false && bounce == false && vy >-2) {
         mana -= 1; 
         vy = -jetpackspeed+scrollsnelheid;
       } 
       if (jumpDown && landed == true) {
-        if (bounce == false){vy = -jumpspeed+scrollsnelheid; }
+        vy = -jumpspeed+scrollsnelheid; 
           if (dir == 1 && world.alive == true){img = spr_player_jump_left;}
           if (dir == 0 && world.alive == true){img = spr_player_jump_right;}
         landed = false;
@@ -184,9 +184,12 @@ class Player {
       
     }
   }
-
   void draw() {
-    img.resize(w, h);
+      img.resize(w, h);
+    if (shield == true){
+         image(barrier, x-16, y-24);
+        }
+    
     image(img, x-16, y-24);
   }
 }
