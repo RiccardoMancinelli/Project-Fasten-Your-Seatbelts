@@ -176,8 +176,9 @@ class World {
         powerUp[l].x = -256;
         spawn[powerUp[l].oldx][powerUp[l].oldy]=0;
         created[powerUp[l].oldx][powerUp[l].oldy]=false;
-        mana = maxmana = 128;
-        player.timer = 600;
+        
+        if (powerUp[l].powerID == 1){ player.timer = 600; mana = maxmana = 128;} //jetpack
+         if (powerUp[l].powerID == 2){player.timer2 = 300; player.shield = true;} //schild
         file.play();
       }
     }
@@ -186,8 +187,8 @@ class World {
     }
 
     /* Collision met enemy , enemy raakt, alive false player valt naar beneden */
-    for (int j = 0; j < itemMax; j++) {
-      if (player.y < enemy[j].y+enemy[j].h+10 && player.y > enemy[j].y && player.x>enemy[j].x && player.x<enemy[j].x+enemy[j].w && alive == true) 
+    for (int j = 0; j < itemMax; j++) { 
+     if (player.y < enemy[j].y+enemy[j].h+10 && player.y > enemy[j].y && player.x>enemy[j].x && player.x<enemy[j].x+enemy[j].w && alive == true && player.shield == false) 
       {
         alive = false; 
         cameraSwitch = false;
@@ -196,6 +197,7 @@ class World {
       }
     }
   }
+  
   ///////////////////////////////////////////////////////////////////
   ////////////////////////////Draws the game world///////////////////
   ///////////////////////////////////////////////////////////////////
@@ -277,6 +279,7 @@ class World {
           powerUp[nPowerUp].oldx = x;
           powerUp[nPowerUp].x = x*80+ (80-powerUp[nPowerUp].w)/2;
           powerUp[nPowerUp].origny = height-50-(128*y);
+          powerUp[nPowerUp].powerID = 2;
           created[x][y]=true; 
           nPowerUp+=1;
         }
@@ -361,6 +364,8 @@ class World {
     }
   }
 }
+
+    
 /*
 boolean collisionCheck(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2)        //Doet alle collision checking.
  {
