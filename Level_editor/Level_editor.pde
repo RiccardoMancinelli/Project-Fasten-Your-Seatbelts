@@ -2,10 +2,10 @@
 
 // Er zijn meerdere objecten waar we op dit moment druk mee bezig zijn, zoals de enemy en de Bird_Pick_Up
 int itemMax = 32, index = 0, fileNumber = 0, alarm=60;
-int[][] spawn = new int[8][4];    //maakt 8 locaties aan waarop we dingen kunnen spawnen (hokjes van 80 pixels) en maakt in totaal ... waves 
-int[][] objectIndex = new int[8][4];
+int[][] spawn = new int[11][4];    //maakt 8 locaties aan waarop we dingen kunnen spawnen (hokjes van 80 pixels) en maakt in totaal ... waves 
+int[][] objectIndex = new int[11][4];
 int tempIndex;
-boolean[][] created = new boolean[8][4];    //maakt 8 locaties aan waarop we dingen kunnen spawnen (hokjes van 80 pixels) en maakt in totaal ... waves 
+boolean[][] created = new boolean[11][4];    //maakt 8 locaties aan waarop we dingen kunnen spawnen (hokjes van 80 pixels) en maakt in totaal ... waves 
 boolean[] available = new boolean[32];      //kijkt of we de items kunnen gebruiken.
 boolean checked = false, exported = false, enterDown = false;
 Item [] item = new Item[itemMax];
@@ -15,7 +15,7 @@ String[] list = new String[32];
 
 
 void setup() {
-  size(640, 480);
+  size(880, 495);
   
   
   
@@ -28,7 +28,7 @@ void setup() {
     }
        for (int y = 0; y<4; y++)
     {
-        for (int x = 0; x<8; x++)
+        for (int x = 0; x<11; x++)
         {
          spawn[x][y]=0;    //spawn 1 = wolk, spawn 0 = niets, spawn 2 = enemy etc etc
         }
@@ -69,7 +69,7 @@ void update() {
          export += "if (selected == "+ fileNumber +"){!";
        for (int y = 0; y<4; y++)
       {
-        for (int x = 0; x<8; x++)
+        for (int x = 0; x<11; x++)
         {
           if (spawn[x][y] != 0)
           {
@@ -102,7 +102,7 @@ void update() {
   
        for (int y = 0; y<4; y++)
     {
-        for (int x = 0; x<8; x++)
+        for (int x = 0; x<11; x++)
         {
           checked = checkMouse(x, y);
           if (checked == true)
@@ -159,7 +159,7 @@ void draw() {
     }
     update();
   
-  for(int x = 0; x < 8; x++)
+  for(int x = 0; x < 11; x++)
   {
     line(x*80, 0, x*80, height);
 

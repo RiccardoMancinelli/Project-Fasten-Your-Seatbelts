@@ -15,7 +15,7 @@ void setup() {
   file = new SoundFile(this, "Powerup_gunpowder.wav");
   file1 = new SoundFile(this, "player_dead.wav");
 
-  size(640, 480);
+  size(880, 495);
   if (room == 0)         //Als de room 0 is (dus het game scherm)
   { 
     mana = maxmana = 64;

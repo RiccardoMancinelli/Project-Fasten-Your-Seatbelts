@@ -1,11 +1,11 @@
 class World {
 
-  int wolkid = 0, cloudMax = 64, itemMax = 32, totalLevels = 67;        //Alle plaatsbare items initializen
+  int wolkid = 0, cloudMax = 64, itemMax = 32, totalLevels = 52;        //Alle plaatsbare items initializen
 
-  int nCloud = 0, nEnemy = 0, nPowerUp = 0, nBird = 0, waves = 1000, leftOff = 0;
+  int nCloud = 0, nEnemy = 0, nPowerUp = 0, nBird = 0, waves = 1000, horizontalItems = 11, leftOff = 0;
   boolean alive = true;
-  int[][] spawn = new int[8][waves];    //maakt 8 locaties aan waarop we dingen kunnen spawnen (hokjes van 80 pixels) en maakt in totaal ... waves 
-  boolean[][] created = new boolean[8][waves];  //variable om te kijken of het object dat gemaakt moetst worden ook echt gemaakt is.
+  int[][] spawn = new int[horizontalItems][waves];    //maakt 8 locaties aan waarop we dingen kunnen spawnen (hokjes van 80 pixels) en maakt in totaal ... waves 
+  boolean[][] created = new boolean[horizontalItems][waves];  //variable om te kijken of het object dat gemaakt moetst worden ook echt gemaakt is.
 
   Player player = new Player();
   Camera camera = new Camera();
@@ -21,7 +21,7 @@ class World {
     /////////////////////////////////////////////////////////////////// 
     for (int y = 0; y<waves; y++)
     {
-      for (int x = 0; x<8; x++)
+      for (int x = 0; x<horizontalItems; x++)
       {
         spawn[x][y] = 0;
         created[x][y]=false;          //This resets the previous random generation if the player went game over first
@@ -215,7 +215,7 @@ class World {
 
     noStroke();
     fill(0, 180, 0); 
-    rect(0, 464+hoogte, 640, 480-hoogte);  //tekent de grond
+    rect(0, 476+hoogte, width, 495-hoogte);  //tekent de grond
 
     fill(0, 0, 0); 
     rect(16, 16, maxmana+1, 16);    //tekent de achtergrond van de mana bar op x=16, y=16, x2=64, y2=16
@@ -235,7 +235,7 @@ class World {
   {
     for (int y = startCount; y<startCount+16; y++)                      //index staat voor het getal waarop we beginnen met tellen. +8 want 8 rijen objects per scherm.
     {
-      for (int x = 0; x<8; x++)
+      for (int x = 0; x<horizontalItems; x++)
       {
         //Spawning clouds.
         if (spawn[x][y] == 1 && created[x][y]==false)
@@ -245,7 +245,7 @@ class World {
             nCloud=0;
           }
           cloud[nCloud].x = x*80;
-          cloud[nCloud].origny = height-50-(128*y);
+          cloud[nCloud].origny = height-65-(128*y);
           cloud[nCloud].oldy = y;
           cloud[nCloud].oldx = x;
           cloud[nCloud].jumpCloud = false; 
@@ -261,7 +261,7 @@ class World {
             nEnemy=0;
           }
           enemy[nEnemy].x = x*80 + (80-enemy[nEnemy].w)/2; //the '+ (80-enemywidth)/2' puts enemy in the middle of the grid.;
-          enemy[nEnemy].origny = height-50-(128*y);
+          enemy[nEnemy].origny = height-65-(128*y);
           created[x][y]=true; 
           enemy[nEnemy].d=2;
           nEnemy+=1;
@@ -276,7 +276,7 @@ class World {
           powerUp[nPowerUp].oldy = y;
           powerUp[nPowerUp].oldx = x;
           powerUp[nPowerUp].x = x*80+ (80-powerUp[nPowerUp].w)/2;
-          powerUp[nPowerUp].origny = height-50-(128*y);
+          powerUp[nPowerUp].origny = height-65-(128*y);
           created[x][y]=true; 
           nPowerUp+=1;
         }
@@ -288,7 +288,7 @@ class World {
             nCloud=0;
           }
           cloud[nCloud].x = x*80;
-          cloud[nCloud].origny = height-50-(128*y);
+          cloud[nCloud].origny = height-65-(128*y);
           cloud[nCloud].oldy = y;
           cloud[nCloud].oldx = x;
           cloud[nCloud].jumpCloud = true; 
@@ -306,7 +306,7 @@ class World {
           bird[nBird].oldy = y;
           bird[nBird].oldx = x;
           bird[nBird].x = x*80+ (80- bird[nBird].w)/2;
-          bird[nBird].originy = height-50-(128*y);
+          bird[nBird].originy = height-65-(128*y);
           created[x][y]=true; 
           nBird+=1;
         }
@@ -335,7 +335,7 @@ class World {
 
     for (int y = 0; y<waves; y++)
     {
-      for (int x = 0; x<8; x++)
+      for (int x = 0; x<horizontalItems; x++)
       {
         spawn[x][y] = 0;
         created[x][y]=false;          //This resets the previous random generation if the player went game over first
