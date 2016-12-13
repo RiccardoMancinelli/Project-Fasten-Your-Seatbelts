@@ -16,6 +16,10 @@ class Item{
     if (number == 3){img = loadImage("jetpack.png");}
     if (number == 4){img = loadImage("cloudjump.png");}
     if (number == 5){img = loadImage("bird.png");}
+    if (number == 6){img = loadImage("enemycloud.png");}
+    if (number == 7){img = loadImage("enemycloud.png");}
+    if (number == 8){img = loadImage("rocket.png");}
+    if (number == 9){img = loadImage("gunnercat.png");}
     placed = 0;
     }
   }

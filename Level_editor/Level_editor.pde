@@ -1,17 +1,17 @@
 //Hier komt alle code om de objecten uit ons spel te laden.
 
 // Er zijn meerdere objecten waar we op dit moment druk mee bezig zijn, zoals de enemy en de Bird_Pick_Up
-int itemMax = 32, index = 0, fileNumber = 0, alarm=60;
+int itemMax = 44, index = 0, fileNumber = 0, alarm=60;
 int[][] spawn = new int[11][4];    //maakt 8 locaties aan waarop we dingen kunnen spawnen (hokjes van 80 pixels) en maakt in totaal ... waves 
 int[][] objectIndex = new int[11][4];
 int tempIndex;
 boolean[][] created = new boolean[11][4];    //maakt 8 locaties aan waarop we dingen kunnen spawnen (hokjes van 80 pixels) en maakt in totaal ... waves 
-boolean[] available = new boolean[32];      //kijkt of we de items kunnen gebruiken.
+boolean[] available = new boolean[44];      //kijkt of we de items kunnen gebruiken.
 boolean checked = false, exported = false, enterDown = false;
 Item [] item = new Item[itemMax];
 int objectKeuze = 1;
 String export = "";
-String[] list = new String[32];
+String[] list = new String[44];
 
 
 void setup() {
@@ -113,7 +113,7 @@ void update() {
           
           if (checked == true && mousePressed && (mouseButton == LEFT) && spawn[x][y] == 0 && created[x][y] == false)
           {
-            for (int i = 0; i < 32; i++)
+            for (int i = 0; i < 44; i++)
             {
               if (available[i] == false)
               {
@@ -152,7 +152,7 @@ void update() {
 void draw() {
   background(255);
   
-         for (int i = 0; i<32; i++)
+         for (int i = 0; i<44; i++)
     {
   item[i].update();
 
