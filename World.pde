@@ -46,13 +46,14 @@ class World {
       cloud[i].init();
       cloud[i].x = -128;        //hides the unused clouds from view
       cloud[i].y = 0;
+      cloud[i].specialCloud = 0;
     }
 
     for (int j=0; j<itemMax; j++)
     {
       enemy[j] = new Enemy();
       enemy[j].init();
-      enemy[j].d = 3;
+      enemy[j].d = 7;
       enemy[j].x = -128;
       enemy[j].origny = 0;
 
@@ -133,15 +134,7 @@ class World {
           player.landed = true; 
           player.bounce = true;
         }
-        if (jumpDown == true && player.bounce == true) {
-          { 
-            player.vy = -15; 
-            wolkid = i; 
-            mana = maxmana; 
-            player.landed = false;
-            player.bounce = false;
-          }
-        }
+
        // moving cloud
         if  (cloud[i].specialCloud == 2)  
         { 
@@ -387,6 +380,7 @@ class World {
     {        //maakt de wolken aan.
       cloud[i].x = -128;        //hides the unused clouds from view
       cloud[i].y = 0;
+      cloud[i].specialCloud = 0;
     }
 
     for (int j=0; j<itemMax; j++)

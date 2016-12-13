@@ -114,6 +114,23 @@ class Player {
       if (manaPowers==true && jumpDown && landed == false) {  //nakijken, want waarom?????
         vy = -jetpackspeed+scrollsnelheid;
       } 
+      //jumpcloud
+          if (jumpDown == true && bounce == true) 
+          { 
+            vy = -15;
+            mana = maxmana; 
+            landed = false;
+            bounce = false;
+
+          if (dir == 1) {
+            img = spr_player_stand_left;
+          }
+          if (dir == 0) {
+            img = spr_player_stand_right;
+          }
+          }
+      
+      
       if (manaPowers==false && mana > 0 && jumpDown && landed == false && vy >-2) {
         mana -= 1; 
         vy = -jetpackspeed+scrollsnelheid;
