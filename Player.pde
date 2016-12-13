@@ -111,15 +111,15 @@ class Player {
           dir = 1;
         }    
       //springen
-      if (manaPowers==true && jumpDown && landed == false) { 
+      if (manaPowers==true && jumpDown && landed == false) {  //nakijken, want waarom?????
         vy = -jetpackspeed+scrollsnelheid;
-      }
-      if (manaPowers==false && mana > 0 && jumpDown && landed == false && bounce == false && vy >-2) {
+      } 
+      if (manaPowers==false && mana > 0 && jumpDown && landed == false && vy >-2) {
         mana -= 1; 
         vy = -jetpackspeed+scrollsnelheid;
       } 
       if (jumpDown && landed == true) {
-        vy = -jumpspeed+scrollsnelheid; 
+        if (bounce == false){vy = -jumpspeed+scrollsnelheid; }
           if (dir == 1 && world.alive == true){img = spr_player_jump_left;}
           if (dir == 0 && world.alive == true){img = spr_player_jump_right;}
         landed = false;

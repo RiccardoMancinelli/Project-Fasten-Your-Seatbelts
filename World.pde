@@ -120,10 +120,16 @@ class World {
         }
         if  (cloud[i].jumpCloud == true)  
         { 
-          player.vy = -4; 
+          if (player.dir == 1) {
+            player.img = player.spr_player_stand_left;
+          }
+          if (player.dir == 0) {
+            player.img = player.spr_player_stand_right;
+          }
+          player.vy = 0; 
           wolkid = i; 
           mana = maxmana; 
-          player.landed = false; 
+          player.landed = true; 
           player.bounce = true;
         }
         if (jumpDown == true && player.bounce == true) {
@@ -132,6 +138,7 @@ class World {
             wolkid = i; 
             mana = maxmana; 
             player.landed = false;
+            player.bounce = false;
           }
         }
       }
@@ -143,9 +150,7 @@ class World {
       }
     }
 
-    if (player.bounce == true && player.vy <-5) {
-      player.bounce = false;
-    }
+
     if (player.y < height/2 && cameraSwitch == false && alive == true) {        //activeert de camera
       cameraSwitch = true; 
       scrollsnelheid = 1;
@@ -329,6 +334,7 @@ class World {
     waves = 500; 
     leftOff = 0;
     alive = true;
+    player.bounce = false;
 
     player.reset();
     camera.init();     
