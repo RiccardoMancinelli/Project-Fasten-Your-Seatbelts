@@ -41,25 +41,34 @@ void update() {
   
       if(key == '1' && objectKeuze != 1){
         objectKeuze = 1;
-
       }
-      
       if(key == '2' && objectKeuze != 2){
         objectKeuze = 2; 
-
       }
       if(key == '3' && objectKeuze != 3){
         objectKeuze = 3; 
-
       }
       if(key == '4' && objectKeuze != 4){
         objectKeuze = 4; 
-
       }
       if(key == '5' && objectKeuze != 5){
         objectKeuze = 5; 
-
       }
+      if(key == '6' && objectKeuze != 6){
+        objectKeuze = 6; 
+      }
+      if(key == '7' && objectKeuze != 7){
+        objectKeuze = 7; 
+      }
+      if(key == '8' && objectKeuze != 8){
+        objectKeuze = 8; 
+      }
+      if(key == '9' && objectKeuze != 9){
+        objectKeuze = 9; 
+      }
+      //if(key == '0' && objectKeuze != 0){
+     //   objectKeuze = 10; 
+     // }
       
       
       if(enterDown && exported == false)
