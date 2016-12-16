@@ -323,7 +323,7 @@ class World {
           created[x][y]=true; 
 
           nCloud+=1;
-        
+        }
         //Spawning Birds
         if (spawn[x][y] == 5 && created[x][y]==false)
         {
@@ -339,7 +339,7 @@ class World {
           nBird+=1;
         }
                 //Spawning enemy cloud.
-        if (spawn[x][y] == 2 && created[x][y]==false)
+        if (spawn[x][y] == 6 && created[x][y]==false)
         {
 
           if (nEnemy==itemMax) {
@@ -348,11 +348,11 @@ class World {
           enemy[nEnemy].x = x*80 + (80-enemy[nEnemy].w)/2; //the '+ (80-enemywidth)/2' puts enemy in the middle of the grid.;
           enemy[nEnemy].origny = height-65-(128*y);
           created[x][y]=true; 
-          enemy[nEnemy].d=6;
+          enemy[nEnemy].d=3;
           nEnemy+=1;
         }
                 //Spawning moving enemy cloud.
-        if (spawn[x][y] == 2 && created[x][y]==false)
+        if (spawn[x][y] == 7 && created[x][y]==false)
         {
 
           if (nEnemy==itemMax) {
@@ -361,11 +361,11 @@ class World {
           enemy[nEnemy].x = x*80 + (80-enemy[nEnemy].w)/2; //the '+ (80-enemywidth)/2' puts enemy in the middle of the grid.;
           enemy[nEnemy].origny = height-65-(128*y);
           created[x][y]=true; 
-          enemy[nEnemy].d=7;
+          enemy[nEnemy].d=4;
           nEnemy+=1;
         }
                 //Spawning Rockets.
-        if (spawn[x][y] == 2 && created[x][y]==false)
+        if (spawn[x][y] == 8 && created[x][y]==false)
         {
 
           if (nEnemy==itemMax) {
@@ -374,14 +374,14 @@ class World {
           enemy[nEnemy].x = x*80 + (80-enemy[nEnemy].w)/2; //the '+ (80-enemywidth)/2' puts enemy in the middle of the grid.;
           enemy[nEnemy].origny = height-65-(128*y);
           created[x][y]=true; 
-          enemy[nEnemy].d=8;
+          enemy[nEnemy].d=5;
           nEnemy+=1;
         }
       }
       leftOff = y;              //Dit is de Y waar het genereren de vorige keer ophield.
       }
     }
-  }
+  
   ///////////////////////////////////////////////////////////////////
   ////////////////////////////RESET THE GAME/////////////////////////
   ///////////////////////////////////////////////////////////////////

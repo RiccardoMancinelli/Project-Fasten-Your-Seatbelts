@@ -24,7 +24,7 @@ class Enemy {
     img6 = loadImage("rocket.png");
     //img7 = loadImage("gunnercat.png); //nieuwe sprite nodig
     t = false;
-    d = 7;    //0 = squirrel left, 1 = squirrel right, 2 = staticcat, 3 = moving cloud, 4 = fakecloud, 5 = rocket, 6 = gunnercat, 7 = standby
+    d = 7;    //0 = squirrel left, 1 = squirrel right, 2 = staticcat, 3 = fakecloud, 4 = moving cloud, 5 = rocket, 6 = gunnercat, 7 = standby
     speed = 4;
   }
   void reset(){
@@ -50,7 +50,7 @@ class Enemy {
        origny=origny+speed;
     }
     
-    if (d==3){
+    if (d==4){
       if (t == true){
         x=x-speed/4;
         if (x==0){t = false;}
