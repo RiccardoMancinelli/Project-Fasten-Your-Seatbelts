@@ -52,6 +52,7 @@ void draw() {
   }
   if (room == 1 && jumpDown == true && respawnTimer == 0)
   {  
+    
     reset();        //Resets the game/room
   }
   if (respawnTimer > 0)

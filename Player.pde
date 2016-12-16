@@ -213,7 +213,9 @@ class Player {
     //speler uit het scherm moet naar gameover scherm
     if (y>height+64 && room == 0)
     {
-      score += hoogte;
+      highscores.addScore("Riccardo", (score += hoogte));
+      highscores.save("highscore.csv");
+      //highscores.load("highscore.csv");
       respawnTimer = 30;
       room = 1;
     }
