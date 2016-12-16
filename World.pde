@@ -338,6 +338,45 @@ class World {
           created[x][y]=true; 
           nBird+=1;
         }
+                //Spawning enemy cloud.
+        if (spawn[x][y] == 2 && created[x][y]==false)
+        {
+
+          if (nEnemy==itemMax) {
+            nEnemy=0;
+          }
+          enemy[nEnemy].x = x*80 + (80-enemy[nEnemy].w)/2; //the '+ (80-enemywidth)/2' puts enemy in the middle of the grid.;
+          enemy[nEnemy].origny = height-65-(128*y);
+          created[x][y]=true; 
+          enemy[nEnemy].d=6;
+          nEnemy+=1;
+        }
+                //Spawning moving enemy cloud.
+        if (spawn[x][y] == 2 && created[x][y]==false)
+        {
+
+          if (nEnemy==itemMax) {
+            nEnemy=0;
+          }
+          enemy[nEnemy].x = x*80 + (80-enemy[nEnemy].w)/2; //the '+ (80-enemywidth)/2' puts enemy in the middle of the grid.;
+          enemy[nEnemy].origny = height-65-(128*y);
+          created[x][y]=true; 
+          enemy[nEnemy].d=7;
+          nEnemy+=1;
+        }
+                //Spawning Rockets.
+        if (spawn[x][y] == 2 && created[x][y]==false)
+        {
+
+          if (nEnemy==itemMax) {
+            nEnemy=0;
+          }
+          enemy[nEnemy].x = x*80 + (80-enemy[nEnemy].w)/2; //the '+ (80-enemywidth)/2' puts enemy in the middle of the grid.;
+          enemy[nEnemy].origny = height-65-(128*y);
+          created[x][y]=true; 
+          enemy[nEnemy].d=8;
+          nEnemy+=1;
+        }
       }
       leftOff = y;              //Dit is de Y waar het genereren de vorige keer ophield.
       }
