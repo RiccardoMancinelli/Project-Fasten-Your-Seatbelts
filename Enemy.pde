@@ -5,7 +5,7 @@ class Enemy {
   PImage img4;
   PImage img5;
   PImage img6;
-  //PImage img7;
+  PImage img7;
 
   int x, y, w, h, origny, d, speed, h2, w2, w3, h3, spawnx;
   boolean t;
@@ -22,7 +22,8 @@ class Enemy {
     img4 = loadImage("cloud.png");//nieuwe sprite nodig
     img5 = loadImage("cloud.png");//nieuwe sprite nodig
     img6 = loadImage("rocket.png");
-    //img7 = loadImage("gunnercat.png); //nieuwe sprite nodig
+    img7 = loadImage("cat.jpg");
+    //img7 = 
     t = false;
     d = 7;    //0 = squirrel left, 1 = squirrel right, 2 = staticcat, 3 = fakecloud, 4 = moving cloud, 5 = rocket, 6 = gunnercat, 7 = standby
     speed = 4;
@@ -42,9 +43,7 @@ class Enemy {
     if (x < 0) {
       x = width;
     }   
-    /*if (d==6){
-       y=y+speed;
-    }*/   
+   
 
     if (d==5 && y >= 0){
        origny=origny+speed;
@@ -107,9 +106,9 @@ class Enemy {
       img6.resize(w2, h2);
       image(img6, x, y);
     }
-    /*if (d==6){
+    if (d==6){
       img7.resize(w, h2);
       image(img7, x, y);
-    }*/
+    }
   }  
 }
