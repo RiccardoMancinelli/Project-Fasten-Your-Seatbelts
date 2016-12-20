@@ -13,11 +13,11 @@ class Bullet{
     
     if (direction == 1)
     {
-     x += vx 
+     x += vx;
     }
     else if (direction == 0)
     {
-     x -= vx
+     x -= vx;
     }
     
   }

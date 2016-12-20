@@ -4,33 +4,32 @@ World world = new World();
 Game_over game_over = new Game_over();
 MainMenu mainMenu = new MainMenu();
 
-boolean leftDown, rightDown, jumpDown, selectUP, selectDown, xButton; //houd de speler de linker pijltjes toets in of de rechter?
-int score, mana, maxmana, hoogte, room = 2, choice = 1; //Hoe hoog de speler score is, de afstand die hij omhoog heeft gereisd en hoeveel mana hij nog kan gebruiken.
-float scrollsnelheid = 0, staticscrollsnelheid, respawnTimer, canChooseTimer;
-boolean cameraSwitch = false, canChoose = true;      //kijkt of het scherm moet gaan scrollen
+boolean leftDown, rightDown, jumpDown, selectUP, selectDown, xButton; //Alle knoppen die de speler kan gebruiken
+int score, mana, maxmana, hoogte, room = 2, choice = 1; //Initialiseerd alle variabelen.
+float scrollsnelheid = 0, staticscrollsnelheid, respawnTimer, canChooseTimer; //Staticsrollsnelheid is een 'reset'. Het is om glitches te voorkomen in het scrollen.
+boolean cameraSwitch = false, canChoose = true;     
+
+//Geluid inladen:
+
 import processing.sound.*;
 SoundFile file;
-
 SoundFile file1;
+
+
 void setup() {
-  file = new SoundFile(this, "Powerup_gunpowder.wav");
+  file = new SoundFile(this, "Powerup_gunpowder.wav");      //Laad geluids effecten
   file1 = new SoundFile(this, "player_dead.wav");
 
   size(880, 495);
-  if (room == 0)         //Als de room 0 is (dus het game scherm)
-  { 
-    mana = maxmana = 64;
-    world.init();
-  }
 }
 
-void updateGame() {
+void updateGame() 
+{
   if (room == 0)        //Als de room 0 is (dus het game scherm)
   {
     world.update();
   }
 }
-
 
 void drawGame() {
   if (room == 0)      //Als de room 0 is (dus het game scherm)
@@ -39,35 +38,49 @@ void drawGame() {
   }
 }
 
+    ///////////////////////////////////////////////////////////////////
+    ///////////////////Tekenen van alles op het scherm/////////////////
+    /////////////////////////////////////////////////////////////////// 
+
 void draw() {
-  if (room == 0)      //Als de room 0 is (dus het game scherm)
+  
+  //GAME SCHERM
+  if (room == 0)    
   {
     background(255);
     updateGame();       // Update your game first
     drawGame();         // Draw your game after everything is updated
-  } else 
-  if (room == 1)
+  } 
+  //GAMEOVER SCHERM
+  else if (room == 1)
   {
     background(0);
     game_over.draw();
-  } else
-  if (room == 2){
+  } 
+  //MAIN MENU
+  else if (room == 2){
     background(255);
      mainMenu.draw(); 
   }
+  
+  //ALS JE VAN GAMOVER SCHERM NAAR DE GAME TERUG WILT
   if (room == 1 && jumpDown == true && respawnTimer == 0)
   {  
-    reset();        //Resets the game/room
+    reset();  
   }
   if (room == 1 && xButton == true && respawnTimer == 0){
-    highscores.addScore("Riccardo", (score += hoogte));
    room = 2; 
   }
+  
+  //Een klok om af te tellen.
   if (respawnTimer > 0)
   {
    respawnTimer -= 1;
   }
-  
+
+    ///////////////////////////////////////////////////////////////////
+    ///////////////////Hoofd menu//////////////////////////////////////
+    /////////////////////////////////////////////////////////////////// 
   if (room == 2 && (selectDown == true || selectUP == true) && choice == 1 && canChoose == true){
     choice = 2;
     canChoose = false;
@@ -76,10 +89,11 @@ void draw() {
   if (room == 2 && (selectDown == true || selectUP == true) && choice == 2 && canChoose == true){
     choice = 1;
     canChoose = false;
-    canChooseTimer = 10;
+    canChooseTimer = 10;      //Timer zodat er een niet te snelle overgang is bij de knoppen.
   }
   
-  if (canChooseTimer > 0){
+  if (canChooseTimer > 0)
+  {
     canChooseTimer -= 1; 
   }
   
@@ -87,12 +101,13 @@ void draw() {
     canChoose = true;
   }
   
-  //MAIN MENU
+  //START GAME KNOP:
   if (room == 2 && jumpDown == true && choice == 1){
    world.init();
    reset();
    highscores.load("highscore.csv");
   }
+  //END GAME KNOP:
   if (room == 2 && jumpDown == true && choice == 2){
     highscores.save("highscore.csv");
     exit();

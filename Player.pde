@@ -60,6 +60,7 @@ class Player {
   void update() {
 
     //Resets powerups:
+    
     //timer jetpack
     if (timer > 0) {
       timer -= 1;
@@ -98,15 +99,16 @@ class Player {
     // versnellen van de camera
     if (y < (height/4)) {
       scrollsnelheid = (height/4)-y;
-      y += height/4-y+(vy*0.5);
+      y += height/4-y+(vy*0.5);          //0.5 is de gravity, anders ging hij oneindig naar boven.
     }
 
-    //scrollen versnellen
-    for (;staticscrollsnelheid <= 3 && hoogte > versnelling; ){
+    //scrollen versnellen om het spel moeilijker te maken
+    while (staticscrollsnelheid <= 3 && hoogte > versnelling ){
       staticscrollsnelheid += 1;
       versnelling *= 4;
     }
 
+    //Het terugzetten van de scrollsnelheid als het versnellen van de camera zorgde voor het te laag terugzetten van de scrollsnelheid.
     if (scrollsnelheid < staticscrollsnelheid) {
       scrollsnelheid = staticscrollsnelheid;
     }

@@ -9,7 +9,7 @@ class Score {
 
   // Constructor
   Score(String name, int score) {
-    this.name = name;
+    this.name = name;              //This gebruikt de meeste recente verkregen gegevens. 
     this.score = score;
   }
 }
@@ -57,9 +57,6 @@ class ScoreList {
       row.setString("name", score.name);
       row.setInt("score", score.score);
     }
-    
-    // save the table to file
-    //saveTable(scoreTable, scoreFileName); OPSLAAN ALS JE HET SPEL SLUIT. EN LADEN ALS JE OPSTART
   }
   
   

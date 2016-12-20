@@ -19,7 +19,7 @@ void setup() {
   
   
   
-      for (int i=0; i<itemMax; i++){        //maakt de wolken aan.
+      for (int i=0; i<itemMax; i++){        //maakt de items aan.
      item[i] = new Item();
      item[i].init();
      item[i].x = -128;        //hides the unused clouds from view
