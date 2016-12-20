@@ -1,5 +1,5 @@
 class Player {  
-  int x, y, w, h; // Position
+  int x, y, w, h, versnelling; // Position
   float clr, vx, vy, jumpspeed, center, diameter, jetpackspeed, maxSpeed, dir, timer, timer2; // Size
   boolean landed, manaPowers, bounce, shield, life; 
   PImage img, spr_player_stand_left, spr_player_stand_right, spr_player_jump_right, spr_player_jump_left, spr_player_dead, barrier;
@@ -32,6 +32,7 @@ class Player {
     manaPowers=false;
     shield = false;
     staticscrollsnelheid = 1;
+    versnelling = 1000;
   }
 
   void reset() {
@@ -53,6 +54,7 @@ class Player {
     manaPowers=false;
     shield = false;
     staticscrollsnelheid = 1;
+    versnelling = 1000;
   }
 
   void update() {
@@ -100,7 +102,10 @@ class Player {
     }
 
     //scrollen versnellen
-    staticscrollsnelheid = hoogte/2500 + 1;  //2500 kwadrateren elke keer dat deze code wordt verandert?
+    for (;staticscrollsnelheid <= 3 && hoogte > versnelling; ){
+      staticscrollsnelheid += 1;
+      versnelling *= 4;
+    }
 
     if (scrollsnelheid < staticscrollsnelheid) {
       scrollsnelheid = staticscrollsnelheid;
