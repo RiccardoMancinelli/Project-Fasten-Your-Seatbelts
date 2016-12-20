@@ -77,6 +77,8 @@ class Enemy {
       //Removes enemy from the grid.
       world.spawn[oldx][oldy] = 0;
       world.created[oldx][oldy] = false;
+      d = 7;
+      x=-128;
 
     }
     

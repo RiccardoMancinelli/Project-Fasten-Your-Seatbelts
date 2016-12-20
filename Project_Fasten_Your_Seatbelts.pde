@@ -14,6 +14,7 @@ boolean cameraSwitch = false, canChoose = true;
 import processing.sound.*;
 SoundFile file;
 SoundFile file1;
+SoundFile music;
 
 PImage background;
 int y;
@@ -22,6 +23,7 @@ int y;
 void setup() {
   file = new SoundFile(this, "Powerup_gunpowder.wav");      //Laad geluids effecten
   file1 = new SoundFile(this, "player_dead.wav");
+  music = new SoundFile(this, "Main_theme.mp3");
   
 background = loadImage("background.jpg");
   world.init();
@@ -78,6 +80,7 @@ void draw() {
   }
   if (room == 1 && xButton == true && respawnTimer == 0){
    room = 2; 
+   music.stop();
   }
   
   //Een klok om af te tellen.
@@ -132,7 +135,7 @@ void draw() {
   
   //START GAME KNOP:
   if (room == 2 && jumpDown == true && choice == 1){
-   
+   music.loop();
    reset();
    
   }

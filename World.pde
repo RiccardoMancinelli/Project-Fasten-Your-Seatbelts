@@ -1,6 +1,6 @@
 class World {
 
-  int wolkid = 0, cloudMax = 64, itemMax = 32, totalLevels = 1;        //Alle plaatsbare items initializen
+  int wolkid = 0, cloudMax = 64, itemMax = 32, totalLevels = 55;        //Alle plaatsbare items initializen
 
   int nCloud = 0, nEnemy = 0, nPowerUp = 0, nBird = 0, waves = 1000, horizontalItems = 11, leftOff = 0;
   boolean alive = true;
@@ -393,7 +393,8 @@ class World {
 
           nCloud+=1;
         }
-        //EEKHOORNT        if (spawn[x][y] == 11 && created[x][y]==false)
+        //EEKHOORNT  
+        if (spawn[x][y] == 11 && created[x][y]==false)
         {
 
           if (nEnemy==itemMax) {
