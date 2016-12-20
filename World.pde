@@ -97,16 +97,17 @@ class World {
     ///////////////////////////////////////////////////////////////////
     if (hoogte>=leftOff*128-(height)) {
       generate(leftOff);
-    }                    //Hij gaat verder met genereren waar hij gebleven was (leftOff)
+    }                    
+    //Hij gaat verder met genereren waar hij gebleven was (leftOff)
 
     ///////////////////////////////////////////////////////////////////
     ////////////////////////////Wolk Collision/////////////////////////
     ///////////////////////////////////////////////////////////////////
     for (int i=0; i<cloudMax; i++)
     {
-      if (player.y < cloud[i].y+12 && player.y > cloud[i].y && player.x>cloud[i].x && player.x<cloud[i].x+cloud[i].w+1 && player.vy >=0 && player.landed == false)
+      if (player.y < cloud[i].y+12 && player.y > cloud[i].y && player.x>cloud[i].x && player.x<cloud[i].x+cloud[i].w+1 && player.vy >=0)
       {
-        if  (cloud[i].specialCloud == 0 )  
+        if  (cloud[i].specialCloud == 0 && player.landed == false)  
         {
           if (player.dir == 1) {
             player.img = player.spr_player_stand_left;
@@ -120,7 +121,7 @@ class World {
           player.bounce = false;
         }
         // jump cloud
-        if  (cloud[i].specialCloud == 1)  
+        if  (cloud[i].specialCloud == 1 && player.landed == false)  
         { 
           if (player.dir == 1) {
             player.img = player.spr_player_stand_left;
@@ -139,10 +140,10 @@ class World {
         if  (cloud[i].specialCloud == 2)  
         { 
           player.vy = 0; 
+          player.x += cloud[i].cloudSpeed;
           wolkid = i; 
           mana = maxmana; 
-          player.landed = true; 
-          
+          player.landed = true;               
         }
         
       } 
@@ -307,23 +308,6 @@ class World {
 
           nCloud+=1;
         }
-        // Spawning Move clouds
-        if (spawn[x][y] == 5 && created[x][y]==false)
-        {
-
-          if (nCloud==cloudMax) {
-            nCloud=0;
-          }
-
-          cloud[nCloud].x = x*80;  
-          cloud[nCloud].origny = height-(128*y);//height-50-(128*y);
-          cloud[nCloud].oldy = y; // x en y in de tabel (level editor), niet laten bewegen 
-          cloud[nCloud].oldx = x; // niet laten bewegen 
-          cloud[nCloud].specialCloud = 2; // 2 variabelen start/end , 1 om bewegend te maken velocity
-          created[x][y]=true; 
-
-          nCloud+=1;
-        }
         //Spawning Birds
         if (spawn[x][y] == 5 && created[x][y]==false)
         {
@@ -376,6 +360,23 @@ class World {
           created[x][y]=true; 
           enemy[nEnemy].d=5;
           nEnemy+=1;
+        }
+              // Spawning Move clouds
+        if (spawn[x][y] == 10 && created[x][y]==false)
+        {
+
+          if (nCloud==cloudMax) {
+            nCloud=0;
+          }
+
+          cloud[nCloud].x = x*80;  
+          cloud[nCloud].origny = height-(128*y);//height-50-(128*y);
+          cloud[nCloud].oldy = y; // x en y in de tabel (level editor), niet laten bewegen 
+          cloud[nCloud].oldx = x; // niet laten bewegen 
+          cloud[nCloud].specialCloud = 2; // 2 variabelen start/end , 1 om bewegend te maken velocity
+          created[x][y]=true; 
+
+          nCloud+=1;
         }
       }
       leftOff = y;              //Dit is de Y waar het genereren de vorige keer ophield.
