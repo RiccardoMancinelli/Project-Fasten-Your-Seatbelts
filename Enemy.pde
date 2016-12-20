@@ -22,7 +22,6 @@ class Enemy {
     img4 = loadImage("cloud.png");//nieuwe sprite nodig
     img5 = loadImage("cloud.png");//nieuwe sprite nodig
     img6 = loadImage("rocket.png");
-    img7 = loadImage("cat.jpg");
     //img7 = 
     t = false;
     d = 7;    //0 = squirrel left, 1 = squirrel right, 2 = staticcat, 3 = fakecloud, 4 = moving cloud, 5 = rocket, 6 = gunnercat, 7 = standby
