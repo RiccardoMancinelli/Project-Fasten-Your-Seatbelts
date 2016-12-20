@@ -66,9 +66,9 @@ void update() {
       if(key == '9' && objectKeuze != 9){
         objectKeuze = 9; 
       }
-      //if(key == '0' && objectKeuze != 0){
-     //   objectKeuze = 10; 
-     // }
+      if(key == '0' && objectKeuze != 0){
+        objectKeuze = 10; 
+      }
       
       
       if(enterDown && exported == false)
