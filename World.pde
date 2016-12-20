@@ -288,7 +288,7 @@ class World {
           powerUp[nPowerUp].oldx = x;
           powerUp[nPowerUp].x = x*80+ (80-powerUp[nPowerUp].w)/2;
           powerUp[nPowerUp].origny = height-65-(128*y);
-          powerUp[nPowerUp].powerID = 2;
+          powerUp[nPowerUp].powerID = 1;
           created[x][y]=true; 
           nPowerUp+=1;
         }
@@ -360,6 +360,21 @@ class World {
           created[x][y]=true; 
           enemy[nEnemy].d=5;
           nEnemy+=1;
+        }
+        //Spawning powerups.
+        if (spawn[x][y] == 9 && created[x][y]==false)
+        {
+
+          if (nPowerUp==itemMax) {
+            nPowerUp=0;
+          }
+          powerUp[nPowerUp].oldy = y;
+          powerUp[nPowerUp].oldx = x;
+          powerUp[nPowerUp].x = x*80+ (80-powerUp[nPowerUp].w)/2;
+          powerUp[nPowerUp].origny = height-65-(128*y);
+          powerUp[nPowerUp].powerID = 2;
+          created[x][y]=true; 
+          nPowerUp+=1;
         }
               // Spawning Move clouds
         if (spawn[x][y] == 10 && created[x][y]==false)
