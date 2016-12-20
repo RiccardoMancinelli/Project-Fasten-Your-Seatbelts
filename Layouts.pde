@@ -16,7 +16,7 @@ void layouts(int selected, int y) {
     world.spawn[8][y + 1] = 1;
     world.spawn[0][y + 0] = 1;
     world.spawn[1][y + 0] = 1;
-    world.spawn[9][y + 0] = 1;
+    world.spawn[9][y + 0] = 9;
     world.spawn[10][y + 0] = 1;
   }
   ///////////////////////////////////////////////////

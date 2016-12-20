@@ -361,7 +361,7 @@ class World {
           enemy[nEnemy].d=5;
           nEnemy+=1;
         }
-        //Spawning powerups.
+        //Spawning powerups. BARRIER
         if (spawn[x][y] == 9 && created[x][y]==false)
         {
 
