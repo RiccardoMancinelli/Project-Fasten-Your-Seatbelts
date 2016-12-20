@@ -144,9 +144,12 @@ class Player {
       //springen
       if (manaPowers==true && jumpDown && landed == false) { 
         vy = -jetpackspeed+scrollsnelheid;
+        file3.play();
+        file3.amp(1.0); // niet hoorbaar???
+        file4.play();
       }
       //jumpcloud
-      if (jumpDown == true && bounce == true) 
+      if (jumpDown == true && bounce == true && landed == true) 
       { 
         vy = -15;
         mana = maxmana; 

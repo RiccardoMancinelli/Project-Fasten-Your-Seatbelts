@@ -33,6 +33,7 @@ class World {
       layouts(int(random(totalLevels))+1, y);    //spawns random level layout
     }
 
+
     ///////////////////////////////////////////////////////////////////
     ///////////////////Initialiseren van objecten//////////////////////
     /////////////////////////////////////////////////////////////////// 
@@ -171,6 +172,7 @@ class World {
 
       if (player.y < bird[j].y+bird[j].h && player.y > bird[j].y && player.x>bird[j].x && player.x< bird[j].x+ bird[j].w)  
       {
+        file2.play();
         score += 500;
         bird[j].x = -125;        //verbergt de item uit het scherm. (Alternatief van instance_Destroy())
         bird[j].movey=0;
@@ -189,6 +191,7 @@ class World {
         created[powerUp[l].oldx][powerUp[l].oldy]=false;
        if (powerUp[l].powerID == 1){ player.timer = 600; mana = maxmana = 128;} //jetpack
        if (powerUp[l].powerID == 2){player.timer2 = 300; player.shield = true;} //schild
+        file5.play();
         file.play();
       }
     }
@@ -203,7 +206,7 @@ class World {
         alive = false; 
         cameraSwitch = false;
         player.img = player.spr_player_dead;
-        file1.play();
+       file1.play();
       }
     }
   }

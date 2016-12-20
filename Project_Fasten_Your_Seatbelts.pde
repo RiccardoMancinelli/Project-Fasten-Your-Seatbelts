@@ -14,6 +14,10 @@ boolean cameraSwitch = false, canChoose = true;
 import processing.sound.*;
 SoundFile file;
 SoundFile file1;
+SoundFile file2;
+SoundFile file3;
+SoundFile file4;
+SoundFile file5;
 SoundFile music;
 
 PImage background;
@@ -23,6 +27,10 @@ int y;
 void setup() {
   file = new SoundFile(this, "Powerup_gunpowder.wav");      //Laad geluids effecten
   file1 = new SoundFile(this, "player_dead.wav");
+  file2 = new SoundFile(this, "bird_pickup.wav");
+  file3 = new SoundFile(this, "jumping_owl.wav");
+  file4 = new SoundFile(this, "jetpack.wav");
+  file5 = new SoundFile(this, "shield_sound.wav");
   music = new SoundFile(this, "Main_theme.mp3");
   
 background = loadImage("background.jpg");
@@ -135,9 +143,9 @@ void draw() {
   
   //START GAME KNOP:
   if (room == 2 && jumpDown == true && choice == 1){
+
    music.loop();
    reset();
-   
   }
   //END GAME KNOP:
   if (room == 2 && jumpDown == true && choice == 3){
