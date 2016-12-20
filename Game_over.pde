@@ -27,7 +27,8 @@ class Game_over {
     //text("Distance:", width/3, height/4+128);
     //text(hoogte, width/3 + 192, height/4+128);
     textSize(31);
-    text("Press Z to restart", width/2.8, height-20);
+    text("Press Z to restart", width/7, height-20);
+    text("Press X for main menu", width/1.8, height-20);
     textSize(40);
     text("Your score:  "+ score.score,width/1.8, height-75);
     text("Your height:  "+ hoogte,width/7, height-75);
