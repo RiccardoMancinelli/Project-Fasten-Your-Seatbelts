@@ -24,7 +24,8 @@ void setup() {
   file1 = new SoundFile(this, "player_dead.wav");
   
 background = loadImage("background.jpg");
-
+  world.init();
+  highscores.load("highscore.csv");
   size(880, 495);
 }
 
@@ -88,15 +89,36 @@ void draw() {
     ///////////////////////////////////////////////////////////////////
     ///////////////////Hoofd menu//////////////////////////////////////
     /////////////////////////////////////////////////////////////////// 
-  if (room == 2 && (selectDown == true || selectUP == true) && choice == 1 && canChoose == true){
+  if (room == 2 && selectDown == true && choice == 1 && canChoose == true){
     choice = 2;
     canChoose = false;
     canChooseTimer = 10;
   } 
-  if (room == 2 && (selectDown == true || selectUP == true) && choice == 2 && canChoose == true){
+  if (room == 2 && selectDown == true  && choice == 2 && canChoose == true){
+    choice = 3;
+    canChoose = false;
+    canChooseTimer = 10;
+  }
+  if (room == 2 && selectDown == true && choice == 3 && canChoose == true){
     choice = 1;
     canChoose = false;
-    canChooseTimer = 10;      //Timer zodat er een niet te snelle overgang is bij de knoppen.
+    canChooseTimer = 10;
+  }
+  
+   if (room == 2 && selectUP == true && choice == 1 && canChoose == true){
+    choice = 3;
+    canChoose = false;
+    canChooseTimer = 10;
+  } 
+  if (room == 2 && selectUP == true  && choice == 2 && canChoose == true){
+    choice = 1;
+    canChoose = false;
+    canChooseTimer = 10;
+  }
+  if (room == 2 && selectUP == true && choice == 3 && canChoose == true){
+    choice = 2;
+    canChoose = false;
+    canChooseTimer = 10;
   }
   
   if (canChooseTimer > 0)
@@ -110,12 +132,12 @@ void draw() {
   
   //START GAME KNOP:
   if (room == 2 && jumpDown == true && choice == 1){
-   world.init();
+   
    reset();
-   highscores.load("highscore.csv");
+   
   }
   //END GAME KNOP:
-  if (room == 2 && jumpDown == true && choice == 2){
+  if (room == 2 && jumpDown == true && choice == 3){
     highscores.save("highscore.csv");
     exit();
   }
