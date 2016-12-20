@@ -15,10 +15,15 @@ import processing.sound.*;
 SoundFile file;
 SoundFile file1;
 
+PImage background;
+int y;
+
 
 void setup() {
   file = new SoundFile(this, "Powerup_gunpowder.wav");      //Laad geluids effecten
   file1 = new SoundFile(this, "player_dead.wav");
+  
+background = loadImage("background.jpg");
 
   size(880, 495);
 }
@@ -47,7 +52,9 @@ void draw() {
   //GAME SCHERM
   if (room == 0)    
   {
-    background(255);
+  background(background);
+  stroke(226, 204, 0);
+    
     updateGame();       // Update your game first
     drawGame();         // Draw your game after everything is updated
   } 
