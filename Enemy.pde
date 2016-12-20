@@ -7,7 +7,7 @@ class Enemy {
   PImage img6;
   PImage img7;
 
-  int x, y, w, h, origny, d, speed, h2, w2, w3, h3, spawnx;
+  int x, y, w, h, origny, d, speed, h2, w2, w3, h3, spawnx, oldx, oldy, speedsquirrel;
   boolean t;
   void init() {
     w = 46;
@@ -27,6 +27,7 @@ class Enemy {
     t = false;
     d = 7;    //0 = squirrel left, 1 = squirrel right, 2 = staticcat, 3 = fakecloud, 4 = moving cloud, 5 = rocket, 6 = gunnercat, 7 = standby
     speed = 4;
+    speedsquirrel = 1;
   }
   void reset(){
       d = 7;
@@ -43,8 +44,12 @@ class Enemy {
     if (x < 0) {
       x = width;
     }   
-   
+    //EEKHOORNTJES
+    if ((d==0 || d==1) && y >= 0){
+       origny=origny+speedsquirrel;
+    }
 
+    //RAKET
     if (d==5 && y >= 0){
        origny=origny+speed;
     }
@@ -67,19 +72,17 @@ class Enemy {
     if (d==0){
        x=x+speed;
     }
+    
+    if ((d==0 || d==1) && y>height)
+    {
+      //Removes enemy from the grid.
+      world.spawn[oldx][oldy] = 0;
+      world.created[oldx][oldy] = false;
 
+    }
     
       y = origny + hoogte;
-   /*   if (y>height+64 && (d==1 || d==0)){
-        x = 0;
-        origny = int(random(-12))-hoogte;
-        d = int(random(3));  
-     }
-     if (y>height+64 && d==2){
-        x = int(random(width));
-        origny = int(random(-12))-hoogte;
-        d = int(random(3)); 
-     }*/
+
   }
   void draw() {
     if (d==0){

@@ -21,9 +21,6 @@ void layouts(int selected, int y) {
   }
   ///////////////////////////////////////////////////
 
-
-
-
   //////////////LEVEL LAYOUT NUMBER: 1////////////////
   if (selected == 1) {
     world.spawn[5][y + 3] = 1;

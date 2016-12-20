@@ -1,6 +1,6 @@
 class World {
 
-  int wolkid = 0, cloudMax = 64, itemMax = 32, totalLevels = 52;        //Alle plaatsbare items initializen
+  int wolkid = 0, cloudMax = 64, itemMax = 32, totalLevels = 1;        //Alle plaatsbare items initializen
 
   int nCloud = 0, nEnemy = 0, nPowerUp = 0, nBird = 0, waves = 1000, horizontalItems = 11, leftOff = 0;
   boolean alive = true;
@@ -392,6 +392,20 @@ class World {
           created[x][y]=true; 
 
           nCloud+=1;
+        }
+        //EEKHOORNT        if (spawn[x][y] == 11 && created[x][y]==false)
+        {
+
+          if (nEnemy==itemMax) {
+            nEnemy=0;
+          }
+          enemy[nEnemy].x = x*80 + (80-enemy[nEnemy].w)/2; //the '+ (80-enemywidth)/2' puts enemy in the middle of the grid.;
+          enemy[nEnemy].origny = height-65-(128*y);
+          created[x][y]=true; 
+          enemy[nEnemy].d=int(random(2));
+          enemy[nEnemy].oldx=x;
+          enemy[nEnemy].oldy=y;
+          nEnemy+=1;
         }
       }
       leftOff = y;              //Dit is de Y waar het genereren de vorige keer ophield.

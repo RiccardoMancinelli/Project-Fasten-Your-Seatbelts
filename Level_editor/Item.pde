@@ -21,6 +21,7 @@ class Item{
     if (number == 8){img = loadImage("rocket.png");}
     if (number == 9){img = loadImage("shield.png");}
     if (number == 10){img = loadImage("cloudmove.png");}
+    if (number == 11){img = loadImage("flyingsquirrel.png");}
     placed = 0;
     }
   }
