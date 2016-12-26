@@ -33,7 +33,7 @@ void setup() {
   file5 = new SoundFile(this, "shield_sound.wav");
   music = new SoundFile(this, "Main_theme.mp3");
   
-background = loadImage("background.jpg");
+background = loadImage("BackgroundNew3.jpg");
   world.init();
   highscores.load("highscore.csv");
   size(880, 495);
