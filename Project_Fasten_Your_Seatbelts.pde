@@ -20,7 +20,7 @@ SoundFile file4;
 SoundFile file5;
 SoundFile music;
 
-PImage background;
+PImage background, titlescreen, playbutton, highscoresbutton, exitbutton, playpressed, highscorespressed, exitpressed;
 int y;
 
 
@@ -34,6 +34,17 @@ void setup() {
   music = new SoundFile(this, "Main_theme.mp3");
   
 background = loadImage("BackgroundNew3.jpg");
+
+titlescreen = loadImage("Title-screen2.jpg");
+
+playbutton = loadImage("play_button.png");
+highscoresbutton = loadImage("highscores_button.png");
+exitbutton = loadImage("exit_button.png");
+
+playpressed = loadImage("play_button_pressed.png");
+highscorespressed = loadImage("highscores_pressed.png");
+exitpressed = loadImage("exit_button_pressed.png");
+
   world.init();
   highscores.load("highscore.csv");
   size(880, 495);
