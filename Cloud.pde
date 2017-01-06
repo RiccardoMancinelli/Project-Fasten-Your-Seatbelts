@@ -19,38 +19,41 @@ class Cloud {
     if (specialCloud == 2 && toggle == false) {
       x = x + cloudSpeed;
       player.vx = player.vx + cloudSpeed;
-      if (x == width - w) { //x == world.wolkid || 
-       toggle = true;
+      if (x == width - w) { 
+        toggle = true;
       }
     }
     if (specialCloud == 2 && toggle == true) {
       x = x - cloudSpeed;
-      player.vx = player.vx - cloudSpeed;
+
       if (x == 0) {
         toggle = false;
       }
     }
-
+    if ( y > height + 64) {specialCloud = 0;}    //resets the cloud once outside of screen
   }
   void reset() {
-      x = -128;        //hides the unused clouds from view
-      y = 0;
+    x = -128;        //hides the unused clouds from view
+    y = 0;
   }
   void draw() {
     /*if (jumpCloud == true) {
+     img2.resize(w, h);
+     image(img2, x, y);
+     }*/
+    switch(specialCloud) {
+    case 0: 
+      img.resize(w, h);
+      image(img, x, y);
+      break;
+    case 1: 
       img2.resize(w, h);
       image(img2, x, y);
-    }*/
-    switch(specialCloud) {
-      case 0: img.resize(w, h);
-              image(img, x, y);
-              break;
-      case 1: img2.resize(w, h);
-              image(img2, x, y);
-              break;
-      case 2: img3.resize(w, h);
-              image (img3, x, y);
-              break;
+      break;
+    case 2: 
+      img3.resize(w, h);
+      image (img3, x, y);
+      break;
+    }
   }
-}
 }

@@ -1,7 +1,7 @@
 class Player {  
   int x, y, w, h, versnelling; // Position
   float clr, vx, vy, jumpspeed, center, diameter, jetpackspeed, maxSpeed, dir, timer, timer2; // Size
-  boolean landed, manaPowers, bounce, shield, life; 
+  boolean landed, manaPowers, bounce, shield; 
   PImage img, spr_player_stand_left, spr_player_stand_right, spr_player_jump_right, spr_player_jump_left, spr_player_dead, barrier;
   String name;
   int realHighScore = score + hoogte;
@@ -141,12 +141,11 @@ class Player {
           dir = 1;
         }
 
-      //springen
+      //jetpack
       if (manaPowers==true && jumpDown && landed == false) { 
         vy = -jetpackspeed+scrollsnelheid;
-        file3.play();
-        file3.amp(1.0); // niet hoorbaar???
         file4.play();
+
       }
       //jumpcloud
       if (jumpDown == true && bounce == true && landed == true) 
@@ -155,12 +154,12 @@ class Player {
         mana = maxmana; 
         landed = false;
         bounce = false;
-
+        file3.play();
         if (dir == 1) {
-          img = spr_player_stand_left;
+          img = spr_player_jump_left;
         }
         if (dir == 0) {
-          img = spr_player_stand_right;
+          img = spr_player_jump_right;
         }
       }
 
@@ -172,6 +171,7 @@ class Player {
       if (jumpDown && landed == true) {
         if (bounce == false) {
           vy = -jumpspeed+scrollsnelheid;
+          file3.play();  //speelt jumping sound
         }
         if (dir == 1 && world.alive == true) {
           img = spr_player_jump_left;

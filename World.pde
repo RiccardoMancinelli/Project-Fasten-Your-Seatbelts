@@ -1,8 +1,8 @@
 class World {
 
-  int wolkid = 0, cloudMax = 64, itemMax = 32, totalLevels = 55;        //Alle plaatsbare items initializen
+  int wolkid = 0, cloudMax = 132, itemMax = 48, totalLevels = 16;        //Alle plaatsbare items initializen
 
-  int nCloud = 0, nEnemy = 0, nPowerUp = 0, nBird = 0, waves = 1000, horizontalItems = 11, leftOff = 0;
+  int nCloud = 0, nEnemy = 0, nPowerUp = 0, nBird = 0, waves = 1000, horizontalItems = 11, leftOff = 0, fase = 0;
   boolean alive = true;
   int[][] spawn = new int[horizontalItems][waves];    //maakt 8 locaties aan waarop we dingen kunnen spawnen (hokjes van 80 pixels) en maakt in totaal ... waves 
   boolean[][] created = new boolean[horizontalItems][waves];  //variable om te kijken of het object dat gemaakt moetst worden ook echt gemaakt is.
@@ -141,10 +141,17 @@ class World {
         if  (cloud[i].specialCloud == 2)  
         { 
           player.vy = 0; 
-          player.x += cloud[i].cloudSpeed;
+          if (cloud[i].toggle == false){player.x += cloud[i].cloudSpeed;}
+          if (cloud[i].toggle == true){player.x -= cloud[i].cloudSpeed;}
           wolkid = i; 
           mana = maxmana; 
-          player.landed = true;               
+          player.landed = true;        
+          if (player.dir == 1) {
+            player.img = player.spr_player_stand_left;
+          }
+          if (player.dir == 0) {
+            player.img = player.spr_player_stand_right;
+          }
         }
         
       } 
@@ -162,15 +169,29 @@ class World {
       cameraSwitch = true; 
       scrollsnelheid = 1;
     }
-
+    ///////////////////////////////////////////////////////////////////
+    ////////////////////////////Music//////////////////////////////////
+    ///////////////////////////////////////////////////////////////////
+    if (hoogte > 7000 && fase == 0)    //Fase is there to check wether the game is easy (0) or hard (1)
+    {
+        music.stop(); 
+        music2.loop();
+        fase = 1;
+    } 
+    if (hoogte < 7000 && fase == 1)    //Fase is there to check wether the game is easy (0) or hard (1)
+    {
+        music2.stop(); 
+        music.loop();
+        fase = 0;
+    }
     ///////////////////////////////////////////////////////////////////
     ////////////////////////////Item Collision/////////////////////////
     ///////////////////////////////////////////////////////////////////
 
-    for (int j=0; j<nBird; j++)                              //pickup bird
+    for (int j=0; j<itemMax; j++)                              //pickup bird
     {
 
-      if (player.y < bird[j].y+bird[j].h && player.y > bird[j].y && player.x>bird[j].x && player.x< bird[j].x+ bird[j].w)  
+      if (player.y < bird[j].y+bird[j].h && player.y > bird[j].y && player.x>bird[j].x && player.x< bird[j].x+ bird[j].w && alive == true)  
       {
         file2.play();
         score += 500;
@@ -183,7 +204,7 @@ class World {
     for (int l=0; l<itemMax; l++)
     {
 
-      if (player.y < powerUp[l].y+powerUp[l].h && player.y > powerUp[l].y && player.x>powerUp[l].x && player.x< powerUp[l].x+ powerUp[l].w)  
+      if (player.y < powerUp[l].y+powerUp[l].h && player.y > powerUp[l].y && player.x>powerUp[l].x && player.x< powerUp[l].x+ powerUp[l].w && alive == true)  
       {
         score += 200;
         powerUp[l].x = -256;
@@ -351,7 +372,7 @@ class World {
           enemy[nEnemy].d=4;
           nEnemy+=1;
         }
-                //Spawning Rockets.
+         //Spawning Rockets.
         if (spawn[x][y] == 8 && created[x][y]==false)
         {
 
@@ -396,7 +417,7 @@ class World {
 
           nCloud+=1;
         }
-        //EEKHOORNT  
+        //Squirrel
         if (spawn[x][y] == 11 && created[x][y]==false)
         {
 
@@ -432,7 +453,7 @@ class World {
     leftOff = 0;
     alive = true;
     player.bounce = false;
-
+        
     player.reset();
     camera.init();     
 

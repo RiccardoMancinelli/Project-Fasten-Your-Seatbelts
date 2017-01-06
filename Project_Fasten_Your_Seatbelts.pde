@@ -1,3 +1,5 @@
+
+
 //Deze code zorgt dat alles wordt aangeroepen en werkt.
 
 World world = new World();
@@ -10,8 +12,9 @@ float scrollsnelheid = 0, staticscrollsnelheid, respawnTimer, canChooseTimer; //
 boolean cameraSwitch = false, canChoose = true;     
 
 //Geluid inladen:
-
 import processing.sound.*;
+
+//import processing.sound.*;
 SoundFile file;
 SoundFile file1;
 SoundFile file2;
@@ -19,8 +22,9 @@ SoundFile file3;
 SoundFile file4;
 SoundFile file5;
 SoundFile music;
+SoundFile music2;
 
-PImage background, titlescreen, playbutton, highscoresbutton, exitbutton, playpressed, highscorespressed, exitpressed;
+PImage background, background2, background3, titlescreen, playbutton, highscoresbutton, exitbutton, playpressed, highscorespressed, exitpressed;
 int y;
 
 
@@ -31,10 +35,12 @@ void setup() {
   file3 = new SoundFile(this, "jumping_owl.wav");
   file4 = new SoundFile(this, "jetpack.wav");
   file5 = new SoundFile(this, "shield_sound.wav");
-  music = new SoundFile(this, "Main_theme.mp3");
+  music = new SoundFile(this, "Main_theme.wav");
+  music2 = new SoundFile(this, "difficult_theme.wav");
   
-background = loadImage("BackgroundNew3.jpg");
-
+background = loadImage("BackgroundNew2.jpg");
+background2 = loadImage("BackgroundHard.jpg");
+background3 = loadImage("BackgroundHardest.jpg");
 titlescreen = loadImage("Title-screen2.jpg");
 
 playbutton = loadImage("play_button.png");
@@ -74,7 +80,9 @@ void draw() {
   //GAME SCHERM
   if (room == 0)    
   {
-  background(background);
+  if (hoogte<3500){background(background);}
+  if (hoogte>3500 && hoogte < 7000){background(background2);}
+  if (hoogte>7000){background(background3);}
   stroke(226, 204, 0);
     
     updateGame();       // Update your game first
@@ -100,6 +108,7 @@ void draw() {
   if (room == 1 && xButton == true && respawnTimer == 0){
    room = 2; 
    music.stop();
+   music2.stop();
   }
   
   //Een klok om af te tellen.

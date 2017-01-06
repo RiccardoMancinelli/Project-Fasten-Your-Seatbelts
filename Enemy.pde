@@ -7,20 +7,20 @@ class Enemy {
   PImage img6;
   PImage img7;
 
-  int x, y, w, h, origny, d, speed, h2, w2, w3, h3, spawnx, oldx, oldy, speedsquirrel;
+  int x, y, w, h, origny, d, speed, h1, w1, h2, w2, w3, h3, spawnx, oldx, oldy, speedsquirrel;
   boolean t;
   void init() {
-    w = 46;
+    w = w1 = 46;
     w2 = 30;
     w3 = 80;
-    h = 59;
+    h = h1 = 59;
     h2 = 80;
     h3 = 30;
     img = loadImage("flyingsquirrel.png");
     img2 = loadImage("flyingsquirrel2.png");
     img3 = loadImage("enemy_one.png");
-    img4 = loadImage("cloud.png");//nieuwe sprite nodig
-    img5 = loadImage("cloud.png");//nieuwe sprite nodig
+    img4 = loadImage("enemycloud.png");//nieuwe sprite nodig
+    img5 = loadImage("enemycloudmove.png");//nieuwe sprite nodig
     img6 = loadImage("rocket.png");
     //img7 = 
     t = false;
@@ -87,32 +87,49 @@ class Enemy {
   }
   void draw() {
     if (d==0){
+      w=w1;
+      h=h1;
       img.resize(w, h);
       image(img, x, y);
     }
     if (d==1){
+      w=w1;
+      h=h1;
       img2.resize(w, h);
       image(img2, x, y); 
     }
     if (d==2){
+      w=w1;
+      h=h1;
       img3.resize(w, h);
       image(img3, x, y);
     }
     if (d==3){
-      img4.resize(w3, h3);
+      w=w3;
+      h=h3;
+      img4.resize(w, h);
       image(img4, x, y);
     }
     if (d==4){
-      img5.resize(w3, h3);
+      w=w3;
+      h=h3;
+      img5.resize(w, h);
       image(img5, x, y);
+
     }
     if (d==5){
-      img6.resize(w2, h2);
+      w=w2;
+      h=h2;
+      img6.resize(w, h);
       image(img6, x, y);
+
     }
     if (d==6){
-      img7.resize(w, h2);
+      w=w2;
+      h=h2;
+      img7.resize(w, h);
       image(img7, x, y);
+
     }
   }  
 }
