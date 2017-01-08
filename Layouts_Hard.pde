@@ -1,5 +1,7 @@
-//////////////LEVEL LAYOUT NUMBER: 1////////////////
-if (selected == 1){
+void layoutshard(int selected, int y) {
+  //This code stores all the possible level layouts.
+//////////////LEVEL LAYOUT NUMBER: 0////////////////
+if (selected == 0){
 world.spawn[0][y + 3] = 8;
 world.spawn[1][y + 3] = 8;
 world.spawn[2][y + 3] = 8;
@@ -20,3 +22,6 @@ world.spawn[9][y + 0] = 1;
 }
 ///////////////////////////////////////////////////
 
+
+
+}

@@ -1,6 +1,6 @@
 class World {
 
-  int wolkid = 0, cloudMax = 128, itemMax = 64, totalLevels = 16;        //Alle plaatsbare items initializen
+  int wolkid = 0, cloudMax = 128, itemMax = 64, totalLevels = 16, totalLevelshard = 1, hardlimit = 80;        //Alle plaatsbare items initializen. Hardlimit is de level cap waarop we de moeilijke levels gaan gebruiken.
 
   int nCloud = 0, nEnemy = 0, nPowerUp = 0, nBird = 0, waves = 1000, horizontalItems = 11, leftOff = 0, fase = 0;
   boolean alive = true;
@@ -30,7 +30,13 @@ class World {
     layouts(0, 0);    //Maakt elke eerste scherm dezelfde layout
     for (int y = 4; y<waves; y+=4)
     {
+      if (y <hardlimit)
+      {
       layouts(int(random(totalLevels))+1, y);    //spawns random level layout
+      } else
+      {
+       layoutshard(int(random(totalLevelshard)), y);    //spawns random level layout 
+      }
     }
 
 
@@ -444,7 +450,13 @@ class World {
         layouts(0, 0);    //Maakt elke eerste scherm dezelfde layout
     for (int y = 4; y<waves; y+=4)
     {
-      layouts(int(random(totalLevels)+1), y);    //spawns random level layout
+      if (y <hardlimit)
+      {
+      layouts(int(random(totalLevels))+1, y);    //spawns random level layout
+      } else
+      {
+       layoutshard(int(random(totalLevelshard)), y);    //spawns random level layout 
+      }
     }
 
     for (int i=0; i<cloudMax; i++)
