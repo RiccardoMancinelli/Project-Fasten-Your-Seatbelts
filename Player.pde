@@ -1,6 +1,6 @@
 class Player {  
   int x, y, w, h, versnelling; // Position
-  float clr, vx, vy, jumpspeed, center, diameter, jetpackspeed, maxSpeed, dir, timer, timer2; // Size
+  float clr, vx, vy, jumpspeed, center, diameter, jetpackspeed, maxSpeed, dir, timer, timer2, soundDelay; 
   boolean landed, manaPowers, bounce, shield; 
   PImage img, spr_player_stand_left, spr_player_stand_right, spr_player_jump_right, spr_player_jump_left, spr_player_dead, barrier;
   String name;
@@ -141,12 +141,10 @@ class Player {
           dir = 1;
         }
 
-      //jetpack
-      if (manaPowers==true && jumpDown && landed == false) { 
-        vy = -jetpackspeed+scrollsnelheid;
-        file4.play();
-
-      }
+      
+     if (manaPowers==true && jumpDown && landed == false) { 
+     vy = -jetpackspeed+scrollsnelheid;
+     }
       //jumpcloud
       if (jumpDown == true && bounce == true && landed == true) 
       { 
@@ -163,10 +161,13 @@ class Player {
         }
       }
 
-
+      //jetpack
       if (manaPowers==false && mana > 0 && jumpDown && landed == false && vy >-2) {
         mana -= 1; 
         vy = -jetpackspeed+scrollsnelheid;
+        if (soundDelay == 0)
+        {file4.play(); soundDelay = 20;}
+        if (soundDelay > 0){soundDelay -=1;}
       } 
       //Jumping
       if (jumpDown && landed == true) {
