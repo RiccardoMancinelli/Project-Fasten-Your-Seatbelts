@@ -97,9 +97,9 @@ class Player {
 
 
     // versnellen van de camera
-    if (y < (height/4)) {
-      scrollsnelheid = (height/4)-y;
-      y += height/4-y+(vy*0.5);
+    if (y < (height/2)) {
+      scrollsnelheid = (height/2)-y;
+      y += height/2-y+(vy*0.5);
     }
 
     //scrollen versnellen
@@ -232,10 +232,9 @@ class Player {
   }
   void draw() {
     img.resize(w, h);
-    if (shield == true) {
-      image(barrier, x-16, y-24);
-    }
-
     image(img, x-16, y-24);
+        if (shield == true) {
+      image(barrier, x-24, y-30);
+    }
   }
 }

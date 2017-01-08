@@ -81,8 +81,8 @@ void draw() {
   if (room == 0)    
   {
   if (hoogte<3500){background(background);}
-  if (hoogte>3500 && hoogte < 7000){background(background2);}
-  if (hoogte>7000){background(background3);}
+  if (hoogte>3500 && hoogte < 10000){background(background2);}
+  if (hoogte>10000){background(background3);}
   stroke(226, 204, 0);
     
     updateGame();       // Update your game first

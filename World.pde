@@ -1,6 +1,6 @@
 class World {
 
-  int wolkid = 0, cloudMax = 128, itemMax = 64, totalLevels = 16, totalLevelshard = 1, hardlimit = 80;        //Alle plaatsbare items initializen. Hardlimit is de level cap waarop we de moeilijke levels gaan gebruiken.
+  int wolkid = 0, cloudMax = 128, itemMax = 64, totalLevels = 20, totalLevelshard = 16, hardlimit = 80;        //Alle plaatsbare items initializen. Hardlimit is de level cap waarop we de moeilijke levels gaan gebruiken.
 
   int nCloud = 0, nEnemy = 0, nPowerUp = 0, nBird = 0, waves = 1000, horizontalItems = 11, leftOff = 0, fase = 0;
   boolean alive = true;
@@ -178,13 +178,13 @@ class World {
     ///////////////////////////////////////////////////////////////////
     ////////////////////////////Music//////////////////////////////////
     ///////////////////////////////////////////////////////////////////
-    if (hoogte > 7000 && fase == 0)    //Fase is there to check wether the game is easy (0) or hard (1)
+    if (hoogte > 10000 && fase == 0)    //Fase is there to check wether the game is easy (0) or hard (1)
     {
         music.stop(); 
         music2.loop();
         fase = 1;
     } 
-    if (hoogte < 7000 && fase == 1)    //Fase is there to check wether the game is easy (0) or hard (1)
+    if (hoogte < 10000 && fase == 1)    //Fase is there to check wether the game is easy (0) or hard (1)
     {
         music2.stop(); 
         music.loop();
@@ -351,7 +351,7 @@ class World {
                 //Spawning enemy cloud.
         if (spawn[x][y] == 6 && created[x][y]==false)
         {
-          enemy[nEnemy].x = x*80 + (80-enemy[nEnemy].w)/2; //the '+ (80-enemywidth)/2' puts enemy in the middle of the grid.;
+          enemy[nEnemy].x = x*80; //the '+ (80-enemywidth)/2' puts enemy in the middle of the grid.;
           enemy[nEnemy].origny = height-65-(128*y);
           created[x][y]=true; 
           enemy[nEnemy].d=3;
@@ -360,7 +360,7 @@ class World {
                 //Spawning moving enemy cloud.
         if (spawn[x][y] == 7 && created[x][y]==false)
         {
-          enemy[nEnemy].x = x*80 + (80-enemy[nEnemy].w)/2; //the '+ (80-enemywidth)/2' puts enemy in the middle of the grid.;
+          enemy[nEnemy].x = x*80; //the '+ (80-enemywidth)/2' puts enemy in the middle of the grid.;
           enemy[nEnemy].origny = height-65-(128*y);
           created[x][y]=true; 
           enemy[nEnemy].d=4;
@@ -395,7 +395,7 @@ class World {
         {
 
           cloud[nCloud].x = x*80;  
-          cloud[nCloud].origny = height-(128*y);//height-50-(128*y);
+          cloud[nCloud].origny = height-65-(128*y);
           cloud[nCloud].oldy = y; // x en y in de tabel (level editor), niet laten bewegen 
           cloud[nCloud].oldx = x; // niet laten bewegen 
           cloud[nCloud].specialCloud = 2; // 2 variabelen start/end , 1 om bewegend te maken velocity
