@@ -1,6 +1,6 @@
 class World {
 
-  int wolkid = 0, cloudMax = 132, itemMax = 48, totalLevels = 16;        //Alle plaatsbare items initializen
+  int wolkid = 0, cloudMax = 128, itemMax = 64, totalLevels = 16;        //Alle plaatsbare items initializen
 
   int nCloud = 0, nEnemy = 0, nPowerUp = 0, nBird = 0, waves = 1000, horizontalItems = 11, leftOff = 0, fase = 0;
   boolean alive = true;
@@ -272,13 +272,17 @@ class World {
     {
       for (int x = 0; x<horizontalItems; x++)
       {
+          if (nEnemy==itemMax) {
+            nEnemy=0;
+          }
+          if (nCloud==cloudMax) {
+            nCloud=0;
+          }
+          
         //Spawning clouds.
         if (spawn[x][y] == 1 && created[x][y]==false)
         {
 
-          if (nCloud==cloudMax) {
-            nCloud=0;
-          }
           cloud[nCloud].x = x*80;
           cloud[nCloud].origny = height-65-(128*y);
           cloud[nCloud].oldy = y;
@@ -291,10 +295,6 @@ class World {
         //Spawning Enemies.
         if (spawn[x][y] == 2 && created[x][y]==false)
         {
-
-          if (nEnemy==itemMax) {
-            nEnemy=0;
-          }
           enemy[nEnemy].x = x*80 + (80-enemy[nEnemy].w)/2; //the '+ (80-enemywidth)/2' puts enemy in the middle of the grid.;
           enemy[nEnemy].origny = height-65-(128*y);
           created[x][y]=true; 
@@ -319,10 +319,6 @@ class World {
         //Spawning Jumpclouds.
         if (spawn[x][y] == 4 && created[x][y]==false)
         {
-
-          if (nCloud==cloudMax) {
-            nCloud=0;
-          }
           cloud[nCloud].x = x*80;
           cloud[nCloud].origny = height-65-(128*y);
           cloud[nCloud].oldy = y;
@@ -349,10 +345,6 @@ class World {
                 //Spawning enemy cloud.
         if (spawn[x][y] == 6 && created[x][y]==false)
         {
-
-          if (nEnemy==itemMax) {
-            nEnemy=0;
-          }
           enemy[nEnemy].x = x*80 + (80-enemy[nEnemy].w)/2; //the '+ (80-enemywidth)/2' puts enemy in the middle of the grid.;
           enemy[nEnemy].origny = height-65-(128*y);
           created[x][y]=true; 
@@ -362,10 +354,6 @@ class World {
                 //Spawning moving enemy cloud.
         if (spawn[x][y] == 7 && created[x][y]==false)
         {
-
-          if (nEnemy==itemMax) {
-            nEnemy=0;
-          }
           enemy[nEnemy].x = x*80 + (80-enemy[nEnemy].w)/2; //the '+ (80-enemywidth)/2' puts enemy in the middle of the grid.;
           enemy[nEnemy].origny = height-65-(128*y);
           created[x][y]=true; 
@@ -375,10 +363,6 @@ class World {
          //Spawning Rockets.
         if (spawn[x][y] == 8 && created[x][y]==false)
         {
-
-          if (nEnemy==itemMax) {
-            nEnemy=0;
-          }
           enemy[nEnemy].x = x*80 + (80-enemy[nEnemy].w)/2; //the '+ (80-enemywidth)/2' puts enemy in the middle of the grid.;
           enemy[nEnemy].origny = height-65-(128*y);
           created[x][y]=true; 
@@ -404,10 +388,6 @@ class World {
         if (spawn[x][y] == 10 && created[x][y]==false)
         {
 
-          if (nCloud==cloudMax) {
-            nCloud=0;
-          }
-
           cloud[nCloud].x = x*80;  
           cloud[nCloud].origny = height-(128*y);//height-50-(128*y);
           cloud[nCloud].oldy = y; // x en y in de tabel (level editor), niet laten bewegen 
@@ -420,10 +400,6 @@ class World {
         //Squirrel
         if (spawn[x][y] == 11 && created[x][y]==false)
         {
-
-          if (nEnemy==itemMax) {
-            nEnemy=0;
-          }
           enemy[nEnemy].x = x*80 + (80-enemy[nEnemy].w)/2; //the '+ (80-enemywidth)/2' puts enemy in the middle of the grid.;
           enemy[nEnemy].origny = height-65-(128*y);
           created[x][y]=true; 
@@ -443,8 +419,8 @@ class World {
   void reset()
   {
     wolkid = 0; 
-    cloudMax = 64; 
-    itemMax = 32;   //Alle plaatsbare items initializen
+    cloudMax = 128; 
+    itemMax = 64;   //Alle plaatsbare items initializen
     nCloud = 0; 
     nEnemy = 0; 
     nPowerUp = 0; 

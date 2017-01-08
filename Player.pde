@@ -122,20 +122,20 @@ class Player {
         x -= vx;
       }   
       //change sprites
-      if (rightDown && dir == 1) {
-        if (landed == true  && world.alive == true) {
+      if (rightDown) {
+        if (landed == true  && world.alive == true  && img != spr_player_stand_right) {
           img = spr_player_stand_right;
         }
-        if (landed == false && world.alive == true) {
+        if (landed == false && world.alive == true  && img != spr_player_jump_right) {
           img = spr_player_jump_right;
         }
         dir = 0;
       } else
-        if (leftDown && dir == 0) {
-          if (landed == true && world.alive == true) {
+        if (leftDown) {
+          if (landed == true && world.alive == true  && img != spr_player_stand_left) {
             img = spr_player_stand_left;
           }
-          if (landed == false && world.alive == true) {
+          if (landed == false && world.alive == true && img != spr_player_jump_left) {
             img = spr_player_jump_left;
           }
           dir = 1;
@@ -168,6 +168,7 @@ class Player {
         mana -= 1; 
         vy = -jetpackspeed+scrollsnelheid;
       } 
+      //Jumping
       if (jumpDown && landed == true) {
         if (bounce == false) {
           vy = -jumpspeed+scrollsnelheid;
