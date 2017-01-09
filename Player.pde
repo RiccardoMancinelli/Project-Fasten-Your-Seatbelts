@@ -213,7 +213,7 @@ class Player {
 
       //zodra je geland bent krijg je je mana terug
       if (landed == true && mana<maxmana) {
-        mana+=8;
+        mana+=16;
       }
       if (mana > maxmana) {
         mana = maxmana;
