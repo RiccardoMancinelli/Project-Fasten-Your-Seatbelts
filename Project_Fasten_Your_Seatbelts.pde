@@ -9,10 +9,10 @@ nameInput Name_input = new nameInput();
 Menu_highscores menuHighscores = new Menu_highscores();
 
 boolean leftDown, rightDown, jumpDown, selectUP, selectDown, xButton; //Alle knoppen die de speler kan gebruiken
-int score, mana, maxmana, hoogte, room = 2, choice = 1, highscoreChoice = 1; //Initialiseerd alle variabelen.
+int score, mana, maxmana, hoogte, room = 2, choice = 1, highscoreChoice = 1, y; //Initialiseerd alle variabelen.
 float scrollsnelheid = 0, staticscrollsnelheid, respawnTimer, canChooseTimer; //Staticsrollsnelheid is een 'reset'. Het is om glitches te voorkomen in het scrollen.
 boolean cameraSwitch = false, canChoose = true;     
-String playerName = "";
+String playerName = "", savedName = "";
 
 //Geluid inladen:
 import processing.sound.*;
@@ -26,13 +26,10 @@ SoundFile file4;
 SoundFile file5;
 SoundFile music;
 SoundFile music2;
+SoundFile music3;
 
-<<<<<<< HEAD
-PImage background, background2, background3, titlescreen, playbutton, highscoresbutton, exitbutton, playpressed, highscorespressed, exitpressed, homeButton, homeButtonpressed;
-=======
-PImage background, background2, background3, background4, titlescreen, playbutton, highscoresbutton, exitbutton, playpressed, highscorespressed, exitpressed;
->>>>>>> origin/master
-int y;
+
+PImage background, background2, background3, background4, titlescreen, playbutton, highscoresbutton, exitbutton, playpressed, highscorespressed, exitpressed, homeButton, homeButtonpressed;
 
 
 void setup() {
@@ -44,10 +41,14 @@ void setup() {
   file5 = new SoundFile(this, "shield_sound.wav");
   music = new SoundFile(this, "Main_theme.wav");
   music2 = new SoundFile(this, "difficult_theme.wav");
+  music3 = new SoundFile(this, "Menu_theme.wav");
+  
+  
   
 background = loadImage("BackgroundNew2.jpg");
 background2 = loadImage("BackgroundHard.jpg");
-background3 = loadImage("BackgroundHardest.jpg"); background4 = loadImage("Backgroundimpossible.jpg");
+background3 = loadImage("BackgroundHardest.jpg"); 
+background4 = loadImage("Backgroundimpossible.jpg");
 titlescreen = loadImage("Title-screen2.jpg");
 
 playbutton = loadImage("play_button.png");
@@ -64,6 +65,7 @@ String fileName = dataPath("higscores.csv");
   world.init();
   highscores.load("highscore.csv");
   size(880, 495);
+  music3.loop();
 }
 
 void updateGame() 
@@ -92,7 +94,8 @@ void draw() {
   {
   if (hoogte<3500){background(background);}
   if (hoogte>3500 && hoogte < 10000){background(background2);}
-  if (hoogte>10000 && hoogte<20000){background(background3);} if (hoogte>20000){background(background4);}
+  if (hoogte>10000 && hoogte<20000){background(background3);} 
+  if (hoogte>20000){background(background4);}
   stroke(226, 204, 0);
     
     updateGame();       // Update your game first
@@ -124,16 +127,19 @@ void draw() {
   if (room == 1 && jumpDown == true && respawnTimer == 0 && choice == 1)
   {  
     reset();  
+    music3.stop();
   }     
-  
+  //naar menu
   if (room == 1 && jumpDown == true && respawnTimer == 0 && choice == 2){
    room = 2; 
    jumpDown = false;
    music.stop();
    music2.stop();
+   music3.loop();
    choice = 1;
   }
   
+  //van name highscore menu naar normal menu
   if (room == 4 && jumpDown == true && canChooseTimer == 0){
     room = 2;
     jumpDown = false;
@@ -217,7 +223,7 @@ void draw() {
   
   //START GAME KNOP:
   if (room == 2 && jumpDown == true && choice == 1){
-
+   music3.stop();
    music.loop();
    reset();
   }
@@ -229,7 +235,7 @@ void draw() {
  
   //END GAME KNOP:
   if (room == 2 && jumpDown == true && choice == 3){
-    highscores.save("highscore.csv");
+    music3.stop();
     exit();
   }
 }
@@ -279,14 +285,20 @@ void keyPressed() {
     }
   } else if (keyCode == DELETE) {
     playerName = "";
-  } else if (keyCode != SHIFT && keyCode != CONTROL && keyCode != ALT) {
+  } else if (keyCode != SHIFT && keyCode != CONTROL && keyCode != ALT && playerName.length()<=12) {
     playerName = playerName + key;
-  }  if (keyCode == ENTER){
+  }  
+   if (keyCode == ENTER){
     playerName = playerName.substring(0, playerName.length()-1);
+  }
+  if (keyCode == ENTER && playerName.length()>=3 && playerName != "" && playerName.length()<=12){
     highscores.addScore(playerName, (score += hoogte));
+    savedName = playerName;
     playerName = "";
     room = 1; 
+    highscores.save("highscore.csv");
   }
+
   }
 }
 void keyReleased() {

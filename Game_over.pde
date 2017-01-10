@@ -13,13 +13,14 @@ class Game_over {
     for (int iScore = 0; iScore<highscores.getScoreCount(); iScore++) {
 
     // only show the top 5 scores
-    if (iScore>=4) break;
+    if (iScore>=5) break;
     
     // fetch a score from the list
     Score score = highscores.getScore(iScore);
     textSize(25);
     // display score in window
-    text((iScore+1) + "            " + score.name + "        " + score.score, width/3, height/4+85 + iScore*20);
+    text((iScore+1) + "        " + score.name, width/3, height/4+85 + iScore*20);
+    text(score.score,width/3 + 288 , height/4+85 + iScore*20);
   
     }
     

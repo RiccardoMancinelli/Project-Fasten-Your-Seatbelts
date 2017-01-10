@@ -10,14 +10,15 @@ class Menu_highscores {
     
     for (int iScore = 0; iScore<highscores.getScoreCount(); iScore++) {
 
-    // only show the top 5 scores
-    if (iScore>=9) break;
+    // only show the top 10 scores
+    if (iScore>=10) break;
     
     // fetch a score from the list
     Score score = highscores.getScore(iScore);
     textSize(25);
     // display score in window
-    text((iScore+1) + "            " + score.name + "        " + score.score, width/3, height/4+85 + iScore*20);
+        text((iScore+1) + "        " + score.name, width/3, height/4+85 + iScore*20);
+    text(score.score,width/3 + 288 , height/4+85 + iScore*20);
   
     }
     textSize(50);

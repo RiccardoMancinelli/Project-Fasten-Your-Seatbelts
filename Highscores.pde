@@ -52,12 +52,12 @@ class ScoreList {
   // Save scores to file named "scoreFileName"
   void save(String scoreFileName) {
     // Copy scores from ArrayList to table
-    for (Score score : scores) {
+    //for (Score score : scores) {
       TableRow row = scoreTable.addRow();
-      row.setString("name", score.name);
-      row.setInt("score", score.score);
+      row.setString("name", savedName);
+      row.setInt("score", score);
       
-    }
+   //}
 
     saveTable(scoreTable, scoreFileName);
   }
