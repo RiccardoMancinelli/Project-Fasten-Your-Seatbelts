@@ -44,7 +44,6 @@ void setup() {
   music3 = new SoundFile(this, "Menu_theme.wav");
   
   
-  
 background = loadImage("BackgroundNew2.jpg");
 background2 = loadImage("BackgroundHard.jpg");
 background3 = loadImage("BackgroundHardest.jpg"); 
@@ -61,9 +60,9 @@ highscorespressed = loadImage("highscores_pressed.png");
 exitpressed = loadImage("exit_button_pressed.png");
 homeButtonpressed = loadImage("Home_button_pressed.png");
 
-String fileName = dataPath("higscores.csv");
   world.init();
   highscores.load("highscore.csv");
+  highscores.sortScores();            //sorteert de ingeladen score
   size(880, 495);
   music3.loop();
 }
@@ -94,8 +93,8 @@ void draw() {
   {
   if (hoogte<3500){background(background);}
   if (hoogte>3500 && hoogte < 10000){background(background2);}
-  if (hoogte>10000 && hoogte<20000){background(background3);} 
-  if (hoogte>20000){background(background4);}
+  if (hoogte>10000 && hoogte<16000){background(background3);} 
+  if (hoogte>16000){background(background4);}
   stroke(226, 204, 0);
     
     updateGame();       // Update your game first

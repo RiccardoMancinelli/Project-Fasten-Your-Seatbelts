@@ -6,7 +6,7 @@ class World {
   boolean alive = true;
   int[][] spawn = new int[horizontalItems][waves];    //maakt 8 locaties aan waarop we dingen kunnen spawnen (hokjes van 80 pixels) en maakt in totaal ... waves 
   boolean[][] created = new boolean[horizontalItems][waves];  //variable om te kijken of het object dat gemaakt moetst worden ook echt gemaakt is.
-
+  PImage img;
   Player player = new Player();
   Camera camera = new Camera();
   Cloud [] cloud = new Cloud[cloudMax];
@@ -15,6 +15,8 @@ class World {
   Power_up [] powerUp = new Power_up[itemMax];
   
   void init() {
+    
+    img = loadImage("jetpackhud.png");  //laad HUD sprite voor jetpack
     
     ///////////////////////////////////////////////////////////////////
     ///////////////////Random generation///////////////////////////////
@@ -260,12 +262,23 @@ class World {
 
     fill(0, 0, 0); 
     rect(16, 16, maxmana+1, 16);    //tekent de achtergrond van de mana bar op x=16, y=16, x2=64, y2=16
+    img.resize(20, 20);
+    image(img, maxmana+16, 15);
     fill(255, 0, 0); 
     rect(15, 15, mana, 15);    //tekent de hoeveelheid mana die je hebt.
-    fill(0, 0, 0);
+    fill(0, 0, 0, 127);
+    rect(2, 48, 128,44);
+    
+    fill(0, 0, 0, 127);
+    rect(width-136, 0, width-4,54);
+    fill(255);
     textSize(16);
     text("Hoogte:" +hoogte, 10, 64); 
     text("Score:" + (score + hoogte), 10, 80);
+    Score score = highscores.getScore(0);
+    text("Highscore:",width-128,16);
+    text(score.score, width-128, + 32);
+    text("By:"+ score.name, width-128, + 48);
   }
 
   ///////////////////////////////////////////////////////////////////

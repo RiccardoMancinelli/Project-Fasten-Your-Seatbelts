@@ -43,6 +43,6 @@ class Game_over {
     //text("Press X for main menu", width/1.8, height-20);
     textSize(40);
     text("Your score:  "+ score,width/1.8, height-75);
-    text("Your height:  "+ hoogte,width/7, height-75); 
+    text("Your height:  "+ hoogte,width/10, height-75); 
   }
 }
