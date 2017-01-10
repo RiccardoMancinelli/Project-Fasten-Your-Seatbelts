@@ -998,6 +998,285 @@ world.spawn[10][y + 0] = 1;
 }
 ///////////////////////////////////////////////////
 
+//////////////LEVEL LAYOUT NUMBER: 51////////////////
+if (selected == 51){
+world.spawn[4][y + 3] = 5;
+world.spawn[5][y + 3] = 5;
+world.spawn[6][y + 3] = 5;
+world.spawn[2][y + 2] = 10;
+world.spawn[5][y + 2] = 10;
+world.spawn[8][y + 2] = 10;
+world.spawn[1][y + 1] = 1;
+world.spawn[2][y + 1] = 2;
+world.spawn[3][y + 1] = 1;
+world.spawn[5][y + 1] = 2;
+world.spawn[7][y + 1] = 1;
+world.spawn[8][y + 1] = 2;
+world.spawn[9][y + 1] = 1;
+world.spawn[5][y + 0] = 3;
+}
+///////////////////////////////////////////////////
+
+//////////////LEVEL LAYOUT NUMBER: 52////////////////
+if (selected == 52){
+world.spawn[0][y + 3] = 8;
+world.spawn[1][y + 3] = 2;
+world.spawn[3][y + 3] = 2;
+world.spawn[7][y + 3] = 2;
+world.spawn[9][y + 3] = 2;
+world.spawn[10][y + 3] = 8;
+world.spawn[4][y + 2] = 4;
+world.spawn[5][y + 2] = 5;
+world.spawn[6][y + 2] = 1;
+world.spawn[1][y + 1] = 1;
+world.spawn[2][y + 1] = 1;
+world.spawn[3][y + 1] = 1;
+world.spawn[7][y + 1] = 1;
+world.spawn[8][y + 1] = 1;
+world.spawn[9][y + 1] = 1;
+world.spawn[1][y + 0] = 10;
+world.spawn[5][y + 0] = 10;
+world.spawn[9][y + 0] = 10;
+}
+///////////////////////////////////////////////////
+
+//////////////LEVEL LAYOUT NUMBER: 53////////////////
+if (selected == 53){
+world.spawn[0][y + 3] = 11;
+world.spawn[1][y + 3] = 4;
+world.spawn[2][y + 3] = 5;
+world.spawn[4][y + 3] = 2;
+world.spawn[5][y + 3] = 2;
+world.spawn[6][y + 3] = 2;
+world.spawn[8][y + 3] = 5;
+world.spawn[9][y + 3] = 4;
+world.spawn[0][y + 2] = 11;
+world.spawn[2][y + 2] = 10;
+world.spawn[3][y + 2] = 10;
+world.spawn[4][y + 2] = 9;
+world.spawn[5][y + 2] = 9;
+world.spawn[6][y + 2] = 9;
+world.spawn[7][y + 2] = 10;
+world.spawn[8][y + 2] = 10;
+world.spawn[3][y + 1] = 5;
+world.spawn[4][y + 1] = 1;
+world.spawn[5][y + 1] = 1;
+world.spawn[6][y + 1] = 1;
+world.spawn[7][y + 1] = 5;
+world.spawn[0][y + 0] = 1;
+world.spawn[1][y + 0] = 1;
+world.spawn[2][y + 0] = 1;
+world.spawn[3][y + 0] = 1;
+}
+///////////////////////////////////////////////////
+
+//////////////LEVEL LAYOUT NUMBER: 54////////////////
+if (selected == 54){
+world.spawn[0][y + 3] = 8;
+world.spawn[2][y + 3] = 8;
+world.spawn[4][y + 3] = 8;
+world.spawn[6][y + 3] = 8;
+world.spawn[8][y + 3] = 8;
+world.spawn[10][y + 3] = 8;
+world.spawn[1][y + 2] = 4;
+world.spawn[2][y + 2] = 5;
+world.spawn[5][y + 2] = 4;
+world.spawn[8][y + 2] = 5;
+world.spawn[9][y + 2] = 4;
+world.spawn[0][y + 1] = 10;
+world.spawn[2][y + 1] = 10;
+world.spawn[4][y + 1] = 10;
+world.spawn[6][y + 1] = 10;
+world.spawn[8][y + 1] = 10;
+world.spawn[10][y + 1] = 10;
+world.spawn[0][y + 0] = 9;
+world.spawn[1][y + 0] = 6;
+world.spawn[2][y + 0] = 9;
+world.spawn[5][y + 0] = 3;
+world.spawn[8][y + 0] = 9;
+world.spawn[9][y + 0] = 6;
+world.spawn[10][y + 0] = 9;
+}
+///////////////////////////////////////////////////
+
+//////////////LEVEL LAYOUT NUMBER: 55////////////////
+if (selected == 55){
+world.spawn[0][y + 3] = 8;
+world.spawn[4][y + 3] = 11;
+world.spawn[7][y + 3] = 11;
+world.spawn[10][y + 3] = 8;
+world.spawn[0][y + 2] = 7;
+world.spawn[1][y + 2] = 5;
+world.spawn[2][y + 2] = 10;
+world.spawn[5][y + 2] = 4;
+world.spawn[8][y + 2] = 10;
+world.spawn[9][y + 2] = 5;
+world.spawn[10][y + 2] = 7;
+world.spawn[0][y + 1] = 5;
+world.spawn[1][y + 1] = 9;
+world.spawn[3][y + 1] = 3;
+world.spawn[5][y + 1] = 5;
+world.spawn[7][y + 1] = 3;
+world.spawn[9][y + 1] = 9;
+world.spawn[10][y + 1] = 5;
+world.spawn[0][y + 0] = 1;
+world.spawn[1][y + 0] = 1;
+world.spawn[9][y + 0] = 1;
+world.spawn[10][y + 0] = 1;
+}
+///////////////////////////////////////////////////
+
+//////////////LEVEL LAYOUT NUMBER: 56////////////////
+if (selected == 56){
+world.spawn[0][y + 3] = 8;
+world.spawn[1][y + 3] = 8;
+world.spawn[4][y + 3] = 5;
+world.spawn[5][y + 3] = 5;
+world.spawn[9][y + 3] = 8;
+world.spawn[10][y + 3] = 8;
+world.spawn[2][y + 2] = 2;
+world.spawn[4][y + 2] = 1;
+world.spawn[5][y + 2] = 1;
+world.spawn[7][y + 2] = 2;
+world.spawn[0][y + 1] = 5;
+world.spawn[1][y + 1] = 5;
+world.spawn[2][y + 1] = 1;
+world.spawn[3][y + 1] = 4;
+world.spawn[4][y + 1] = 2;
+world.spawn[5][y + 1] = 2;
+world.spawn[6][y + 1] = 4;
+world.spawn[7][y + 1] = 1;
+world.spawn[9][y + 1] = 5;
+world.spawn[10][y + 1] = 5;
+world.spawn[3][y + 0] = 1;
+world.spawn[4][y + 0] = 9;
+world.spawn[5][y + 0] = 9;
+world.spawn[6][y + 0] = 1;
+}
+///////////////////////////////////////////////////
+
+//////////////LEVEL LAYOUT NUMBER: 57////////////////
+if (selected == 57){
+world.spawn[0][y + 3] = 1;
+world.spawn[1][y + 3] = 1;
+world.spawn[2][y + 3] = 1;
+world.spawn[5][y + 3] = 11;
+world.spawn[8][y + 3] = 1;
+world.spawn[9][y + 3] = 1;
+world.spawn[10][y + 3] = 1;
+world.spawn[0][y + 2] = 5;
+world.spawn[1][y + 2] = 5;
+world.spawn[3][y + 2] = 4;
+world.spawn[5][y + 2] = 7;
+world.spawn[7][y + 2] = 4;
+world.spawn[9][y + 2] = 5;
+world.spawn[10][y + 2] = 5;
+world.spawn[2][y + 1] = 3;
+world.spawn[7][y + 1] = 3;
+world.spawn[0][y + 0] = 10;
+world.spawn[5][y + 0] = 10;
+world.spawn[10][y + 0] = 10;
+}
+///////////////////////////////////////////////////
+
+//////////////LEVEL LAYOUT NUMBER: 58////////////////
+if (selected == 58){
+world.spawn[0][y + 3] = 1;
+world.spawn[1][y + 3] = 4;
+world.spawn[2][y + 3] = 2;
+world.spawn[3][y + 3] = 2;
+world.spawn[4][y + 3] = 2;
+world.spawn[5][y + 3] = 2;
+world.spawn[6][y + 3] = 2;
+world.spawn[7][y + 3] = 2;
+world.spawn[8][y + 3] = 2;
+world.spawn[9][y + 3] = 4;
+world.spawn[10][y + 3] = 1;
+world.spawn[0][y + 2] = 1;
+world.spawn[1][y + 2] = 1;
+world.spawn[2][y + 2] = 9;
+world.spawn[4][y + 2] = 3;
+world.spawn[6][y + 2] = 3;
+world.spawn[8][y + 2] = 9;
+world.spawn[9][y + 2] = 1;
+world.spawn[10][y + 2] = 1;
+world.spawn[0][y + 1] = 1;
+world.spawn[1][y + 1] = 1;
+world.spawn[2][y + 1] = 5;
+world.spawn[3][y + 1] = 5;
+world.spawn[4][y + 1] = 5;
+world.spawn[5][y + 1] = 11;
+world.spawn[6][y + 1] = 5;
+world.spawn[7][y + 1] = 5;
+world.spawn[8][y + 1] = 5;
+world.spawn[9][y + 1] = 1;
+world.spawn[10][y + 1] = 1;
+world.spawn[0][y + 0] = 4;
+world.spawn[1][y + 0] = 1;
+world.spawn[4][y + 0] = 3;
+world.spawn[6][y + 0] = 3;
+world.spawn[9][y + 0] = 1;
+world.spawn[10][y + 0] = 4;
+}
+///////////////////////////////////////////////////
+
+//////////////LEVEL LAYOUT NUMBER: 59////////////////
+if (selected == 59){
+world.spawn[0][y + 3] = 5;
+world.spawn[1][y + 3] = 1;
+world.spawn[2][y + 3] = 1;
+world.spawn[7][y + 3] = 1;
+world.spawn[8][y + 3] = 1;
+world.spawn[10][y + 3] = 5;
+world.spawn[0][y + 2] = 5;
+world.spawn[2][y + 2] = 5;
+world.spawn[4][y + 2] = 10;
+world.spawn[5][y + 2] = 10;
+world.spawn[6][y + 2] = 10;
+world.spawn[8][y + 2] = 5;
+world.spawn[10][y + 2] = 5;
+world.spawn[0][y + 1] = 2;
+world.spawn[2][y + 1] = 1;
+world.spawn[3][y + 1] = 1;
+world.spawn[5][y + 1] = 4;
+world.spawn[7][y + 1] = 1;
+world.spawn[8][y + 1] = 1;
+world.spawn[10][y + 1] = 2;
+world.spawn[0][y + 0] = 1;
+world.spawn[1][y + 0] = 1;
+world.spawn[3][y + 0] = 3;
+world.spawn[7][y + 0] = 3;
+world.spawn[9][y + 0] = 1;
+world.spawn[10][y + 0] = 1;
+}
+///////////////////////////////////////////////////
+
+//////////////LEVEL LAYOUT NUMBER: 60////////////////
+if (selected == 60){
+world.spawn[0][y + 3] = 10;
+world.spawn[3][y + 3] = 10;
+world.spawn[8][y + 3] = 10;
+world.spawn[10][y + 3] = 10;
+world.spawn[0][y + 2] = 11;
+world.spawn[1][y + 1] = 1;
+world.spawn[2][y + 1] = 4;
+world.spawn[3][y + 1] = 2;
+world.spawn[4][y + 1] = 4;
+world.spawn[6][y + 1] = 4;
+world.spawn[7][y + 1] = 2;
+world.spawn[8][y + 1] = 4;
+world.spawn[9][y + 1] = 1;
+world.spawn[0][y + 0] = 3;
+world.spawn[3][y + 0] = 9;
+world.spawn[4][y + 0] = 5;
+world.spawn[5][y + 0] = 5;
+world.spawn[6][y + 0] = 5;
+world.spawn[7][y + 0] = 9;
+world.spawn[10][y + 0] = 3;
+}
+///////////////////////////////////////////////////
+
+
 
 
 
