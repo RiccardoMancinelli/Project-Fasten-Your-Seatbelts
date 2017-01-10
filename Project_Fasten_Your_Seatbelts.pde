@@ -5,11 +5,14 @@
 World world = new World();
 Game_over game_over = new Game_over();
 MainMenu mainMenu = new MainMenu();
+nameInput Name_input = new nameInput();
+Menu_highscores menuHighscores = new Menu_highscores();
 
 boolean leftDown, rightDown, jumpDown, selectUP, selectDown, xButton; //Alle knoppen die de speler kan gebruiken
-int score, mana, maxmana, hoogte, room = 2, choice = 1; //Initialiseerd alle variabelen.
+int score, mana, maxmana, hoogte, room = 2, choice = 1, highscoreChoice = 1; //Initialiseerd alle variabelen.
 float scrollsnelheid = 0, staticscrollsnelheid, respawnTimer, canChooseTimer; //Staticsrollsnelheid is een 'reset'. Het is om glitches te voorkomen in het scrollen.
 boolean cameraSwitch = false, canChoose = true;     
+String playerName = "";
 
 //Geluid inladen:
 import processing.sound.*;
@@ -24,7 +27,7 @@ SoundFile file5;
 SoundFile music;
 SoundFile music2;
 
-PImage background, background2, background3, titlescreen, playbutton, highscoresbutton, exitbutton, playpressed, highscorespressed, exitpressed;
+PImage background, background2, background3, titlescreen, playbutton, highscoresbutton, exitbutton, playpressed, highscorespressed, exitpressed, homeButton, homeButtonpressed;
 int y;
 
 
@@ -46,11 +49,14 @@ titlescreen = loadImage("Title-screen2.jpg");
 playbutton = loadImage("play_button.png");
 highscoresbutton = loadImage("highscores_button.png");
 exitbutton = loadImage("exit_button.png");
+homeButton = loadImage("Home_button.png");
 
 playpressed = loadImage("play_button_pressed.png");
 highscorespressed = loadImage("highscores_pressed.png");
 exitpressed = loadImage("exit_button_pressed.png");
+homeButtonpressed = loadImage("Home_button_pressed.png");
 
+String fileName = dataPath("higscores.csv");
   world.init();
   highscores.load("highscore.csv");
   size(880, 495);
@@ -100,15 +106,34 @@ void draw() {
      mainMenu.draw(); 
   }
   
-  //ALS JE VAN GAMOVER SCHERM NAAR DE GAME TERUG WILT
-  if (room == 1 && jumpDown == true && respawnTimer == 0)
+  else if (room == 3){
+    background(0);
+    Name_input.draw();
+  }
+  
+  else if (room == 4){
+    background(0);
+    menuHighscores.draw();
+  }
+  
+    //ALS JE VAN GAMOVER SCHERM NAAR DE GAME TERUG WILT
+  if (room == 1 && jumpDown == true && respawnTimer == 0 && choice == 1)
   {  
     reset();  
-  }
-  if (room == 1 && xButton == true && respawnTimer == 0){
+  }     
+  
+  if (room == 1 && jumpDown == true && respawnTimer == 0 && choice == 2){
    room = 2; 
+   jumpDown = false;
    music.stop();
    music2.stop();
+   choice = 1;
+  }
+  
+  if (room == 4 && jumpDown == true && canChooseTimer == 0){
+    room = 2;
+    jumpDown = false;
+    canChooseTimer = 10;
   }
   
   //Een klok om af te tellen.
@@ -161,19 +186,49 @@ void draw() {
     canChoose = true;
   }
   
+   ///////////////////////////////////////////////////////////////////
+   ///////////////////Highscores//////////////////////////////////////
+   /////////////////////////////////////////////////////////////////// 
+    if (room == 1 && selectDown == true && choice == 1 && canChoose == true){
+    choice = 2;
+    canChoose = false;
+    canChooseTimer = 10;
+  }
+    if (room == 1 && selectDown == true && choice == 2 && canChoose == true){
+    choice = 1;
+    canChoose = false;
+    canChooseTimer = 10;
+  }
+  
+    if (room == 1 && selectUP == true && choice == 1 && canChoose == true){
+    choice = 2;
+    canChoose = false;
+    canChooseTimer = 10;
+  }
+    if (room == 1 && selectUP == true && choice == 2 && canChoose == true){
+    choice = 1;
+    canChoose = false;
+    canChooseTimer = 10;
+  }
+  
   //START GAME KNOP:
   if (room == 2 && jumpDown == true && choice == 1){
 
    music.loop();
    reset();
   }
+
+  if (room == 2 && jumpDown == true && choice == 2){
+    room = 4;
+    canChooseTimer = 10;
+  }
+ 
   //END GAME KNOP:
   if (room == 2 && jumpDown == true && choice == 3){
     highscores.save("highscore.csv");
     exit();
   }
 }
-
 
 void reset()
 {
@@ -201,14 +256,33 @@ void keyPressed() {
   if (key == 'z' || key == 'Z') {
     jumpDown = true;
   }
+  if (room == 1 || room == 2){
   if (keyCode == UP) {
    selectUP = true; 
   }
   if (keyCode == DOWN) {
    selectDown = true; 
   }
+  }
    if (key == 'x' || key == 'X') {
     xButton = true;
+  }
+  
+  if (room == 3){
+    if (keyCode == BACKSPACE) {
+    if (playerName.length() > 0) {
+      playerName = playerName.substring(0, playerName.length()-1);
+    }
+  } else if (keyCode == DELETE) {
+    playerName = "";
+  } else if (keyCode != SHIFT && keyCode != CONTROL && keyCode != ALT) {
+    playerName = playerName + key;
+  }  if (keyCode == ENTER){
+    playerName = playerName.substring(0, playerName.length()-1);
+    highscores.addScore(playerName, (score += hoogte));
+    playerName = "";
+    room = 1; 
+  }
   }
 }
 void keyReleased() {
@@ -221,11 +295,13 @@ void keyReleased() {
   if (key == 'z' || key == 'Z') {
     jumpDown = false;
   }
+  if (room == 1 || room == 2){
   if (keyCode == UP) {
    selectUP = false; 
   }
   if (keyCode == DOWN) {
    selectDown = false; 
+  }
   }
    if (key == 'x' || key == 'X') {
     xButton = false;

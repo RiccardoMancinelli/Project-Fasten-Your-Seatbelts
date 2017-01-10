@@ -56,7 +56,10 @@ class ScoreList {
       TableRow row = scoreTable.addRow();
       row.setString("name", score.name);
       row.setInt("score", score.score);
+      
     }
+
+    saveTable(scoreTable, scoreFileName);
   }
   
   

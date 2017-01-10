@@ -1,0 +1,13 @@
+class nameInput{
+
+ void draw() {
+    textSize(62);
+    fill(255);
+    textAlign(CENTER, CENTER);
+    text("What is your name?", width/2, height/4);
+    text(playerName, 0, 0, width, height);
+    textAlign(0,0);
+    
+  }
+    
+}
