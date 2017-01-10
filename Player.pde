@@ -1,6 +1,6 @@
 class Player {  
   int x, y, w, h, versnelling; // Position
-  float clr, vx, vy, jumpspeed, center, diameter, jetpackspeed, maxSpeed, dir, timer, timer2; // Size
+  float clr, vx, vy, jumpspeed, center, diameter, jetpackspeed, maxSpeed, dir, timer, timer2, soundDelay; 
   boolean landed, manaPowers, bounce, shield; 
   PImage img, spr_player_stand_left, spr_player_stand_right, spr_player_jump_right, spr_player_jump_left, spr_player_dead, barrier;
   String name;
@@ -97,9 +97,9 @@ class Player {
 
 
     // versnellen van de camera
-    if (y < (height/4)) {
-      scrollsnelheid = (height/4)-y;
-      y += height/4-y+(vy*0.5);
+    if (y < (height/2)) {
+      scrollsnelheid = (height/2)-y;
+      y += height/2-y+(vy*0.5);
     }
 
     //scrollen versnellen
@@ -122,31 +122,29 @@ class Player {
         x -= vx;
       }   
       //change sprites
-      if (rightDown && dir == 1) {
-        if (landed == true  && world.alive == true) {
+      if (rightDown) {
+        if (landed == true  && world.alive == true  && img != spr_player_stand_right) {
           img = spr_player_stand_right;
         }
-        if (landed == false && world.alive == true) {
+        if (landed == false && world.alive == true  && img != spr_player_jump_right) {
           img = spr_player_jump_right;
         }
         dir = 0;
       } else
-        if (leftDown && dir == 0) {
-          if (landed == true && world.alive == true) {
+        if (leftDown) {
+          if (landed == true && world.alive == true  && img != spr_player_stand_left) {
             img = spr_player_stand_left;
           }
-          if (landed == false && world.alive == true) {
+          if (landed == false && world.alive == true && img != spr_player_jump_left) {
             img = spr_player_jump_left;
           }
           dir = 1;
         }
 
-      //jetpack
-      if (manaPowers==true && jumpDown && landed == false) { 
-        vy = -jetpackspeed+scrollsnelheid;
-        file4.play();
-
-      }
+      
+     if (manaPowers==true && jumpDown && landed == false) { 
+     vy = -jetpackspeed+scrollsnelheid;
+     }
       //jumpcloud
       if (jumpDown == true && bounce == true && landed == true) 
       { 
@@ -163,11 +161,15 @@ class Player {
         }
       }
 
-
+      //jetpack
       if (manaPowers==false && mana > 0 && jumpDown && landed == false && vy >-2) {
         mana -= 1; 
         vy = -jetpackspeed+scrollsnelheid;
+        if (soundDelay == 0)
+        {file4.play(); soundDelay = 20;}
+        if (soundDelay > 0){soundDelay -=1;}
       } 
+      //Jumping
       if (jumpDown && landed == true) {
         if (bounce == false) {
           vy = -jumpspeed+scrollsnelheid;
@@ -211,7 +213,7 @@ class Player {
 
       //zodra je geland bent krijg je je mana terug
       if (landed == true && mana<maxmana) {
-        mana+=8;
+        mana+=16;
       }
       if (mana > maxmana) {
         mana = maxmana;
@@ -230,10 +232,9 @@ class Player {
   }
   void draw() {
     img.resize(w, h);
-    if (shield == true) {
-      image(barrier, x-16, y-24);
-    }
-
     image(img, x-16, y-24);
+        if (shield == true) {
+      image(barrier, x-24, y-30);
+    }
   }
 }
