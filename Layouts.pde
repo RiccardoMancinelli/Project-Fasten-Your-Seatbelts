@@ -999,7 +999,7 @@ world.spawn[10][y + 0] = 1;
 ///////////////////////////////////////////////////
 
 //////////////LEVEL LAYOUT NUMBER: 51////////////////
-if (selected == 51){
+if (selected == 31){
 world.spawn[4][y + 3] = 5;
 world.spawn[5][y + 3] = 5;
 world.spawn[6][y + 3] = 5;
@@ -1018,7 +1018,7 @@ world.spawn[5][y + 0] = 3;
 ///////////////////////////////////////////////////
 
 //////////////LEVEL LAYOUT NUMBER: 52////////////////
-if (selected == 52){
+if (selected == 32){
 world.spawn[0][y + 3] = 8;
 world.spawn[1][y + 3] = 2;
 world.spawn[3][y + 3] = 2;
@@ -1041,7 +1041,7 @@ world.spawn[9][y + 0] = 10;
 ///////////////////////////////////////////////////
 
 //////////////LEVEL LAYOUT NUMBER: 53////////////////
-if (selected == 53){
+if (selected == 33){
 world.spawn[0][y + 3] = 11;
 world.spawn[1][y + 3] = 4;
 world.spawn[2][y + 3] = 5;
@@ -1071,7 +1071,7 @@ world.spawn[3][y + 0] = 1;
 ///////////////////////////////////////////////////
 
 //////////////LEVEL LAYOUT NUMBER: 54////////////////
-if (selected == 54){
+if (selected == 34){
 world.spawn[0][y + 3] = 8;
 world.spawn[2][y + 3] = 8;
 world.spawn[4][y + 3] = 8;
@@ -1100,7 +1100,7 @@ world.spawn[10][y + 0] = 9;
 ///////////////////////////////////////////////////
 
 //////////////LEVEL LAYOUT NUMBER: 55////////////////
-if (selected == 55){
+if (selected == 35){
 world.spawn[0][y + 3] = 8;
 world.spawn[4][y + 3] = 11;
 world.spawn[7][y + 3] = 11;
@@ -1127,7 +1127,7 @@ world.spawn[10][y + 0] = 1;
 ///////////////////////////////////////////////////
 
 //////////////LEVEL LAYOUT NUMBER: 56////////////////
-if (selected == 56){
+if (selected == 36){
 world.spawn[0][y + 3] = 8;
 world.spawn[1][y + 3] = 8;
 world.spawn[4][y + 3] = 5;
@@ -1156,7 +1156,7 @@ world.spawn[6][y + 0] = 1;
 ///////////////////////////////////////////////////
 
 //////////////LEVEL LAYOUT NUMBER: 57////////////////
-if (selected == 57){
+if (selected == 37){
 world.spawn[0][y + 3] = 1;
 world.spawn[1][y + 3] = 1;
 world.spawn[2][y + 3] = 1;
@@ -1180,7 +1180,7 @@ world.spawn[10][y + 0] = 10;
 ///////////////////////////////////////////////////
 
 //////////////LEVEL LAYOUT NUMBER: 58////////////////
-if (selected == 58){
+if (selected == 38){
 world.spawn[0][y + 3] = 1;
 world.spawn[1][y + 3] = 4;
 world.spawn[2][y + 3] = 2;
@@ -1221,7 +1221,7 @@ world.spawn[10][y + 0] = 4;
 ///////////////////////////////////////////////////
 
 //////////////LEVEL LAYOUT NUMBER: 59////////////////
-if (selected == 59){
+if (selected == 39){
 world.spawn[0][y + 3] = 5;
 world.spawn[1][y + 3] = 1;
 world.spawn[2][y + 3] = 1;
@@ -1252,7 +1252,7 @@ world.spawn[10][y + 0] = 1;
 ///////////////////////////////////////////////////
 
 //////////////LEVEL LAYOUT NUMBER: 60////////////////
-if (selected == 60){
+if (selected == 40){
 world.spawn[0][y + 3] = 10;
 world.spawn[3][y + 3] = 10;
 world.spawn[8][y + 3] = 10;
