@@ -87,22 +87,51 @@ class Player {
     }
     
     //Knipperen van schild
-    if (timer2>=66 && timer2<80)
+    
+    if (timer2>=50 && timer2<80)
     {
     knipper = true;
     }
-    if (timer2>=36 && timer2<66)
+    if (timer2>=36 && timer2<50)
     {
     knipper = false;
     }
-    if (timer2>=6 && timer2<36)
+    if (timer2>=28 && timer2<36)
     {
     knipper = true;
     }
 
-    if (timer2>0 && timer2<6)
+    if (timer2>=22 && timer2<28)
     {
     knipper = false;
+    }
+    if (timer2>=17 && timer2<22)
+    {
+    knipper = true;
+    }
+    if (timer2>=10 && timer2<17)
+    {
+    knipper = false;
+    }
+    if (timer2>=7 && timer2<10)
+    {
+    knipper = true;
+    }
+    if (timer2>=4 && timer2<7)
+    {
+    knipper = false;
+    }
+    if (timer2>=2 && timer2<4)
+    {
+    knipper = true;
+    }
+     if (timer2>=1 && timer2<2)
+    {
+    knipper = false;
+    }
+     if (timer2>=0 && timer2<1)
+    {
+    knipper = true;
     }
 
     //Het scherm loopt. als de speler naar rechts loopt komt hij links weer tevoorschijn.
