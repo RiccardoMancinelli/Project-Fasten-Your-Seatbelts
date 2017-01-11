@@ -1,7 +1,7 @@
 class Player {  
   int x, y, w, h, versnelling; // Position
   float clr, vx, vy, jumpspeed, center, diameter, jetpackspeed, maxSpeed, dir, timer, timer2, soundDelay; 
-  boolean landed, manaPowers, bounce, shield; 
+  boolean landed, manaPowers, bounce, shield, knipper; 
   PImage img, spr_player_stand_left, spr_player_stand_right, spr_player_jump_right, spr_player_jump_left, spr_player_dead, barrier;
   String name;
   int realHighScore = score + hoogte;
@@ -84,6 +84,25 @@ class Player {
     if (timer2 < 1 && shield == true)
     {
       shield = false;
+    }
+    
+    //Knipperen van schild
+    if (timer2>=66 && timer2<80)
+    {
+    knipper = true;
+    }
+    if (timer2>=36 && timer2<66)
+    {
+    knipper = false;
+    }
+    if (timer2>=6 && timer2<36)
+    {
+    knipper = true;
+    }
+
+    if (timer2>0 && timer2<6)
+    {
+    knipper = false;
     }
 
     //Het scherm loopt. als de speler naar rechts loopt komt hij links weer tevoorschijn.
@@ -233,7 +252,7 @@ class Player {
   void draw() {
     img.resize(w, h);
     image(img, x-16, y-24);
-        if (shield == true) {
+        if (shield == true && knipper == false) {
       image(barrier, x-24, y-30);
     }
   }
