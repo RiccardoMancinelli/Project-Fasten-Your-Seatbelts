@@ -133,6 +133,10 @@ class Player {
     {
     knipper = true;
     }
+    if (shield == true && timer2 > 80)
+    {
+     knipper = false; 
+    }
 
     //Het scherm loopt. als de speler naar rechts loopt komt hij links weer tevoorschijn.
     if (x > width) {
