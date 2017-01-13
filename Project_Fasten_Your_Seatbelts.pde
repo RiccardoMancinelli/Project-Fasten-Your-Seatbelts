@@ -29,7 +29,7 @@ SoundFile music2;
 SoundFile music3;
 
 
-PImage background, background2, background3, background4, titlescreen, playbutton, highscoresbutton, exitbutton, playpressed, highscorespressed, exitpressed, homeButton, homeButtonpressed;
+PImage background, background2, background3, background4, titlescreen, playbutton, highscoresbutton, exitbutton, playpressed, highscorespressed, exitpressed, homeButton, homeButtonpressed, retrybutton, retrybuttonPressed;
 
 
 void setup() {
@@ -54,11 +54,14 @@ playbutton = loadImage("play_button.png");
 highscoresbutton = loadImage("highscores_button.png");
 exitbutton = loadImage("exit_button.png");
 homeButton = loadImage("Home_button.png");
+retrybutton = loadImage("retry-button.png");
+
 
 playpressed = loadImage("play_button_pressed.png");
 highscorespressed = loadImage("highscores_pressed.png");
 exitpressed = loadImage("exit_button_pressed.png");
 homeButtonpressed = loadImage("Home_button_pressed.png");
+retrybuttonPressed = loadImage("retry-button-pressed.png");
 
   world.init();
   highscores.load("highscore.csv");

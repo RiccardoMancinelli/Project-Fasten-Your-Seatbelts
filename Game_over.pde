@@ -30,15 +30,23 @@ class Game_over {
     //text("Distance:", width/3, height/4+128);
     //text(hoogte, width/3 + 192, height/4+128);
     textSize(31);
-    image(homeButtonpressed,width/12,height/4,150,150);
+    image(retrybutton,width/12,height/4,150,150);
+    image(retrybuttonPressed,width/12,height/4,150,150);
     //text("Press Z to restart", width/7, height-20);
     image(homeButton,width/12,height/2.5,150,150);
     }else
     if (choice == 2){
-    image(homeButton,width/12,height/4,150,150);
+    image(retrybutton,width/12,height/4,150,150);
     //text("Press Z to restart", width/7, height-20);
     image(homeButtonpressed,width/12,height/2.5,150,150);
-    }
+    }/*else 
+    if (choice == 3) {
+      image(retrybutton,width/12,height/4,150,150);
+      image(homeButton,width/12,height/2.5,150,150);
+      image(exitbutton,width/12,height/1.5,150,150);
+    //text("Press Z to restart", width/7, height-20);
+    image(exitpressed,width/12,height/1.5,150,150);
+    }*/
     
     //text("Press X for main menu", width/1.8, height-20);
     textSize(40);
