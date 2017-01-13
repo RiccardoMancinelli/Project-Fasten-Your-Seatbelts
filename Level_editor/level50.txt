@@ -1,0 +1,33 @@
+//////////////LEVEL LAYOUT NUMBER: 50////////////////
+if (selected == 50){
+world.spawn[2][y + 3] = 1;
+world.spawn[3][y + 3] = 1;
+world.spawn[4][y + 3] = 1;
+world.spawn[5][y + 3] = 1;
+world.spawn[6][y + 3] = 1;
+world.spawn[7][y + 3] = 1;
+world.spawn[8][y + 3] = 1;
+world.spawn[2][y + 2] = 1;
+world.spawn[3][y + 2] = 1;
+world.spawn[4][y + 2] = 1;
+world.spawn[5][y + 2] = 1;
+world.spawn[6][y + 2] = 1;
+world.spawn[7][y + 2] = 1;
+world.spawn[8][y + 2] = 1;
+world.spawn[2][y + 1] = 1;
+world.spawn[3][y + 1] = 1;
+world.spawn[4][y + 1] = 6;
+world.spawn[5][y + 1] = 6;
+world.spawn[6][y + 1] = 6;
+world.spawn[7][y + 1] = 1;
+world.spawn[8][y + 1] = 1;
+world.spawn[2][y + 0] = 1;
+world.spawn[3][y + 0] = 1;
+world.spawn[4][y + 0] = 6;
+world.spawn[5][y + 0] = 6;
+world.spawn[6][y + 0] = 6;
+world.spawn[7][y + 0] = 1;
+world.spawn[8][y + 0] = 1;
+}
+///////////////////////////////////////////////////
+
