@@ -1,6 +1,6 @@
 class World {
 
-  int wolkid = 0, cloudMax = 128, itemMax = 64, totalLevels = 40, totalLevelshard = 35, hardlimit = 80;        //Alle plaatsbare items initializen. Hardlimit is de level cap waarop we de moeilijke levels gaan gebruiken.
+  int wolkid = 0, cloudMax = 128, itemMax = 64, totalLevels = 70, totalLevelshard = 35, hardlimit = 80;        //Alle plaatsbare items initializen. Hardlimit is de level cap waarop we de moeilijke levels gaan gebruiken.
 
   int nCloud = 0, nEnemy = 0, nPowerUp = 0, nBird = 0, waves = 1000, horizontalItems = 11, leftOff = 0, fase = 0;
   boolean alive = true;
@@ -219,7 +219,7 @@ class World {
         spawn[powerUp[l].oldx][powerUp[l].oldy]=0;
         created[powerUp[l].oldx][powerUp[l].oldy]=false;
        if (powerUp[l].powerID == 1){ player.timer = 600; mana = maxmana = 128;} //jetpack
-       if (powerUp[l].powerID == 2){player.timer2 = 300; player.shield = true;} //schild
+       if (powerUp[l].powerID == 2){player.timer2 = 600; player.shield = true;} //schild
         file5.play();
         file.play();
       }
