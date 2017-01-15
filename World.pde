@@ -1,7 +1,8 @@
 class World {
 
   int wolkid = 0, cloudMax = 128, itemMax = 64, totalLevels = 70, totalLevelshard = 35, hardlimit = 80;        //Alle plaatsbare items initializen. Hardlimit is de level cap waarop we de moeilijke levels gaan gebruiken.
-
+  float timer3;
+  boolean showScore = false, showScore2 = false;
   int nCloud = 0, nEnemy = 0, nPowerUp = 0, nBird = 0, waves = 1000, horizontalItems = 11, leftOff = 0, fase = 0;
   boolean alive = true;
   int[][] spawn = new int[horizontalItems][waves];    //maakt 8 locaties aan waarop we dingen kunnen spawnen (hokjes van 80 pixels) en maakt in totaal ... waves 
@@ -207,7 +208,10 @@ class World {
         bird[j].movey=0;
         spawn[bird[j].oldx][bird[j].oldy]=0;
         created[bird[j].oldx][bird[j].oldy]=false;
+        showScore = true;
+        timer3 = 30;
       }
+      
     }
     for (int l=0; l<itemMax; l++)
     {
@@ -222,6 +226,8 @@ class World {
        if (powerUp[l].powerID == 2){player.timer2 = 600; player.shield = true;} //schild
         file5.play();
         file.play();
+        showScore2 = true;
+        timer3 = 30;
       }
     }
     if (player.y < height/2 && cameraSwitch == false && alive == true ) {        //activeert de camera
@@ -279,6 +285,32 @@ class World {
     text("Highscore:",width-128,16);
     text(score.score, width-128, + 32);
     text("By:"+ score.name, width-128, + 48);
+    
+    // Dit zorgt ervoor dat de score wordt weergeven en weer weg gaat als de tijd om is.
+    if (showScore == true && timer3 > 0)
+      {
+        timer3 -=1;
+        textSize(16);
+        fill(#6C0E0E);
+        text("+500", player.x - 20, player.y - 20); 
+       // text(timer3, player.x, player.y); // timer3 test
+      }
+      if (showScore == true && timer3 == 0)
+      {
+        showScore = false;
+      }
+       if (showScore2 == true && timer3 > 0)
+      {
+        timer3 -=1;
+        textSize(16);
+        fill(#6C0E0E);
+        text("+200", player.x - 20, player.y - 20); 
+       // text(timer3, player.x, player.y); // timer3 test
+      }
+      if (showScore2 == true && timer3 == 0)
+      {
+        showScore2 = false;
+      }
   }
 
   ///////////////////////////////////////////////////////////////////
