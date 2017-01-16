@@ -287,13 +287,14 @@ void keyPressed() {
     }
   } else if (keyCode == DELETE) {
     playerName = "";
+    //playerName -= 1;
   } else if (keyCode != SHIFT && keyCode != CONTROL && keyCode != ALT && playerName.length()<=12) {
     playerName = playerName + key;
   }  
    if (keyCode == ENTER){
     playerName = playerName.substring(0, playerName.length()-1);
   }
-  if (keyCode == ENTER && playerName.length()>=3 && playerName != "" && playerName.length()<=12){
+  if (playerName.length()==3 && playerName != ""){
     highscores.addScore(playerName, (score += hoogte));
     savedName = playerName;
     playerName = "";
