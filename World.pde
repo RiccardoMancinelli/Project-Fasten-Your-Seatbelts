@@ -1,6 +1,6 @@
 class World {
 
-  int wolkid = 0, cloudMax = 128, itemMax = 64, totalLevels = 70, totalLevelshard = 35, hardlimit = 80;        //Alle plaatsbare items initializen. Hardlimit is de level cap waarop we de moeilijke levels gaan gebruiken.
+  int wolkid = 0, cloudMax = 128, itemMax = 64, totalLevels = 80, totalLevelshard = 50, hardlimit = 80;        //Alle plaatsbare items initializen. Hardlimit is de level cap waarop we de moeilijke levels gaan gebruiken.
   float timer3;
   boolean showScore = false, showScore2 = false;
   int nCloud = 0, nEnemy = 0, nPowerUp = 0, nBird = 0, waves = 1000, horizontalItems = 11, leftOff = 0, fase = 0;

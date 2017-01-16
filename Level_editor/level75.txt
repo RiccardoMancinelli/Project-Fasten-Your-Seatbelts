@@ -1,0 +1,25 @@
+//////////////LEVEL LAYOUT NUMBER: 75////////////////
+if (selected == 75){
+world.spawn[4][y + 3] = 9;
+world.spawn[5][y + 3] = 9;
+world.spawn[6][y + 3] = 9;
+world.spawn[4][y + 2] = 4;
+world.spawn[5][y + 2] = 4;
+world.spawn[6][y + 2] = 4;
+world.spawn[1][y + 1] = 1;
+world.spawn[2][y + 1] = 1;
+world.spawn[3][y + 1] = 1;
+world.spawn[4][y + 1] = 1;
+world.spawn[6][y + 1] = 1;
+world.spawn[7][y + 1] = 1;
+world.spawn[8][y + 1] = 1;
+world.spawn[9][y + 1] = 1;
+world.spawn[1][y + 0] = 1;
+world.spawn[2][y + 0] = 1;
+world.spawn[3][y + 0] = 1;
+world.spawn[7][y + 0] = 1;
+world.spawn[8][y + 0] = 1;
+world.spawn[9][y + 0] = 1;
+}
+///////////////////////////////////////////////////
+
