@@ -23,7 +23,7 @@ class Player {
     clr = color(255, 255, 255);
     vx = 5;
     vy = 0;
-    jumpspeed =10;
+    jumpspeed =12;
     jetpackspeed = 4;
     diameter = 20;
     center = diameter/2;
@@ -45,7 +45,7 @@ class Player {
     clr = color(255, 255, 255);
     vx = 5;
     vy = 0;
-    jumpspeed =10;
+    jumpspeed =12;
     jetpackspeed = 4;
     diameter = 20;
     center = diameter/2;
