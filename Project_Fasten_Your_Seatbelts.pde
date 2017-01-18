@@ -10,8 +10,8 @@ Menu_highscores menuHighscores = new Menu_highscores();
 
 boolean leftDown, rightDown, jumpDown, selectUP, selectDown, xButton; //Alle knoppen die de speler kan gebruiken
 int score, mana, maxmana, hoogte, room = 2, choice = 1, highscoreChoice = 1, y; //Initialiseerd alle variabelen.
-float scrollsnelheid = 0, staticscrollsnelheid, respawnTimer, canChooseTimer; //Staticsrollsnelheid is een 'reset'. Het is om glitches te voorkomen in het scrollen.
-boolean cameraSwitch = false, canChoose = true;     
+float scrollsnelheid = 0, staticscrollsnelheid, respawnTimer, canChooseTimer, gameOverTimer; //Staticsrollsnelheid is een 'reset'. Het is om glitches te voorkomen in het scrollen.
+boolean cameraSwitch = false, canChoose = true, gameOverTransition = false;     
 String playerName = "", savedName = "";
 
 //Geluid inladen:
@@ -240,6 +240,28 @@ void draw() {
     music3.stop();
     exit();
   }
+  
+  if (playerName.length() == 2 && gameOverTransition == false){
+    gameOverTimer = 30;
+  }
+  
+  if (gameOverTimer > 0){
+    gameOverTimer -= 1; 
+  }
+  
+  if (gameOverTimer == 0 && playerName.length() == 3 && gameOverTransition == false){
+    gameOverTransition = true;
+  }
+  
+    if (playerName.length() == 3 && playerName != "" && gameOverTransition == true){
+    highscores.addScore(playerName, (score += hoogte));
+    savedName = playerName;
+    playerName = "";
+    room = 1; 
+    highscores.save("highscore.csv");
+    respawnTimer = 20;
+  }
+  
 }
 
 void reset()
@@ -288,19 +310,13 @@ void keyPressed() {
   } else if (keyCode == DELETE) {
     playerName = "";
     //playerName -= 1;
-  } else if (keyCode != SHIFT && keyCode != CONTROL && keyCode != ALT && playerName.length()<=12) {
+  } else if (keyCode != SHIFT && keyCode != CONTROL && keyCode != ALT && playerName.length()<=2) {
     playerName = playerName + key;
   }  
    if (keyCode == ENTER || keyCode == LEFT || keyCode == DOWN || keyCode == RIGHT || keyCode == UP){
     playerName = playerName.substring(0, playerName.length()-1);
   }
-  if (playerName.length()==3 && playerName != ""){
-    highscores.addScore(playerName, (score += hoogte));
-    savedName = playerName;
-    playerName = "";
-    room = 1; 
-    highscores.save("highscore.csv");
-  }
+
 
   }
 }

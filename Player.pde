@@ -279,6 +279,7 @@ class Player {
       //highscores.load("highscore.csv");
       respawnTimer = 30;
       room = 3;
+      gameOverTransition = false;
       
     }
   }
