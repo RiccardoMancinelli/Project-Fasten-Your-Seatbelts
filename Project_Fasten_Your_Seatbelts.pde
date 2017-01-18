@@ -291,7 +291,7 @@ void keyPressed() {
   } else if (keyCode != SHIFT && keyCode != CONTROL && keyCode != ALT && playerName.length()<=12) {
     playerName = playerName + key;
   }  
-   if (keyCode == ENTER){
+   if (keyCode == ENTER || keyCode == LEFT || keyCode == DOWN || keyCode == RIGHT || keyCode == UP){
     playerName = playerName.substring(0, playerName.length()-1);
   }
   if (playerName.length()==3 && playerName != ""){
