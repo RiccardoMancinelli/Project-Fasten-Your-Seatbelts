@@ -291,7 +291,7 @@ class World {
         timer3 -=1;
         textSize(16);
         fill(#6C0E0E);
-        text("+500", player.x - 20, player.y - 20); 
+        text("+500", player.x - 20, player.y - 32); 
        // text(timer3, player.x, player.y); // timer3 test
       }
       if (showScore == true && timer3 == 0)
@@ -303,7 +303,7 @@ class World {
         timer3 -=1;
         textSize(16);
         fill(#6C0E0E);
-        text("+200", player.x - 20, player.y - 20); 
+        text("+200", player.x - 20, player.y - 32); 
        // text(timer3, player.x, player.y); // timer3 test
       }
       if (showScore2 == true && timer3 == 0)
