@@ -33,7 +33,7 @@ class Player {
     manaPowers=false;
     shield = false;
     staticscrollsnelheid = 1;
-    versnelling = 1000;
+    versnelling = 2000;
   }
 
   void reset() {
@@ -55,7 +55,7 @@ class Player {
     manaPowers=false;
     shield = false;
     staticscrollsnelheid = 1;
-    versnelling = 1000;
+    versnelling = 2000;
   }
 
   void update() {

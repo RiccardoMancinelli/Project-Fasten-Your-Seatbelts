@@ -1,6 +1,6 @@
 class World {
 
-  int wolkid = 0, cloudMax = 128, itemMax = 64, totalLevels = 80, totalLevelshard = 50, hardlimit = 80;        //Alle plaatsbare items initializen. Hardlimit is de level cap waarop we de moeilijke levels gaan gebruiken.
+  int wolkid = 0, cloudMax = 128, itemMax = 64, totalLevels = 80, totalLevelshard = 50, hardlimit = 140;        //Alle plaatsbare items initializen. Hardlimit is de level cap waarop we de moeilijke levels gaan gebruiken.
   float timer3;
   boolean showScore = false, showScore2 = false;
   int nCloud = 0, nEnemy = 0, nPowerUp = 0, nBird = 0, waves = 1000, horizontalItems = 11, leftOff = 0, fase = 0;
@@ -181,13 +181,13 @@ class World {
     ///////////////////////////////////////////////////////////////////
     ////////////////////////////Music//////////////////////////////////
     ///////////////////////////////////////////////////////////////////
-    if (hoogte > 10000 && fase == 0)    //Fase is there to check wether the game is easy (0) or hard (1)
+    if (hoogte > 16000 && fase == 0)    //Fase is there to check wether the game is easy (0) or hard (1)
     {
         music.stop(); 
         music2.loop();
         fase = 1;
     } 
-    if (hoogte < 10000 && fase == 1)    //Fase is there to check wether the game is easy (0) or hard (1)
+    if (hoogte < 16000 && fase == 1)    //Fase is there to check wether the game is easy (0) or hard (1)
     {
         music2.stop(); 
         music.loop();
@@ -267,20 +267,19 @@ class World {
     rect(0, 476+hoogte, width, 495-hoogte);  //tekent de grond
 
     fill(0, 0, 0); 
-    rect(16, 16, maxmana+1, 16);    //tekent de achtergrond van de mana bar op x=16, y=16, x2=64, y2=16
+    rect(player.x-maxmana/4-1, player.y-26, maxmana/2+1, 6);    //tekent de achtergrond van de mana bar op x=16, y=16, x2=64, y2=16
     img.resize(20, 20);
-    image(img, maxmana+16, 15);
     fill(255, 0, 0); 
-    rect(15, 15, mana, 15);    //tekent de hoeveelheid mana die je hebt.
+    rect(player.x-maxmana/4, player.y-25, mana/2, 5);    //tekent de hoeveelheid mana die je hebt.
     fill(0, 0, 0, 127);
-    rect(2, 48, 128,44);
+    rect(2, 0, 128,44);
     
     fill(0, 0, 0, 127);
     rect(width-136, 0, width-4,54);
     fill(255);
     textSize(16);
-    text("Hoogte:" +hoogte, 10, 64); 
-    text("Score:" + (score + hoogte), 10, 80);
+    text("Hoogte:" +hoogte, 10, 16); 
+    text("Score:" + (score + hoogte), 10, 32);
     Score score = highscores.getScore(0);
     text("Highscore:",width-128,16);
     text(score.score, width-128, + 32);
