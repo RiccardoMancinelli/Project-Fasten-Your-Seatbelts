@@ -33,7 +33,9 @@ PImage background, background2, background3, background4,
 titlescreen, playbutton, highscoresbutton, exitbutton, playpressed, 
 highscorespressed, exitpressed, homeButton, homeButtonpressed, 
 retrybutton, retrybuttonPressed, gameoverbg, homebuttonGO, homebuttonGOpressed,
-highscoresscreen;
+highscoresscreen, backgroundsky, 
+backgroundscroll1, backgroundscroll2, backgroundscroll3, backgroundscroll4,
+backgroundscroll5;
 
 
 void setup() {
@@ -48,7 +50,13 @@ void setup() {
   music3 = new SoundFile(this, "Menu_theme.wav");
   
   
-background = loadImage("BackgroundNew2.jpg");
+background = loadImage("BackgroundNew.jpg");
+backgroundscroll1 = loadImage("BackgroundNewscroll1.jpg");
+backgroundscroll2 = loadImage("BackgroundNewScroll2.jpg");
+backgroundscroll3 = loadImage("BackgroundNewScroll3.jpg");
+backgroundscroll4 = loadImage("BackgroundNewScroll4.jpg");
+backgroundscroll5 = loadImage("BackgroundNewScroll5.jpg");
+backgroundsky = loadImage("BackgroundNew2.jpg");
 background2 = loadImage("BackgroundHard.jpg");
 background3 = loadImage("BackgroundHardest.jpg"); 
 background4 = loadImage("Backgroundimpossible.jpg");
@@ -102,7 +110,15 @@ void draw() {
   //GAME SCHERM
   if (room == 0)    
   {
-  if (hoogte<3500){background(background);}
+  // disappear ground
+  if (hoogte<80) {background(background);}
+  if (hoogte>80 && hoogte <82) {background(backgroundscroll1);}
+  if (hoogte>82 && hoogte <84) {background(backgroundscroll2);}
+  if (hoogte>84 && hoogte <86) {background(backgroundscroll3);}
+  if (hoogte>86 && hoogte <88) {background(backgroundscroll4);}
+  if (hoogte>88 && hoogte <90) {background(backgroundscroll5);}
+  // Levels
+  if (hoogte>90 && hoogte <3500){background(backgroundsky);}
   if (hoogte>3500 && hoogte < 12000){background(background2);}
   if (hoogte>12000 && hoogte<32000){background(background3);} 
   if (hoogte>32000){background(background4);}
