@@ -4,8 +4,10 @@ class Menu_highscores {
   void draw() {
       if (gameOver == false){
     textSize(62);
-    fill(255);
-    text("Highscores", width/3, height/4);
+    //fill(255);
+    background(highscoresscreen);
+    fill(0,0,0);
+    //text("Highscores", width/3, height/4);
     
     
     for (int iScore = 0; iScore<highscores.getScoreCount(); iScore++) {
@@ -19,6 +21,7 @@ class Menu_highscores {
     // display score in window
         text((iScore+1) + "        " + score.name, width/3, height/4+85 + iScore*20);
     text(score.score,width/3 + 288 , height/4+85 + iScore*20);
+    fill(0, 0, 0);
   
     }
     textSize(50);

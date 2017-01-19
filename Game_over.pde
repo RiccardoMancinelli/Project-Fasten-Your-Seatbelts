@@ -5,10 +5,10 @@ class Game_over {
   
   
   void draw() {
-    textSize(62);
-    fill(255);
-    text("Game over", width/3, height/4);
-    
+    //textSize(62);
+    //fill(255);
+    //text("Game over", width/3, height/4);
+    background(gameoverbg);
     
     for (int iScore = 0; iScore<highscores.getScoreCount(); iScore++) {
 
@@ -30,15 +30,15 @@ class Game_over {
     //text("Distance:", width/3, height/4+128);
     //text(hoogte, width/3 + 192, height/4+128);
     textSize(31);
-    image(retrybutton,width/12,height/4,150,150);
-    image(retrybuttonPressed,width/12,height/4,150,150);
+    image(retrybutton,width/12,height/3.1,150,150);
+    image(retrybuttonPressed,width/12,height/3.1,150,150);
     //text("Press Z to restart", width/7, height-20);
-    image(homeButton,width/12,height/2.5,150,150);
+    image(homebuttonGO,width/12,height/2.2,150,150);
     }else
     if (choice == 2){
-    image(retrybutton,width/12,height/4,150,150);
+    image(retrybutton,width/12,height/3.1,150,150);
     //text("Press Z to restart", width/7, height-20);
-    image(homeButtonpressed,width/12,height/2.5,150,150);
+    image(homebuttonGOpressed,width/12,height/2.2,150,150);
     }/*else 
     if (choice == 3) {
       image(retrybutton,width/12,height/4,150,150);

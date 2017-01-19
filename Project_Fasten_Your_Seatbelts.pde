@@ -29,7 +29,11 @@ SoundFile music2;
 SoundFile music3;
 
 
-PImage background, background2, background3, background4, titlescreen, playbutton, highscoresbutton, exitbutton, playpressed, highscorespressed, exitpressed, homeButton, homeButtonpressed, retrybutton, retrybuttonPressed;
+PImage background, background2, background3, background4, 
+titlescreen, playbutton, highscoresbutton, exitbutton, playpressed, 
+highscorespressed, exitpressed, homeButton, homeButtonpressed, 
+retrybutton, retrybuttonPressed, gameoverbg, homebuttonGO, homebuttonGOpressed,
+highscoresscreen;
 
 
 void setup() {
@@ -49,11 +53,15 @@ background2 = loadImage("BackgroundHard.jpg");
 background3 = loadImage("BackgroundHardest.jpg"); 
 background4 = loadImage("Backgroundimpossible.jpg");
 titlescreen = loadImage("Title-screen2.jpg");
+gameoverbg = loadImage("GameOver2.jpg");
+highscoresscreen = loadImage("highscores-screen.jpg");
 
 playbutton = loadImage("play_button.png");
 highscoresbutton = loadImage("highscores_button.png");
 exitbutton = loadImage("exit_button.png");
 homeButton = loadImage("Home_button.png");
+homebuttonGO = loadImage("title-button-Gameover.png");
+homebuttonGOpressed = loadImage("title-button-Gameover-pressed.png");
 retrybutton = loadImage("retry-button.png");
 
 
