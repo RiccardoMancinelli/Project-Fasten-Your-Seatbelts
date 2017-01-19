@@ -35,7 +35,7 @@ highscorespressed, exitpressed, homeButton, homeButtonpressed,
 retrybutton, retrybuttonPressed, gameoverbg, homebuttonGO, homebuttonGOpressed,
 highscoresscreen, backgroundsky, 
 backgroundscroll1, backgroundscroll2, backgroundscroll3, backgroundscroll4,
-backgroundscroll5;
+backgroundscroll5, namescreen;
 
 
 void setup() {
@@ -63,6 +63,7 @@ background4 = loadImage("Backgroundimpossible.jpg");
 titlescreen = loadImage("Title-screen2.jpg");
 gameoverbg = loadImage("GameOver2.jpg");
 highscoresscreen = loadImage("highscores-screen.jpg");
+namescreen = loadImage("namename.jpg");
 
 playbutton = loadImage("play_button.png");
 highscoresbutton = loadImage("highscores_button.png");
