@@ -263,8 +263,8 @@ class World {
     }
 
     noStroke();
-    //fill(0, 180, 0); 
-    //rect(0, 476+hoogte, width, 495-hoogte);  //tekent de grond
+    fill(0, 180, 0); 
+    rect(0, 476+hoogte, width, 495-hoogte);  //tekent de grond
 
     fill(0, 0, 0); 
     rect(player.x-maxmana/4-1, player.y-26, maxmana/2+1, 6);    //tekent de achtergrond van de mana bar op x=16, y=16, x2=64, y2=16
